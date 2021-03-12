@@ -23,8 +23,7 @@ F05 | Skladište | Skladište sadrži popis dostupnih namirnica u lokalu, broj n
 F06 | Otpis | Konobar može dodati na otpis neispravne narudžbe prilikom koje se ažurira stanje u skladištu. | Lea Masnec
 F07 | Statistika | Admin ili voditelj smjene može pristupiti statistici za dani dan, tjedan, mjesec ili godinu poslovanja | Goran Filinić
 F08 | Upravljanje stolovima | Funkcionalnost kojoj admin može pristupiti gdje se dodaje/briše stol iz aplikacije | Goran Filinić
-F09 | Upravljanje nomrativima |  Funkcionalnost kojoj admin može pristupiti gdje se dodaje/briše ili izmjenjuju normativi za artikle dostupne za prodaju
-| Lea Masnec
+F09 | Upravljanje nomrativima |  Funkcionalnost kojoj admin može pristupiti gdje se dodaje/briše ili izmjenjuju normativi za artikle dostupne za prodaju | Lea Masnec
 
 
 
