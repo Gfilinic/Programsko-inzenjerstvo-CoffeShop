@@ -1,0 +1,1297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Artikl">
+          <Key>
+            <PropertyRef Name="ID_Artikl" />
+          </Key>
+          <Property Name="ID_Artikl" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Cijena" Type="float" Nullable="false" />
+          <Property Name="Skladiste_ID" Type="int" />
+          <Property Name="Normativ_ID" Type="int" />
+          <Property Name="Kategorija_ID" Type="int" Nullable="false" />
+          <Property Name="Kafic_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Kafic">
+          <Key>
+            <PropertyRef Name="ID_Kafic" />
+          </Key>
+          <Property Name="ID_Kafic" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Poduzece_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategorija">
+          <Key>
+            <PropertyRef Name="ID_Kategorija" />
+          </Key>
+          <Property Name="ID_Kategorija" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Konobar">
+          <Key>
+            <PropertyRef Name="ID_Konobar" />
+          </Key>
+          <Property Name="ID_Konobar" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Prezime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="OIB" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Datum_Pocetka" Type="date" Nullable="false" />
+          <Property Name="Datum_Kraja" Type="date" />
+          <Property Name="Kafic_ID" Type="int" Nullable="false" />
+          <Property Name="Sifra" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Voditelj" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Mjera">
+          <Key>
+            <PropertyRef Name="ID_Mjera" />
+          </Key>
+          <Property Name="ID_Mjera" Type="int" Nullable="false" />
+          <Property Name="Mjerna_jedinica" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Moderator">
+          <Key>
+            <PropertyRef Name="ID_Moderator" />
+          </Key>
+          <Property Name="ID_Moderator" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Prezime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="OIB" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Datum_Pocetka" Type="date" Nullable="false" />
+          <Property Name="Datum_Kraja" Type="date" />
+          <Property Name="Kafic_ID" Type="int" Nullable="false" />
+          <Property Name="KorIme" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nacin_Placanja">
+          <Key>
+            <PropertyRef Name="ID_Placanje" />
+          </Key>
+          <Property Name="ID_Placanje" Type="int" Nullable="false" />
+          <Property Name="Nacin_Placanja" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Namirnica">
+          <Key>
+            <PropertyRef Name="ID_Namirnica" />
+          </Key>
+          <Property Name="ID_Namirnica" Type="int" Nullable="false" />
+          <Property Name="Naziv_Namirnice" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kolicina" Type="float" Nullable="false" />
+          <Property Name="Mjera_ID" Type="int" />
+          <Property Name="Sastojak_ID" Type="int" />
+          <Property Name="Skladiste_ID" Type="int" Nullable="false" />
+          <Property Name="Kafic_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Normativ">
+          <Key>
+            <PropertyRef Name="ID_normativ" />
+          </Key>
+          <Property Name="ID_normativ" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pod_Stavka">
+          <Key>
+            <PropertyRef Name="ID_Podstavka" />
+            <PropertyRef Name="Mjera_ID" />
+            <PropertyRef Name="Sastojak_ID" />
+          </Key>
+          <Property Name="ID_Podstavka" Type="int" Nullable="false" />
+          <Property Name="Mjera_ID" Type="int" Nullable="false" />
+          <Property Name="Sastojak_ID" Type="int" Nullable="false" />
+          <Property Name="Količina" Type="float" Nullable="false" />
+          <Property Name="Stavka_normativa_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poduzeće">
+          <Key>
+            <PropertyRef Name="ID_Poduzece" />
+          </Key>
+          <Property Name="ID_Poduzece" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="45" />
+          <Property Name="Vlasnik" Type="varchar" MaxLength="45" />
+          <Property Name="OIB" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Racun">
+          <Key>
+            <PropertyRef Name="ID_Racun" />
+          </Key>
+          <Property Name="ID_Racun" Type="int" Nullable="false" />
+          <Property Name="Vrijeme" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Konobar_ID" Type="int" Nullable="false" />
+          <Property Name="Stol_ID" Type="int" Nullable="false" />
+          <Property Name="Nacin_Placanja_ID" Type="int" Nullable="false" />
+          <Property Name="Ukupna_cijena" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sastojak">
+          <Key>
+            <PropertyRef Name="ID_Sastojak" />
+          </Key>
+          <Property Name="ID_Sastojak" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Skladiste">
+          <Key>
+            <PropertyRef Name="ID_Skladiste" />
+            <PropertyRef Name="Kafic_ID" />
+          </Key>
+          <Property Name="ID_Skladiste" Type="int" Nullable="false" />
+          <Property Name="Kafic_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stavka_normativa">
+          <Key>
+            <PropertyRef Name="ID_Stav_norm" />
+          </Key>
+          <Property Name="ID_Stav_norm" Type="int" Nullable="false" />
+          <Property Name="Normativ_ID_normativ" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stavka_racuna">
+          <Key>
+            <PropertyRef Name="Racun_ID" />
+            <PropertyRef Name="Artikl_ID" />
+          </Key>
+          <Property Name="Racun_ID" Type="int" Nullable="false" />
+          <Property Name="Artikl_ID" Type="int" Nullable="false" />
+          <Property Name="Količina" Type="int" Nullable="false" />
+          <Property Name="Cijena" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stol">
+          <Key>
+            <PropertyRef Name="ID_Stol" />
+          </Key>
+          <Property Name="ID_Stol" Type="int" Nullable="false" />
+          <Property Name="Broj_Mjesta" Type="int" Nullable="false" />
+          <Property Name="Oznaka_Stola" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Kafic_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__Skladiste__Kafic__4F7CD00D">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Skladiste" Type="Self.Skladiste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Skladiste">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Artikl_Kategorija1">
+          <End Role="Kategorija" Type="Self.Kategorija" Multiplicity="1" />
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorija">
+              <PropertyRef Name="ID_Kategorija" />
+            </Principal>
+            <Dependent Role="Artikl">
+              <PropertyRef Name="Kategorija_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Artikl_Normativ1">
+          <End Role="Normativ" Type="Self.Normativ" Multiplicity="0..1" />
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Normativ">
+              <PropertyRef Name="ID_normativ" />
+            </Principal>
+            <Dependent Role="Artikl">
+              <PropertyRef Name="Normativ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Artikl_Skladiste">
+          <End Role="Skladiste" Type="Self.Skladiste" Multiplicity="0..1" />
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skladiste">
+              <PropertyRef Name="ID_Skladiste" />
+              <PropertyRef Name="Kafic_ID" />
+            </Principal>
+            <Dependent Role="Artikl">
+              <PropertyRef Name="Skladiste_ID" />
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kafic_Poduzeće">
+          <End Role="Poduzeće" Type="Self.Poduzeće" Multiplicity="1" />
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeće">
+              <PropertyRef Name="ID_Poduzece" />
+            </Principal>
+            <Dependent Role="Kafic">
+              <PropertyRef Name="Poduzece_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Konobar_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Konobar" Type="Self.Konobar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Konobar">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moderator_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Moderator" Type="Self.Moderator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Moderator">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Namirnica_Mjera">
+          <End Role="Mjera" Type="Self.Mjera" Multiplicity="0..1" />
+          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjera">
+              <PropertyRef Name="ID_Mjera" />
+            </Principal>
+            <Dependent Role="Namirnica">
+              <PropertyRef Name="Mjera_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Namirnica_Sastojak">
+          <End Role="Sastojak" Type="Self.Sastojak" Multiplicity="0..1" />
+          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sastojak">
+              <PropertyRef Name="ID_Sastojak" />
+            </Principal>
+            <Dependent Role="Namirnica">
+              <PropertyRef Name="Sastojak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Namirnica_Skladiste">
+          <End Role="Skladiste" Type="Self.Skladiste" Multiplicity="0..1" />
+          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skladiste">
+              <PropertyRef Name="ID_Skladiste" />
+              <PropertyRef Name="Kafic_ID" />
+            </Principal>
+            <Dependent Role="Namirnica">
+              <PropertyRef Name="Skladiste_ID" />
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pod_Stavka_Mjera1">
+          <End Role="Mjera" Type="Self.Mjera" Multiplicity="1" />
+          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjera">
+              <PropertyRef Name="ID_Mjera" />
+            </Principal>
+            <Dependent Role="Pod_Stavka">
+              <PropertyRef Name="Mjera_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pod_Stavka_Sastojak1">
+          <End Role="Sastojak" Type="Self.Sastojak" Multiplicity="1" />
+          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sastojak">
+              <PropertyRef Name="ID_Sastojak" />
+            </Principal>
+            <Dependent Role="Pod_Stavka">
+              <PropertyRef Name="Sastojak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pod_Stavka_Stavka_normativa1">
+          <End Role="Stavka_normativa" Type="Self.Stavka_normativa" Multiplicity="1" />
+          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stavka_normativa">
+              <PropertyRef Name="ID_Stav_norm" />
+            </Principal>
+            <Dependent Role="Pod_Stavka">
+              <PropertyRef Name="Stavka_normativa_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Konobar">
+          <End Role="Konobar" Type="Self.Konobar" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konobar">
+              <PropertyRef Name="ID_Konobar" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Konobar_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Nacin_Placanja">
+          <End Role="Nacin_Placanja" Type="Self.Nacin_Placanja" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacin_Placanja">
+              <PropertyRef Name="ID_Placanje" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Nacin_Placanja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Stol">
+          <End Role="Stol" Type="Self.Stol" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stol">
+              <PropertyRef Name="ID_Stol" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Stol_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stavka_normativa_Normativ1">
+          <End Role="Normativ" Type="Self.Normativ" Multiplicity="1" />
+          <End Role="Stavka_normativa" Type="Self.Stavka_normativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Normativ">
+              <PropertyRef Name="ID_normativ" />
+            </Principal>
+            <Dependent Role="Stavka_normativa">
+              <PropertyRef Name="Normativ_ID_normativ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_racuna_Artikl">
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="1" />
+          <End Role="Stavka_racuna" Type="Self.Stavka_racuna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artikl">
+              <PropertyRef Name="ID_Artikl" />
+            </Principal>
+            <Dependent Role="Stavka_racuna">
+              <PropertyRef Name="Artikl_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stavka_racuna_Racun1">
+          <End Role="Racun" Type="Self.Racun" Multiplicity="1" />
+          <End Role="Stavka_racuna" Type="Self.Stavka_racuna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Racun">
+              <PropertyRef Name="ID_Racun" />
+            </Principal>
+            <Dependent Role="Stavka_racuna">
+              <PropertyRef Name="Racun_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stol_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Stol" Type="Self.Stol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Stol">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Artikl" EntityType="Self.Artikl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kafic" EntityType="Self.Kafic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorija" EntityType="Self.Kategorija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Konobar" EntityType="Self.Konobar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mjera" EntityType="Self.Mjera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moderator" EntityType="Self.Moderator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nacin_Placanja" EntityType="Self.Nacin_Placanja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Namirnica" EntityType="Self.Namirnica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Normativ" EntityType="Self.Normativ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pod_Stavka" EntityType="Self.Pod_Stavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poduzeće" EntityType="Self.Poduzeće" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Racun" EntityType="Self.Racun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sastojak" EntityType="Self.Sastojak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skladiste" EntityType="Self.Skladiste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stavka_normativa" EntityType="Self.Stavka_normativa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stavka_racuna" EntityType="Self.Stavka_racuna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stol" EntityType="Self.Stol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Skladiste__Kafic__4F7CD00D" Association="Self.FK__Skladiste__Kafic__4F7CD00D">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Skladiste" EntitySet="Skladiste" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Artikl_Kategorija1" Association="Self.fk_Artikl_Kategorija1">
+            <End Role="Kategorija" EntitySet="Kategorija" />
+            <End Role="Artikl" EntitySet="Artikl" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Artikl_Normativ1" Association="Self.fk_Artikl_Normativ1">
+            <End Role="Normativ" EntitySet="Normativ" />
+            <End Role="Artikl" EntitySet="Artikl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Artikl_Skladiste" Association="Self.FK_Artikl_Skladiste">
+            <End Role="Skladiste" EntitySet="Skladiste" />
+            <End Role="Artikl" EntitySet="Artikl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kafic_Poduzeće" Association="Self.FK_Kafic_Poduzeće">
+            <End Role="Poduzeće" EntitySet="Poduzeće" />
+            <End Role="Kafic" EntitySet="Kafic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Konobar_Kafic" Association="Self.FK_Konobar_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Konobar" EntitySet="Konobar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moderator_Kafic" Association="Self.FK_Moderator_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Moderator" EntitySet="Moderator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Namirnica_Mjera" Association="Self.FK_Namirnica_Mjera">
+            <End Role="Mjera" EntitySet="Mjera" />
+            <End Role="Namirnica" EntitySet="Namirnica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Namirnica_Sastojak" Association="Self.FK_Namirnica_Sastojak">
+            <End Role="Sastojak" EntitySet="Sastojak" />
+            <End Role="Namirnica" EntitySet="Namirnica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Namirnica_Skladiste" Association="Self.FK_Namirnica_Skladiste">
+            <End Role="Skladiste" EntitySet="Skladiste" />
+            <End Role="Namirnica" EntitySet="Namirnica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pod_Stavka_Mjera1" Association="Self.fk_Pod_Stavka_Mjera1">
+            <End Role="Mjera" EntitySet="Mjera" />
+            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pod_Stavka_Sastojak1" Association="Self.fk_Pod_Stavka_Sastojak1">
+            <End Role="Sastojak" EntitySet="Sastojak" />
+            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pod_Stavka_Stavka_normativa1" Association="Self.fk_Pod_Stavka_Stavka_normativa1">
+            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
+            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Konobar" Association="Self.FK_Racun_Konobar">
+            <End Role="Konobar" EntitySet="Konobar" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Nacin_Placanja" Association="Self.FK_Racun_Nacin_Placanja">
+            <End Role="Nacin_Placanja" EntitySet="Nacin_Placanja" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Stol" Association="Self.FK_Racun_Stol">
+            <End Role="Stol" EntitySet="Stol" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stavka_normativa_Normativ1" Association="Self.fk_Stavka_normativa_Normativ1">
+            <End Role="Normativ" EntitySet="Normativ" />
+            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_racuna_Artikl" Association="Self.FK_Stavka_racuna_Artikl">
+            <End Role="Artikl" EntitySet="Artikl" />
+            <End Role="Stavka_racuna" EntitySet="Stavka_racuna" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stavka_racuna_Racun1" Association="Self.fk_Stavka_racuna_Racun1">
+            <End Role="Racun" EntitySet="Racun" />
+            <End Role="Stavka_racuna" EntitySet="Stavka_racuna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stol_Kafic" Association="Self.FK_Stol_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Stol" EntitySet="Stol" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Artikl">
+          <Key>
+            <PropertyRef Name="ID_Artikl" />
+          </Key>
+          <Property Name="ID_Artikl" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cijena" Type="Double" Nullable="false" />
+          <Property Name="Skladiste_ID" Type="Int32" />
+          <Property Name="Normativ_ID" Type="Int32" />
+          <Property Name="Kategorija_ID" Type="Int32" Nullable="false" />
+          <Property Name="Kafic_ID" Type="Int32" />
+          <NavigationProperty Name="Kategorija" Relationship="Self.fk_Artikl_Kategorija1" FromRole="Artikl" ToRole="Kategorija" />
+          <NavigationProperty Name="Normativ" Relationship="Self.fk_Artikl_Normativ1" FromRole="Artikl" ToRole="Normativ" />
+          <NavigationProperty Name="Skladiste" Relationship="Self.FK_Artikl_Skladiste" FromRole="Artikl" ToRole="Skladiste" />
+          <NavigationProperty Name="Stavka_racuna" Relationship="Self.FK_Stavka_racuna_Artikl" FromRole="Artikl" ToRole="Stavka_racuna" />
+        </EntityType>
+        <EntityType Name="Kafic">
+          <Key>
+            <PropertyRef Name="ID_Kafic" />
+          </Key>
+          <Property Name="ID_Kafic" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Poduzece_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Skladiste" Relationship="Self.FK__Skladiste__Kafic__4F7CD00D" FromRole="Kafic" ToRole="Skladiste" />
+          <NavigationProperty Name="Poduzeće" Relationship="Self.FK_Kafic_Poduzeće" FromRole="Kafic" ToRole="Poduzeće" />
+          <NavigationProperty Name="Konobar" Relationship="Self.FK_Konobar_Kafic" FromRole="Kafic" ToRole="Konobar" />
+          <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_Kafic" FromRole="Kafic" ToRole="Moderator" />
+          <NavigationProperty Name="Stol" Relationship="Self.FK_Stol_Kafic" FromRole="Kafic" ToRole="Stol" />
+        </EntityType>
+        <EntityType Name="Kategorija">
+          <Key>
+            <PropertyRef Name="ID_Kategorija" />
+          </Key>
+          <Property Name="ID_Kategorija" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Artikl" Relationship="Self.fk_Artikl_Kategorija1" FromRole="Kategorija" ToRole="Artikl" />
+        </EntityType>
+        <EntityType Name="Konobar">
+          <Key>
+            <PropertyRef Name="ID_Konobar" />
+          </Key>
+          <Property Name="ID_Konobar" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OIB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Datum_Pocetka" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Datum_Kraja" Type="DateTime" Precision="0" />
+          <Property Name="Kafic_ID" Type="Int32" Nullable="false" />
+          <Property Name="Sifra" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Voditelj" Type="Byte" />
+          <NavigationProperty Name="Kafic" Relationship="Self.FK_Konobar_Kafic" FromRole="Konobar" ToRole="Kafic" />
+          <NavigationProperty Name="Racun" Relationship="Self.FK_Racun_Konobar" FromRole="Konobar" ToRole="Racun" />
+        </EntityType>
+        <EntityType Name="Mjera">
+          <Key>
+            <PropertyRef Name="ID_Mjera" />
+          </Key>
+          <Property Name="ID_Mjera" Type="Int32" Nullable="false" />
+          <Property Name="Mjerna_jedinica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Namirnica" Relationship="Self.FK_Namirnica_Mjera" FromRole="Mjera" ToRole="Namirnica" />
+          <NavigationProperty Name="Pod_Stavka" Relationship="Self.fk_Pod_Stavka_Mjera1" FromRole="Mjera" ToRole="Pod_Stavka" />
+        </EntityType>
+        <EntityType Name="Moderator">
+          <Key>
+            <PropertyRef Name="ID_Moderator" />
+          </Key>
+          <Property Name="ID_Moderator" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OIB" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Datum_Pocetka" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Datum_Kraja" Type="DateTime" Precision="0" />
+          <Property Name="Kafic_ID" Type="Int32" Nullable="false" />
+          <Property Name="KorIme" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Kafic" Relationship="Self.FK_Moderator_Kafic" FromRole="Moderator" ToRole="Kafic" />
+        </EntityType>
+        <EntityType Name="Nacin_Placanja">
+          <Key>
+            <PropertyRef Name="ID_Placanje" />
+          </Key>
+          <Property Name="ID_Placanje" Type="Int32" Nullable="false" />
+          <Property Name="Nacin_Placanja1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Racun" Relationship="Self.FK_Racun_Nacin_Placanja" FromRole="Nacin_Placanja" ToRole="Racun" />
+        </EntityType>
+        <EntityType Name="Namirnica">
+          <Key>
+            <PropertyRef Name="ID_Namirnica" />
+          </Key>
+          <Property Name="ID_Namirnica" Type="Int32" Nullable="false" />
+          <Property Name="Naziv_Namirnice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kolicina" Type="Double" Nullable="false" />
+          <Property Name="Mjera_ID" Type="Int32" />
+          <Property Name="Sastojak_ID" Type="Int32" />
+          <Property Name="Skladiste_ID" Type="Int32" Nullable="false" />
+          <Property Name="Kafic_ID" Type="Int32" />
+          <NavigationProperty Name="Mjera" Relationship="Self.FK_Namirnica_Mjera" FromRole="Namirnica" ToRole="Mjera" />
+          <NavigationProperty Name="Sastojak" Relationship="Self.FK_Namirnica_Sastojak" FromRole="Namirnica" ToRole="Sastojak" />
+          <NavigationProperty Name="Skladiste" Relationship="Self.FK_Namirnica_Skladiste" FromRole="Namirnica" ToRole="Skladiste" />
+        </EntityType>
+        <EntityType Name="Normativ">
+          <Key>
+            <PropertyRef Name="ID_normativ" />
+          </Key>
+          <Property Name="ID_normativ" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Artikl" Relationship="Self.fk_Artikl_Normativ1" FromRole="Normativ" ToRole="Artikl" />
+          <NavigationProperty Name="Stavka_normativa" Relationship="Self.fk_Stavka_normativa_Normativ1" FromRole="Normativ" ToRole="Stavka_normativa" />
+        </EntityType>
+        <EntityType Name="Pod_Stavka">
+          <Key>
+            <PropertyRef Name="ID_Podstavka" />
+            <PropertyRef Name="Mjera_ID" />
+            <PropertyRef Name="Sastojak_ID" />
+          </Key>
+          <Property Name="ID_Podstavka" Type="Int32" Nullable="false" />
+          <Property Name="Mjera_ID" Type="Int32" Nullable="false" />
+          <Property Name="Sastojak_ID" Type="Int32" Nullable="false" />
+          <Property Name="Količina" Type="Double" Nullable="false" />
+          <Property Name="Stavka_normativa_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mjera" Relationship="Self.fk_Pod_Stavka_Mjera1" FromRole="Pod_Stavka" ToRole="Mjera" />
+          <NavigationProperty Name="Sastojak" Relationship="Self.fk_Pod_Stavka_Sastojak1" FromRole="Pod_Stavka" ToRole="Sastojak" />
+          <NavigationProperty Name="Stavka_normativa" Relationship="Self.fk_Pod_Stavka_Stavka_normativa1" FromRole="Pod_Stavka" ToRole="Stavka_normativa" />
+        </EntityType>
+        <EntityType Name="Poduzeće">
+          <Key>
+            <PropertyRef Name="ID_Poduzece" />
+          </Key>
+          <Property Name="ID_Poduzece" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Vlasnik" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="OIB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Kafic" Relationship="Self.FK_Kafic_Poduzeće" FromRole="Poduzeće" ToRole="Kafic" />
+        </EntityType>
+        <EntityType Name="Racun">
+          <Key>
+            <PropertyRef Name="ID_Racun" />
+          </Key>
+          <Property Name="ID_Racun" Type="Int32" Nullable="false" />
+          <Property Name="Vrijeme" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Konobar_ID" Type="Int32" Nullable="false" />
+          <Property Name="Stol_ID" Type="Int32" Nullable="false" />
+          <Property Name="Nacin_Placanja_ID" Type="Int32" Nullable="false" />
+          <Property Name="Ukupna_cijena" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Konobar" Relationship="Self.FK_Racun_Konobar" FromRole="Racun" ToRole="Konobar" />
+          <NavigationProperty Name="Nacin_Placanja" Relationship="Self.FK_Racun_Nacin_Placanja" FromRole="Racun" ToRole="Nacin_Placanja" />
+          <NavigationProperty Name="Stol" Relationship="Self.FK_Racun_Stol" FromRole="Racun" ToRole="Stol" />
+          <NavigationProperty Name="Stavka_racuna" Relationship="Self.fk_Stavka_racuna_Racun1" FromRole="Racun" ToRole="Stavka_racuna" />
+        </EntityType>
+        <EntityType Name="Sastojak">
+          <Key>
+            <PropertyRef Name="ID_Sastojak" />
+          </Key>
+          <Property Name="ID_Sastojak" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Namirnica" Relationship="Self.FK_Namirnica_Sastojak" FromRole="Sastojak" ToRole="Namirnica" />
+          <NavigationProperty Name="Pod_Stavka" Relationship="Self.fk_Pod_Stavka_Sastojak1" FromRole="Sastojak" ToRole="Pod_Stavka" />
+        </EntityType>
+        <EntityType Name="Skladiste">
+          <Key>
+            <PropertyRef Name="ID_Skladiste" />
+            <PropertyRef Name="Kafic_ID" />
+          </Key>
+          <Property Name="ID_Skladiste" Type="Int32" Nullable="false" />
+          <Property Name="Kafic_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Artikl" Relationship="Self.FK_Artikl_Skladiste" FromRole="Skladiste" ToRole="Artikl" />
+          <NavigationProperty Name="Kafic" Relationship="Self.FK__Skladiste__Kafic__4F7CD00D" FromRole="Skladiste" ToRole="Kafic" />
+          <NavigationProperty Name="Namirnica" Relationship="Self.FK_Namirnica_Skladiste" FromRole="Skladiste" ToRole="Namirnica" />
+        </EntityType>
+        <EntityType Name="Stavka_normativa">
+          <Key>
+            <PropertyRef Name="ID_Stav_norm" />
+          </Key>
+          <Property Name="ID_Stav_norm" Type="Int32" Nullable="false" />
+          <Property Name="Normativ_ID_normativ" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Normativ" Relationship="Self.fk_Stavka_normativa_Normativ1" FromRole="Stavka_normativa" ToRole="Normativ" />
+          <NavigationProperty Name="Pod_Stavka" Relationship="Self.fk_Pod_Stavka_Stavka_normativa1" FromRole="Stavka_normativa" ToRole="Pod_Stavka" />
+        </EntityType>
+        <EntityType Name="Stavka_racuna">
+          <Key>
+            <PropertyRef Name="Racun_ID" />
+            <PropertyRef Name="Artikl_ID" />
+          </Key>
+          <Property Name="Racun_ID" Type="Int32" Nullable="false" />
+          <Property Name="Artikl_ID" Type="Int32" Nullable="false" />
+          <Property Name="Količina" Type="Int32" Nullable="false" />
+          <Property Name="Cijena" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Artikl" Relationship="Self.FK_Stavka_racuna_Artikl" FromRole="Stavka_racuna" ToRole="Artikl" />
+          <NavigationProperty Name="Racun" Relationship="Self.fk_Stavka_racuna_Racun1" FromRole="Stavka_racuna" ToRole="Racun" />
+        </EntityType>
+        <EntityType Name="Stol">
+          <Key>
+            <PropertyRef Name="ID_Stol" />
+          </Key>
+          <Property Name="ID_Stol" Type="Int32" Nullable="false" />
+          <Property Name="Broj_Mjesta" Type="Int32" Nullable="false" />
+          <Property Name="Oznaka_Stola" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kafic_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kafic" Relationship="Self.FK_Stol_Kafic" FromRole="Stol" ToRole="Kafic" />
+          <NavigationProperty Name="Racun" Relationship="Self.FK_Racun_Stol" FromRole="Stol" ToRole="Racun" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="fk_Artikl_Kategorija1">
+          <End Role="Kategorija" Type="Self.Kategorija" Multiplicity="1" />
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorija">
+              <PropertyRef Name="ID_Kategorija" />
+            </Principal>
+            <Dependent Role="Artikl">
+              <PropertyRef Name="Kategorija_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Artikl_Normativ1">
+          <End Role="Normativ" Type="Self.Normativ" Multiplicity="0..1" />
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Normativ">
+              <PropertyRef Name="ID_normativ" />
+            </Principal>
+            <Dependent Role="Artikl">
+              <PropertyRef Name="Normativ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Artikl_Skladiste">
+          <End Role="Skladiste" Type="Self.Skladiste" Multiplicity="0..1" />
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skladiste">
+              <PropertyRef Name="ID_Skladiste" />
+              <PropertyRef Name="Kafic_ID" />
+            </Principal>
+            <Dependent Role="Artikl">
+              <PropertyRef Name="Skladiste_ID" />
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_racuna_Artikl">
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="1" />
+          <End Role="Stavka_racuna" Type="Self.Stavka_racuna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artikl">
+              <PropertyRef Name="ID_Artikl" />
+            </Principal>
+            <Dependent Role="Stavka_racuna">
+              <PropertyRef Name="Artikl_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Skladiste__Kafic__4F7CD00D">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Skladiste" Type="Self.Skladiste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Skladiste">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kafic_Poduzeće">
+          <End Role="Poduzeće" Type="Self.Poduzeće" Multiplicity="1" />
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeće">
+              <PropertyRef Name="ID_Poduzece" />
+            </Principal>
+            <Dependent Role="Kafic">
+              <PropertyRef Name="Poduzece_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Konobar_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Konobar" Type="Self.Konobar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Konobar">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moderator_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Moderator" Type="Self.Moderator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Moderator">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stol_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Stol" Type="Self.Stol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Stol">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Konobar">
+          <End Role="Konobar" Type="Self.Konobar" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konobar">
+              <PropertyRef Name="ID_Konobar" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Konobar_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Namirnica_Mjera">
+          <End Role="Mjera" Type="Self.Mjera" Multiplicity="0..1" />
+          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjera">
+              <PropertyRef Name="ID_Mjera" />
+            </Principal>
+            <Dependent Role="Namirnica">
+              <PropertyRef Name="Mjera_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pod_Stavka_Mjera1">
+          <End Role="Mjera" Type="Self.Mjera" Multiplicity="1" />
+          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjera">
+              <PropertyRef Name="ID_Mjera" />
+            </Principal>
+            <Dependent Role="Pod_Stavka">
+              <PropertyRef Name="Mjera_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Nacin_Placanja">
+          <End Role="Nacin_Placanja" Type="Self.Nacin_Placanja" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nacin_Placanja">
+              <PropertyRef Name="ID_Placanje" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Nacin_Placanja_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Namirnica_Sastojak">
+          <End Role="Sastojak" Type="Self.Sastojak" Multiplicity="0..1" />
+          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sastojak">
+              <PropertyRef Name="ID_Sastojak" />
+            </Principal>
+            <Dependent Role="Namirnica">
+              <PropertyRef Name="Sastojak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Namirnica_Skladiste">
+          <End Role="Skladiste" Type="Self.Skladiste" Multiplicity="0..1" />
+          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skladiste">
+              <PropertyRef Name="ID_Skladiste" />
+              <PropertyRef Name="Kafic_ID" />
+            </Principal>
+            <Dependent Role="Namirnica">
+              <PropertyRef Name="Skladiste_ID" />
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stavka_normativa_Normativ1">
+          <End Role="Normativ" Type="Self.Normativ" Multiplicity="1" />
+          <End Role="Stavka_normativa" Type="Self.Stavka_normativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Normativ">
+              <PropertyRef Name="ID_normativ" />
+            </Principal>
+            <Dependent Role="Stavka_normativa">
+              <PropertyRef Name="Normativ_ID_normativ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pod_Stavka_Sastojak1">
+          <End Role="Sastojak" Type="Self.Sastojak" Multiplicity="1" />
+          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sastojak">
+              <PropertyRef Name="ID_Sastojak" />
+            </Principal>
+            <Dependent Role="Pod_Stavka">
+              <PropertyRef Name="Sastojak_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pod_Stavka_Stavka_normativa1">
+          <End Role="Stavka_normativa" Type="Self.Stavka_normativa" Multiplicity="1" />
+          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stavka_normativa">
+              <PropertyRef Name="ID_Stav_norm" />
+            </Principal>
+            <Dependent Role="Pod_Stavka">
+              <PropertyRef Name="Stavka_normativa_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Stol">
+          <End Role="Stol" Type="Self.Stol" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stol">
+              <PropertyRef Name="ID_Stol" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Stol_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Stavka_racuna_Racun1">
+          <End Role="Racun" Type="Self.Racun" Multiplicity="1" />
+          <End Role="Stavka_racuna" Type="Self.Stavka_racuna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Racun">
+              <PropertyRef Name="ID_Racun" />
+            </Principal>
+            <Dependent Role="Stavka_racuna">
+              <PropertyRef Name="Racun_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Artikl" EntityType="Self.Artikl" />
+          <EntitySet Name="Kafic" EntityType="Self.Kafic" />
+          <EntitySet Name="Kategorija" EntityType="Self.Kategorija" />
+          <EntitySet Name="Konobar" EntityType="Self.Konobar" />
+          <EntitySet Name="Mjera" EntityType="Self.Mjera" />
+          <EntitySet Name="Moderator" EntityType="Self.Moderator" />
+          <EntitySet Name="Nacin_Placanja" EntityType="Self.Nacin_Placanja" />
+          <EntitySet Name="Namirnica" EntityType="Self.Namirnica" />
+          <EntitySet Name="Normativ" EntityType="Self.Normativ" />
+          <EntitySet Name="Pod_Stavka" EntityType="Self.Pod_Stavka" />
+          <EntitySet Name="Poduzeće" EntityType="Self.Poduzeće" />
+          <EntitySet Name="Racun" EntityType="Self.Racun" />
+          <EntitySet Name="Sastojak" EntityType="Self.Sastojak" />
+          <EntitySet Name="Skladiste" EntityType="Self.Skladiste" />
+          <EntitySet Name="Stavka_normativa" EntityType="Self.Stavka_normativa" />
+          <EntitySet Name="Stavka_racuna" EntityType="Self.Stavka_racuna" />
+          <EntitySet Name="Stol" EntityType="Self.Stol" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="fk_Artikl_Kategorija1" Association="Self.fk_Artikl_Kategorija1">
+            <End Role="Kategorija" EntitySet="Kategorija" />
+            <End Role="Artikl" EntitySet="Artikl" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Artikl_Normativ1" Association="Self.fk_Artikl_Normativ1">
+            <End Role="Normativ" EntitySet="Normativ" />
+            <End Role="Artikl" EntitySet="Artikl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Artikl_Skladiste" Association="Self.FK_Artikl_Skladiste">
+            <End Role="Skladiste" EntitySet="Skladiste" />
+            <End Role="Artikl" EntitySet="Artikl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_racuna_Artikl" Association="Self.FK_Stavka_racuna_Artikl">
+            <End Role="Artikl" EntitySet="Artikl" />
+            <End Role="Stavka_racuna" EntitySet="Stavka_racuna" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Skladiste__Kafic__4F7CD00D" Association="Self.FK__Skladiste__Kafic__4F7CD00D">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Skladiste" EntitySet="Skladiste" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kafic_Poduzeće" Association="Self.FK_Kafic_Poduzeće">
+            <End Role="Poduzeće" EntitySet="Poduzeće" />
+            <End Role="Kafic" EntitySet="Kafic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Konobar_Kafic" Association="Self.FK_Konobar_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Konobar" EntitySet="Konobar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moderator_Kafic" Association="Self.FK_Moderator_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Moderator" EntitySet="Moderator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stol_Kafic" Association="Self.FK_Stol_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Stol" EntitySet="Stol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Konobar" Association="Self.FK_Racun_Konobar">
+            <End Role="Konobar" EntitySet="Konobar" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Namirnica_Mjera" Association="Self.FK_Namirnica_Mjera">
+            <End Role="Mjera" EntitySet="Mjera" />
+            <End Role="Namirnica" EntitySet="Namirnica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pod_Stavka_Mjera1" Association="Self.fk_Pod_Stavka_Mjera1">
+            <End Role="Mjera" EntitySet="Mjera" />
+            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Nacin_Placanja" Association="Self.FK_Racun_Nacin_Placanja">
+            <End Role="Nacin_Placanja" EntitySet="Nacin_Placanja" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Namirnica_Sastojak" Association="Self.FK_Namirnica_Sastojak">
+            <End Role="Sastojak" EntitySet="Sastojak" />
+            <End Role="Namirnica" EntitySet="Namirnica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Namirnica_Skladiste" Association="Self.FK_Namirnica_Skladiste">
+            <End Role="Skladiste" EntitySet="Skladiste" />
+            <End Role="Namirnica" EntitySet="Namirnica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stavka_normativa_Normativ1" Association="Self.fk_Stavka_normativa_Normativ1">
+            <End Role="Normativ" EntitySet="Normativ" />
+            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pod_Stavka_Sastojak1" Association="Self.fk_Pod_Stavka_Sastojak1">
+            <End Role="Sastojak" EntitySet="Sastojak" />
+            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pod_Stavka_Stavka_normativa1" Association="Self.fk_Pod_Stavka_Stavka_normativa1">
+            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
+            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Stol" Association="Self.FK_Racun_Stol">
+            <End Role="Stol" EntitySet="Stol" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Stavka_racuna_Racun1" Association="Self.fk_Stavka_racuna_Racun1">
+            <End Role="Racun" EntitySet="Racun" />
+            <End Role="Stavka_racuna" EntitySet="Stavka_racuna" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Artikl">
+            <EntityTypeMapping TypeName="Model.Artikl">
+              <MappingFragment StoreEntitySet="Artikl">
+                <ScalarProperty Name="ID_Artikl" ColumnName="ID_Artikl" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Skladiste_ID" ColumnName="Skladiste_ID" />
+                <ScalarProperty Name="Normativ_ID" ColumnName="Normativ_ID" />
+                <ScalarProperty Name="Kategorija_ID" ColumnName="Kategorija_ID" />
+                <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kafic">
+            <EntityTypeMapping TypeName="Model.Kafic">
+              <MappingFragment StoreEntitySet="Kafic">
+                <ScalarProperty Name="ID_Kafic" ColumnName="ID_Kafic" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Poduzece_ID" ColumnName="Poduzece_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategorija">
+            <EntityTypeMapping TypeName="Model.Kategorija">
+              <MappingFragment StoreEntitySet="Kategorija">
+                <ScalarProperty Name="ID_Kategorija" ColumnName="ID_Kategorija" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konobar">
+            <EntityTypeMapping TypeName="Model.Konobar">
+              <MappingFragment StoreEntitySet="Konobar">
+                <ScalarProperty Name="ID_Konobar" ColumnName="ID_Konobar" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="Datum_Pocetka" ColumnName="Datum_Pocetka" />
+                <ScalarProperty Name="Datum_Kraja" ColumnName="Datum_Kraja" />
+                <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Voditelj" ColumnName="Voditelj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mjera">
+            <EntityTypeMapping TypeName="Model.Mjera">
+              <MappingFragment StoreEntitySet="Mjera">
+                <ScalarProperty Name="ID_Mjera" ColumnName="ID_Mjera" />
+                <ScalarProperty Name="Mjerna_jedinica" ColumnName="Mjerna_jedinica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moderator">
+            <EntityTypeMapping TypeName="Model.Moderator">
+              <MappingFragment StoreEntitySet="Moderator">
+                <ScalarProperty Name="ID_Moderator" ColumnName="ID_Moderator" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="Datum_Pocetka" ColumnName="Datum_Pocetka" />
+                <ScalarProperty Name="Datum_Kraja" ColumnName="Datum_Kraja" />
+                <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
+                <ScalarProperty Name="KorIme" ColumnName="KorIme" />
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nacin_Placanja">
+            <EntityTypeMapping TypeName="Model.Nacin_Placanja">
+              <MappingFragment StoreEntitySet="Nacin_Placanja">
+                <ScalarProperty Name="ID_Placanje" ColumnName="ID_Placanje" />
+                <ScalarProperty Name="Nacin_Placanja1" ColumnName="Nacin_Placanja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Namirnica">
+            <EntityTypeMapping TypeName="Model.Namirnica">
+              <MappingFragment StoreEntitySet="Namirnica">
+                <ScalarProperty Name="ID_Namirnica" ColumnName="ID_Namirnica" />
+                <ScalarProperty Name="Naziv_Namirnice" ColumnName="Naziv_Namirnice" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="Mjera_ID" ColumnName="Mjera_ID" />
+                <ScalarProperty Name="Sastojak_ID" ColumnName="Sastojak_ID" />
+                <ScalarProperty Name="Skladiste_ID" ColumnName="Skladiste_ID" />
+                <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Normativ">
+            <EntityTypeMapping TypeName="Model.Normativ">
+              <MappingFragment StoreEntitySet="Normativ">
+                <ScalarProperty Name="ID_normativ" ColumnName="ID_normativ" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pod_Stavka">
+            <EntityTypeMapping TypeName="Model.Pod_Stavka">
+              <MappingFragment StoreEntitySet="Pod_Stavka">
+                <ScalarProperty Name="ID_Podstavka" ColumnName="ID_Podstavka" />
+                <ScalarProperty Name="Mjera_ID" ColumnName="Mjera_ID" />
+                <ScalarProperty Name="Sastojak_ID" ColumnName="Sastojak_ID" />
+                <ScalarProperty Name="Količina" ColumnName="Količina" />
+                <ScalarProperty Name="Stavka_normativa_ID" ColumnName="Stavka_normativa_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Poduzeće">
+            <EntityTypeMapping TypeName="Model.Poduzeće">
+              <MappingFragment StoreEntitySet="Poduzeće">
+                <ScalarProperty Name="ID_Poduzece" ColumnName="ID_Poduzece" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Vlasnik" ColumnName="Vlasnik" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Racun">
+            <EntityTypeMapping TypeName="Model.Racun">
+              <MappingFragment StoreEntitySet="Racun">
+                <ScalarProperty Name="ID_Racun" ColumnName="ID_Racun" />
+                <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+                <ScalarProperty Name="Konobar_ID" ColumnName="Konobar_ID" />
+                <ScalarProperty Name="Stol_ID" ColumnName="Stol_ID" />
+                <ScalarProperty Name="Nacin_Placanja_ID" ColumnName="Nacin_Placanja_ID" />
+                <ScalarProperty Name="Ukupna_cijena" ColumnName="Ukupna_cijena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sastojak">
+            <EntityTypeMapping TypeName="Model.Sastojak">
+              <MappingFragment StoreEntitySet="Sastojak">
+                <ScalarProperty Name="ID_Sastojak" ColumnName="ID_Sastojak" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skladiste">
+            <EntityTypeMapping TypeName="Model.Skladiste">
+              <MappingFragment StoreEntitySet="Skladiste">
+                <ScalarProperty Name="ID_Skladiste" ColumnName="ID_Skladiste" />
+                <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stavka_normativa">
+            <EntityTypeMapping TypeName="Model.Stavka_normativa">
+              <MappingFragment StoreEntitySet="Stavka_normativa">
+                <ScalarProperty Name="ID_Stav_norm" ColumnName="ID_Stav_norm" />
+                <ScalarProperty Name="Normativ_ID_normativ" ColumnName="Normativ_ID_normativ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stavka_racuna">
+            <EntityTypeMapping TypeName="Model.Stavka_racuna">
+              <MappingFragment StoreEntitySet="Stavka_racuna">
+                <ScalarProperty Name="Racun_ID" ColumnName="Racun_ID" />
+                <ScalarProperty Name="Artikl_ID" ColumnName="Artikl_ID" />
+                <ScalarProperty Name="Količina" ColumnName="Količina" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stol">
+            <EntityTypeMapping TypeName="Model.Stol">
+              <MappingFragment StoreEntitySet="Stol">
+                <ScalarProperty Name="ID_Stol" ColumnName="ID_Stol" />
+                <ScalarProperty Name="Broj_Mjesta" ColumnName="Broj_Mjesta" />
+                <ScalarProperty Name="Oznaka_Stola" ColumnName="Oznaka_Stola" />
+                <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
