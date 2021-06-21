@@ -14,9 +14,9 @@ namespace PI_2021_Kafic
     
     public partial class Stavka_normativa
     {
-        public int ID_Stav_norm { get; set; }
-        public int Normativ_ID { get; set; }
+        public int ID_Stavka_normativa { get; set; }
         public int Namirnica_ID { get; set; }
+        public int Normativ_ID { get; set; }
         public double Kolicina { get; set; }
     
         public virtual Namirnica Namirnica { get; set; }

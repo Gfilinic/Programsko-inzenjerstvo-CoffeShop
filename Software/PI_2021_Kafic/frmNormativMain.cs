@@ -37,7 +37,7 @@ namespace PI_2021_Kafic
             using (var context = new Entities())
             {
                 var query = from n in context.Normativ
-                            
+                            where n.Kafic_ID==kafic.ID_Kafic
                             select n;
                 lista = query.ToList();
             }
@@ -55,11 +55,26 @@ namespace PI_2021_Kafic
         {
             if (DohvatiNormativ() != null)
             {
-                Normativ Normativ = DohvatiNormativ();
+                Normativ normativ = DohvatiNormativ();
+
+                using (var context=new Entities())
+                {
+                    var query = from stavka in context.Stavka_normativa
+                                where stavka.Normativ_ID == normativ.ID_normativ
+                                select stavka;
+                    List<Stavka_normativa> listaStavki = query.ToList();
+                    foreach (Stavka_normativa stavka_ in listaStavki)
+                    {
+                        context.Stavka_normativa.Attach(stavka_);
+                        context.Stavka_normativa.Remove(stavka_);
+                        context.SaveChanges();
+                    }
+                }
                 using (var context = new Entities())
                 {
-                    context.Normativ.Attach(Normativ);
-                    context.Normativ.Remove(Normativ);
+                    context.Normativ.Include("Stavka_normativa");
+                    context.Normativ.Attach(normativ);
+                    context.Normativ.Remove(normativ);
                     context.SaveChanges();
                 }
             }
@@ -90,16 +105,14 @@ namespace PI_2021_Kafic
 
         private void btnUredi_Click(object sender, EventArgs e)
         {
-            if (DohvatiNormativ() != null)
-            using (var context = new Entities())
-            {
-                
-                Normativ dohvacenNormativ = DohvatiNormativ();
-                    context.Normativ.Attach(dohvacenNormativ);
-                    
-                    context.SaveChanges();
-
+            if (DohvatiNormativ() != null) {
+                frmDodajNormativ frmDodajNormativ = new frmDodajNormativ(kafic, DohvatiNormativ());
+                frmDodajNormativ.ShowDialog();
             }
+           
+                
+               
+            
             OsvjeziListu();
         }
     }

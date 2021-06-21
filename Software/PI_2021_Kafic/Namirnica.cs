@@ -22,10 +22,10 @@ namespace PI_2021_Kafic
     
         public int ID_Namirnica { get; set; }
         public string Naziv_Namirnice { get; set; }
-        public int Skladiste_ID { get; set; }
-        public Nullable<int> Kafic_ID { get; set; }
         public Nullable<double> Kolicina_na_skladistu { get; set; }
         public string Mjera { get; set; }
+        public int Skladiste_ID { get; set; }
+        public Nullable<int> Kafic_ID { get; set; }
     
         public virtual Skladiste Skladiste { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

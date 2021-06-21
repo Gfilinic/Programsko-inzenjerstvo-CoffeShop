@@ -103,24 +103,6 @@
     <Compile Include="frmNamirniceMain.Designer.cs">
       <DependentUpon>frmNamirniceMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPodstavka.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPodstavka.Designer.cs">
-      <DependentUpon>frmPodstavka.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmSastojak.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSastojak.Designer.cs">
-      <DependentUpon>frmSastojak.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmStavkaNormativa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmStavkaNormativa.Designer.cs">
-      <DependentUpon>frmStavkaNormativa.cs</DependentUpon>
-    </Compile>
     <Compile Include="Kafic.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -167,6 +149,7 @@
     <Compile Include="Skladiste.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StavkaNormExt.cs" />
     <Compile Include="Stavka_normativa.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -206,15 +189,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNamirniceMain.resx">
       <DependentUpon>frmNamirniceMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPodstavka.resx">
-      <DependentUpon>frmPodstavka.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSastojak.resx">
-      <DependentUpon>frmSastojak.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmStavkaNormativa.resx">
-      <DependentUpon>frmStavkaNormativa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainKafic.resx">
       <DependentUpon>MainKafic.cs</DependentUpon>
