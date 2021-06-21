@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Artikl">
           <Key>
             <PropertyRef Name="ID_Artikl" />
@@ -12,7 +12,6 @@
           <Property Name="ID_Artikl" Type="int" Nullable="false" />
           <Property Name="Naziv" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="Cijena" Type="float" Nullable="false" />
-          <Property Name="Skladiste_ID" Type="int" />
           <Property Name="Normativ_ID" Type="int" />
           <Property Name="Kategorija_ID" Type="int" Nullable="false" />
           <Property Name="Kafic_ID" Type="int" />
@@ -46,13 +45,6 @@
           <Property Name="Sifra" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Voditelj" Type="tinyint" />
         </EntityType>
-        <EntityType Name="Mjera">
-          <Key>
-            <PropertyRef Name="ID_Mjera" />
-          </Key>
-          <Property Name="ID_Mjera" Type="int" Nullable="false" />
-          <Property Name="Mjerna_jedinica" Type="varchar" MaxLength="45" Nullable="false" />
-        </EntityType>
         <EntityType Name="Moderator">
           <Key>
             <PropertyRef Name="ID_Moderator" />
@@ -80,9 +72,8 @@
           </Key>
           <Property Name="ID_Namirnica" Type="int" Nullable="false" />
           <Property Name="Naziv_Namirnice" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Kolicina" Type="float" Nullable="false" />
-          <Property Name="Mjera_ID" Type="int" />
-          <Property Name="Sastojak_ID" Type="int" />
+          <Property Name="Kolicina_na_skladistu" Type="float" />
+          <Property Name="Mjera" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Skladiste_ID" Type="int" Nullable="false" />
           <Property Name="Kafic_ID" Type="int" />
         </EntityType>
@@ -92,18 +83,6 @@
           </Key>
           <Property Name="ID_normativ" Type="int" Nullable="false" />
           <Property Name="Naziv" Type="varchar" MaxLength="45" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Pod_Stavka">
-          <Key>
-            <PropertyRef Name="ID_Podstavka" />
-            <PropertyRef Name="Mjera_ID" />
-            <PropertyRef Name="Sastojak_ID" />
-          </Key>
-          <Property Name="ID_Podstavka" Type="int" Nullable="false" />
-          <Property Name="Mjera_ID" Type="int" Nullable="false" />
-          <Property Name="Sastojak_ID" Type="int" Nullable="false" />
-          <Property Name="Količina" Type="float" Nullable="false" />
-          <Property Name="Stavka_normativa_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Poduzeće">
           <Key>
@@ -125,13 +104,6 @@
           <Property Name="Nacin_Placanja_ID" Type="int" Nullable="false" />
           <Property Name="Ukupna_cijena" Type="float" Nullable="false" />
         </EntityType>
-        <EntityType Name="Sastojak">
-          <Key>
-            <PropertyRef Name="ID_Sastojak" />
-          </Key>
-          <Property Name="ID_Sastojak" Type="int" Nullable="false" />
-          <Property Name="Naziv" Type="varchar" MaxLength="45" Nullable="false" />
-        </EntityType>
         <EntityType Name="Skladiste">
           <Key>
             <PropertyRef Name="ID_Skladiste" />
@@ -145,7 +117,9 @@
             <PropertyRef Name="ID_Stav_norm" />
           </Key>
           <Property Name="ID_Stav_norm" Type="int" Nullable="false" />
-          <Property Name="Normativ_ID_normativ" Type="int" Nullable="false" />
+          <Property Name="Normativ_ID" Type="int" Nullable="false" />
+          <Property Name="Namirnica_ID" Type="int" Nullable="false" />
+          <Property Name="Kolicina" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Stavka_racuna">
           <Key>
@@ -212,20 +186,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Artikl_Skladiste">
-          <End Role="Skladiste" Type="Self.Skladiste" Multiplicity="0..1" />
-          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Skladiste">
-              <PropertyRef Name="ID_Skladiste" />
-              <PropertyRef Name="Kafic_ID" />
-            </Principal>
-            <Dependent Role="Artikl">
-              <PropertyRef Name="Skladiste_ID" />
-              <PropertyRef Name="Kafic_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Kafic_Poduzeće">
           <End Role="Poduzeće" Type="Self.Poduzeće" Multiplicity="1" />
           <End Role="Kafic" Type="Self.Kafic" Multiplicity="*" />
@@ -262,30 +222,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Namirnica_Mjera">
-          <End Role="Mjera" Type="Self.Mjera" Multiplicity="0..1" />
-          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mjera">
-              <PropertyRef Name="ID_Mjera" />
-            </Principal>
-            <Dependent Role="Namirnica">
-              <PropertyRef Name="Mjera_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Namirnica_Sastojak">
-          <End Role="Sastojak" Type="Self.Sastojak" Multiplicity="0..1" />
-          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sastojak">
-              <PropertyRef Name="ID_Sastojak" />
-            </Principal>
-            <Dependent Role="Namirnica">
-              <PropertyRef Name="Sastojak_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Namirnica_Skladiste">
           <End Role="Skladiste" Type="Self.Skladiste" Multiplicity="0..1" />
           <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
@@ -297,42 +233,6 @@
             <Dependent Role="Namirnica">
               <PropertyRef Name="Skladiste_ID" />
               <PropertyRef Name="Kafic_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Pod_Stavka_Mjera1">
-          <End Role="Mjera" Type="Self.Mjera" Multiplicity="1" />
-          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mjera">
-              <PropertyRef Name="ID_Mjera" />
-            </Principal>
-            <Dependent Role="Pod_Stavka">
-              <PropertyRef Name="Mjera_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Pod_Stavka_Sastojak1">
-          <End Role="Sastojak" Type="Self.Sastojak" Multiplicity="1" />
-          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sastojak">
-              <PropertyRef Name="ID_Sastojak" />
-            </Principal>
-            <Dependent Role="Pod_Stavka">
-              <PropertyRef Name="Sastojak_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Pod_Stavka_Stavka_normativa1">
-          <End Role="Stavka_normativa" Type="Self.Stavka_normativa" Multiplicity="1" />
-          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Stavka_normativa">
-              <PropertyRef Name="ID_Stav_norm" />
-            </Principal>
-            <Dependent Role="Pod_Stavka">
-              <PropertyRef Name="Stavka_normativa_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -372,7 +272,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Stavka_normativa_Normativ1">
+        <Association Name="FK_Stavka_normativa_Namirnica">
+          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="1" />
+          <End Role="Stavka_normativa" Type="Self.Stavka_normativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Namirnica">
+              <PropertyRef Name="ID_Namirnica" />
+            </Principal>
+            <Dependent Role="Stavka_normativa">
+              <PropertyRef Name="Namirnica_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_normativa_Normativ">
           <End Role="Normativ" Type="Self.Normativ" Multiplicity="1" />
           <End Role="Stavka_normativa" Type="Self.Stavka_normativa" Multiplicity="*" />
           <ReferentialConstraint>
@@ -380,7 +292,7 @@
               <PropertyRef Name="ID_normativ" />
             </Principal>
             <Dependent Role="Stavka_normativa">
-              <PropertyRef Name="Normativ_ID_normativ" />
+              <PropertyRef Name="Namirnica_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -425,15 +337,12 @@
           <EntitySet Name="Kafic" EntityType="Self.Kafic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategorija" EntityType="Self.Kategorija" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Konobar" EntityType="Self.Konobar" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Mjera" EntityType="Self.Mjera" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Moderator" EntityType="Self.Moderator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nacin_Placanja" EntityType="Self.Nacin_Placanja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Namirnica" EntityType="Self.Namirnica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Normativ" EntityType="Self.Normativ" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pod_Stavka" EntityType="Self.Pod_Stavka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Poduzeće" EntityType="Self.Poduzeće" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Racun" EntityType="Self.Racun" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sastojak" EntityType="Self.Sastojak" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Skladiste" EntityType="Self.Skladiste" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stavka_normativa" EntityType="Self.Stavka_normativa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stavka_racuna" EntityType="Self.Stavka_racuna" Schema="dbo" store:Type="Tables" />
@@ -451,10 +360,6 @@
             <End Role="Normativ" EntitySet="Normativ" />
             <End Role="Artikl" EntitySet="Artikl" />
           </AssociationSet>
-          <AssociationSet Name="FK_Artikl_Skladiste" Association="Self.FK_Artikl_Skladiste">
-            <End Role="Skladiste" EntitySet="Skladiste" />
-            <End Role="Artikl" EntitySet="Artikl" />
-          </AssociationSet>
           <AssociationSet Name="FK_Kafic_Poduzeće" Association="Self.FK_Kafic_Poduzeće">
             <End Role="Poduzeće" EntitySet="Poduzeće" />
             <End Role="Kafic" EntitySet="Kafic" />
@@ -467,29 +372,9 @@
             <End Role="Kafic" EntitySet="Kafic" />
             <End Role="Moderator" EntitySet="Moderator" />
           </AssociationSet>
-          <AssociationSet Name="FK_Namirnica_Mjera" Association="Self.FK_Namirnica_Mjera">
-            <End Role="Mjera" EntitySet="Mjera" />
-            <End Role="Namirnica" EntitySet="Namirnica" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Namirnica_Sastojak" Association="Self.FK_Namirnica_Sastojak">
-            <End Role="Sastojak" EntitySet="Sastojak" />
-            <End Role="Namirnica" EntitySet="Namirnica" />
-          </AssociationSet>
           <AssociationSet Name="FK_Namirnica_Skladiste" Association="Self.FK_Namirnica_Skladiste">
             <End Role="Skladiste" EntitySet="Skladiste" />
             <End Role="Namirnica" EntitySet="Namirnica" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Pod_Stavka_Mjera1" Association="Self.fk_Pod_Stavka_Mjera1">
-            <End Role="Mjera" EntitySet="Mjera" />
-            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Pod_Stavka_Sastojak1" Association="Self.fk_Pod_Stavka_Sastojak1">
-            <End Role="Sastojak" EntitySet="Sastojak" />
-            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Pod_Stavka_Stavka_normativa1" Association="Self.fk_Pod_Stavka_Stavka_normativa1">
-            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
-            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
           </AssociationSet>
           <AssociationSet Name="FK_Racun_Konobar" Association="Self.FK_Racun_Konobar">
             <End Role="Konobar" EntitySet="Konobar" />
@@ -503,7 +388,11 @@
             <End Role="Stol" EntitySet="Stol" />
             <End Role="Racun" EntitySet="Racun" />
           </AssociationSet>
-          <AssociationSet Name="fk_Stavka_normativa_Normativ1" Association="Self.fk_Stavka_normativa_Normativ1">
+          <AssociationSet Name="FK_Stavka_normativa_Namirnica" Association="Self.FK_Stavka_normativa_Namirnica">
+            <End Role="Namirnica" EntitySet="Namirnica" />
+            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_normativa_Normativ" Association="Self.FK_Stavka_normativa_Normativ">
             <End Role="Normativ" EntitySet="Normativ" />
             <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
           </AssociationSet>
@@ -520,8 +409,7 @@
             <End Role="Stol" EntitySet="Stol" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -532,13 +420,11 @@
           <Property Name="ID_Artikl" Type="Int32" Nullable="false" />
           <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cijena" Type="Double" Nullable="false" />
-          <Property Name="Skladiste_ID" Type="Int32" />
           <Property Name="Normativ_ID" Type="Int32" />
           <Property Name="Kategorija_ID" Type="Int32" Nullable="false" />
           <Property Name="Kafic_ID" Type="Int32" />
           <NavigationProperty Name="Kategorija" Relationship="Self.fk_Artikl_Kategorija1" FromRole="Artikl" ToRole="Kategorija" />
           <NavigationProperty Name="Normativ" Relationship="Self.fk_Artikl_Normativ1" FromRole="Artikl" ToRole="Normativ" />
-          <NavigationProperty Name="Skladiste" Relationship="Self.FK_Artikl_Skladiste" FromRole="Artikl" ToRole="Skladiste" />
           <NavigationProperty Name="Stavka_racuna" Relationship="Self.FK_Stavka_racuna_Artikl" FromRole="Artikl" ToRole="Stavka_racuna" />
         </EntityType>
         <EntityType Name="Kafic">
@@ -578,15 +464,6 @@
           <NavigationProperty Name="Kafic" Relationship="Self.FK_Konobar_Kafic" FromRole="Konobar" ToRole="Kafic" />
           <NavigationProperty Name="Racun" Relationship="Self.FK_Racun_Konobar" FromRole="Konobar" ToRole="Racun" />
         </EntityType>
-        <EntityType Name="Mjera">
-          <Key>
-            <PropertyRef Name="ID_Mjera" />
-          </Key>
-          <Property Name="ID_Mjera" Type="Int32" Nullable="false" />
-          <Property Name="Mjerna_jedinica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Namirnica" Relationship="Self.FK_Namirnica_Mjera" FromRole="Mjera" ToRole="Namirnica" />
-          <NavigationProperty Name="Pod_Stavka" Relationship="Self.fk_Pod_Stavka_Mjera1" FromRole="Mjera" ToRole="Pod_Stavka" />
-        </EntityType>
         <EntityType Name="Moderator">
           <Key>
             <PropertyRef Name="ID_Moderator" />
@@ -616,14 +493,12 @@
           </Key>
           <Property Name="ID_Namirnica" Type="Int32" Nullable="false" />
           <Property Name="Naziv_Namirnice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Kolicina" Type="Double" Nullable="false" />
-          <Property Name="Mjera_ID" Type="Int32" />
-          <Property Name="Sastojak_ID" Type="Int32" />
           <Property Name="Skladiste_ID" Type="Int32" Nullable="false" />
           <Property Name="Kafic_ID" Type="Int32" />
-          <NavigationProperty Name="Mjera" Relationship="Self.FK_Namirnica_Mjera" FromRole="Namirnica" ToRole="Mjera" />
-          <NavigationProperty Name="Sastojak" Relationship="Self.FK_Namirnica_Sastojak" FromRole="Namirnica" ToRole="Sastojak" />
           <NavigationProperty Name="Skladiste" Relationship="Self.FK_Namirnica_Skladiste" FromRole="Namirnica" ToRole="Skladiste" />
+          <Property Name="Kolicina_na_skladistu" Type="Double" />
+          <Property Name="Mjera" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Stavka_normativa" Relationship="Model.FK_Stavka_normativa_Namirnica" FromRole="Namirnica" ToRole="Stavka_normativa" />
         </EntityType>
         <EntityType Name="Normativ">
           <Key>
@@ -632,22 +507,7 @@
           <Property Name="ID_normativ" Type="Int32" Nullable="false" />
           <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Artikl" Relationship="Self.fk_Artikl_Normativ1" FromRole="Normativ" ToRole="Artikl" />
-          <NavigationProperty Name="Stavka_normativa" Relationship="Self.fk_Stavka_normativa_Normativ1" FromRole="Normativ" ToRole="Stavka_normativa" />
-        </EntityType>
-        <EntityType Name="Pod_Stavka">
-          <Key>
-            <PropertyRef Name="ID_Podstavka" />
-            <PropertyRef Name="Mjera_ID" />
-            <PropertyRef Name="Sastojak_ID" />
-          </Key>
-          <Property Name="ID_Podstavka" Type="Int32" Nullable="false" />
-          <Property Name="Mjera_ID" Type="Int32" Nullable="false" />
-          <Property Name="Sastojak_ID" Type="Int32" Nullable="false" />
-          <Property Name="Količina" Type="Double" Nullable="false" />
-          <Property Name="Stavka_normativa_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Mjera" Relationship="Self.fk_Pod_Stavka_Mjera1" FromRole="Pod_Stavka" ToRole="Mjera" />
-          <NavigationProperty Name="Sastojak" Relationship="Self.fk_Pod_Stavka_Sastojak1" FromRole="Pod_Stavka" ToRole="Sastojak" />
-          <NavigationProperty Name="Stavka_normativa" Relationship="Self.fk_Pod_Stavka_Stavka_normativa1" FromRole="Pod_Stavka" ToRole="Stavka_normativa" />
+          <NavigationProperty Name="Stavka_normativa" Relationship="Model.FK_Stavka_normativa_Normativ" FromRole="Normativ" ToRole="Stavka_normativa" />
         </EntityType>
         <EntityType Name="Poduzeće">
           <Key>
@@ -674,15 +534,6 @@
           <NavigationProperty Name="Stol" Relationship="Self.FK_Racun_Stol" FromRole="Racun" ToRole="Stol" />
           <NavigationProperty Name="Stavka_racuna" Relationship="Self.fk_Stavka_racuna_Racun1" FromRole="Racun" ToRole="Stavka_racuna" />
         </EntityType>
-        <EntityType Name="Sastojak">
-          <Key>
-            <PropertyRef Name="ID_Sastojak" />
-          </Key>
-          <Property Name="ID_Sastojak" Type="Int32" Nullable="false" />
-          <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Namirnica" Relationship="Self.FK_Namirnica_Sastojak" FromRole="Sastojak" ToRole="Namirnica" />
-          <NavigationProperty Name="Pod_Stavka" Relationship="Self.fk_Pod_Stavka_Sastojak1" FromRole="Sastojak" ToRole="Pod_Stavka" />
-        </EntityType>
         <EntityType Name="Skladiste">
           <Key>
             <PropertyRef Name="ID_Skladiste" />
@@ -690,7 +541,6 @@
           </Key>
           <Property Name="ID_Skladiste" Type="Int32" Nullable="false" />
           <Property Name="Kafic_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Artikl" Relationship="Self.FK_Artikl_Skladiste" FromRole="Skladiste" ToRole="Artikl" />
           <NavigationProperty Name="Kafic" Relationship="Self.FK__Skladiste__Kafic__4F7CD00D" FromRole="Skladiste" ToRole="Kafic" />
           <NavigationProperty Name="Namirnica" Relationship="Self.FK_Namirnica_Skladiste" FromRole="Skladiste" ToRole="Namirnica" />
         </EntityType>
@@ -699,9 +549,11 @@
             <PropertyRef Name="ID_Stav_norm" />
           </Key>
           <Property Name="ID_Stav_norm" Type="Int32" Nullable="false" />
-          <Property Name="Normativ_ID_normativ" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Normativ" Relationship="Self.fk_Stavka_normativa_Normativ1" FromRole="Stavka_normativa" ToRole="Normativ" />
-          <NavigationProperty Name="Pod_Stavka" Relationship="Self.fk_Pod_Stavka_Stavka_normativa1" FromRole="Stavka_normativa" ToRole="Pod_Stavka" />
+          <Property Name="Normativ_ID" Type="Int32" Nullable="false" />
+          <Property Name="Namirnica_ID" Type="Int32" Nullable="false" />
+          <Property Name="Kolicina" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Namirnica" Relationship="Model.FK_Stavka_normativa_Namirnica" FromRole="Stavka_normativa" ToRole="Namirnica" />
+          <NavigationProperty Name="Normativ" Relationship="Model.FK_Stavka_normativa_Normativ" FromRole="Stavka_normativa" ToRole="Normativ" />
         </EntityType>
         <EntityType Name="Stavka_racuna">
           <Key>
@@ -757,20 +609,6 @@
             </Principal>
             <Dependent Role="Artikl">
               <PropertyRef Name="Normativ_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Artikl_Skladiste">
-          <End Role="Skladiste" Type="Self.Skladiste" Multiplicity="0..1" />
-          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Skladiste">
-              <PropertyRef Name="ID_Skladiste" />
-              <PropertyRef Name="Kafic_ID" />
-            </Principal>
-            <Dependent Role="Artikl">
-              <PropertyRef Name="Skladiste_ID" />
-              <PropertyRef Name="Kafic_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -858,30 +696,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Namirnica_Mjera">
-          <End Role="Mjera" Type="Self.Mjera" Multiplicity="0..1" />
-          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mjera">
-              <PropertyRef Name="ID_Mjera" />
-            </Principal>
-            <Dependent Role="Namirnica">
-              <PropertyRef Name="Mjera_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Pod_Stavka_Mjera1">
-          <End Role="Mjera" Type="Self.Mjera" Multiplicity="1" />
-          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mjera">
-              <PropertyRef Name="ID_Mjera" />
-            </Principal>
-            <Dependent Role="Pod_Stavka">
-              <PropertyRef Name="Mjera_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Racun_Nacin_Placanja">
           <End Role="Nacin_Placanja" Type="Self.Nacin_Placanja" Multiplicity="1" />
           <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
@@ -891,18 +705,6 @@
             </Principal>
             <Dependent Role="Racun">
               <PropertyRef Name="Nacin_Placanja_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Namirnica_Sastojak">
-          <End Role="Sastojak" Type="Self.Sastojak" Multiplicity="0..1" />
-          <End Role="Namirnica" Type="Self.Namirnica" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sastojak">
-              <PropertyRef Name="ID_Sastojak" />
-            </Principal>
-            <Dependent Role="Namirnica">
-              <PropertyRef Name="Sastojak_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -917,42 +719,6 @@
             <Dependent Role="Namirnica">
               <PropertyRef Name="Skladiste_ID" />
               <PropertyRef Name="Kafic_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Stavka_normativa_Normativ1">
-          <End Role="Normativ" Type="Self.Normativ" Multiplicity="1" />
-          <End Role="Stavka_normativa" Type="Self.Stavka_normativa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Normativ">
-              <PropertyRef Name="ID_normativ" />
-            </Principal>
-            <Dependent Role="Stavka_normativa">
-              <PropertyRef Name="Normativ_ID_normativ" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Pod_Stavka_Sastojak1">
-          <End Role="Sastojak" Type="Self.Sastojak" Multiplicity="1" />
-          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sastojak">
-              <PropertyRef Name="ID_Sastojak" />
-            </Principal>
-            <Dependent Role="Pod_Stavka">
-              <PropertyRef Name="Sastojak_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Pod_Stavka_Stavka_normativa1">
-          <End Role="Stavka_normativa" Type="Self.Stavka_normativa" Multiplicity="1" />
-          <End Role="Pod_Stavka" Type="Self.Pod_Stavka" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Stavka_normativa">
-              <PropertyRef Name="ID_Stav_norm" />
-            </Principal>
-            <Dependent Role="Pod_Stavka">
-              <PropertyRef Name="Stavka_normativa_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -985,15 +751,12 @@
           <EntitySet Name="Kafic" EntityType="Self.Kafic" />
           <EntitySet Name="Kategorija" EntityType="Self.Kategorija" />
           <EntitySet Name="Konobar" EntityType="Self.Konobar" />
-          <EntitySet Name="Mjera" EntityType="Self.Mjera" />
           <EntitySet Name="Moderator" EntityType="Self.Moderator" />
           <EntitySet Name="Nacin_Placanja" EntityType="Self.Nacin_Placanja" />
           <EntitySet Name="Namirnica" EntityType="Self.Namirnica" />
           <EntitySet Name="Normativ" EntityType="Self.Normativ" />
-          <EntitySet Name="Pod_Stavka" EntityType="Self.Pod_Stavka" />
           <EntitySet Name="Poduzeće" EntityType="Self.Poduzeće" />
           <EntitySet Name="Racun" EntityType="Self.Racun" />
-          <EntitySet Name="Sastojak" EntityType="Self.Sastojak" />
           <EntitySet Name="Skladiste" EntityType="Self.Skladiste" />
           <EntitySet Name="Stavka_normativa" EntityType="Self.Stavka_normativa" />
           <EntitySet Name="Stavka_racuna" EntityType="Self.Stavka_racuna" />
@@ -1005,10 +768,6 @@
           </AssociationSet>
           <AssociationSet Name="fk_Artikl_Normativ1" Association="Self.fk_Artikl_Normativ1">
             <End Role="Normativ" EntitySet="Normativ" />
-            <End Role="Artikl" EntitySet="Artikl" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Artikl_Skladiste" Association="Self.FK_Artikl_Skladiste">
-            <End Role="Skladiste" EntitySet="Skladiste" />
             <End Role="Artikl" EntitySet="Artikl" />
           </AssociationSet>
           <AssociationSet Name="FK_Stavka_racuna_Artikl" Association="Self.FK_Stavka_racuna_Artikl">
@@ -1039,37 +798,13 @@
             <End Role="Konobar" EntitySet="Konobar" />
             <End Role="Racun" EntitySet="Racun" />
           </AssociationSet>
-          <AssociationSet Name="FK_Namirnica_Mjera" Association="Self.FK_Namirnica_Mjera">
-            <End Role="Mjera" EntitySet="Mjera" />
-            <End Role="Namirnica" EntitySet="Namirnica" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Pod_Stavka_Mjera1" Association="Self.fk_Pod_Stavka_Mjera1">
-            <End Role="Mjera" EntitySet="Mjera" />
-            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
-          </AssociationSet>
           <AssociationSet Name="FK_Racun_Nacin_Placanja" Association="Self.FK_Racun_Nacin_Placanja">
             <End Role="Nacin_Placanja" EntitySet="Nacin_Placanja" />
             <End Role="Racun" EntitySet="Racun" />
           </AssociationSet>
-          <AssociationSet Name="FK_Namirnica_Sastojak" Association="Self.FK_Namirnica_Sastojak">
-            <End Role="Sastojak" EntitySet="Sastojak" />
-            <End Role="Namirnica" EntitySet="Namirnica" />
-          </AssociationSet>
           <AssociationSet Name="FK_Namirnica_Skladiste" Association="Self.FK_Namirnica_Skladiste">
             <End Role="Skladiste" EntitySet="Skladiste" />
             <End Role="Namirnica" EntitySet="Namirnica" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Stavka_normativa_Normativ1" Association="Self.fk_Stavka_normativa_Normativ1">
-            <End Role="Normativ" EntitySet="Normativ" />
-            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Pod_Stavka_Sastojak1" Association="Self.fk_Pod_Stavka_Sastojak1">
-            <End Role="Sastojak" EntitySet="Sastojak" />
-            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Pod_Stavka_Stavka_normativa1" Association="Self.fk_Pod_Stavka_Stavka_normativa1">
-            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
-            <End Role="Pod_Stavka" EntitySet="Pod_Stavka" />
           </AssociationSet>
           <AssociationSet Name="FK_Racun_Stol" Association="Self.FK_Racun_Stol">
             <End Role="Stol" EntitySet="Stol" />
@@ -1079,7 +814,39 @@
             <End Role="Racun" EntitySet="Racun" />
             <End Role="Stavka_racuna" EntitySet="Stavka_racuna" />
           </AssociationSet>
+          <AssociationSet Name="FK_Stavka_normativa_Namirnica" Association="Model.FK_Stavka_normativa_Namirnica">
+            <End Role="Namirnica" EntitySet="Namirnica" />
+            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stavka_normativa_Normativ" Association="Model.FK_Stavka_normativa_Normativ">
+            <End Role="Normativ" EntitySet="Normativ" />
+            <End Role="Stavka_normativa" EntitySet="Stavka_normativa" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Stavka_normativa_Namirnica">
+          <End Type="Model.Namirnica" Role="Namirnica" Multiplicity="1" />
+          <End Type="Model.Stavka_normativa" Role="Stavka_normativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Namirnica">
+              <PropertyRef Name="ID_Namirnica" />
+            </Principal>
+            <Dependent Role="Stavka_normativa">
+              <PropertyRef Name="Namirnica_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stavka_normativa_Normativ">
+          <End Type="Model.Normativ" Role="Normativ" Multiplicity="1" />
+          <End Type="Model.Stavka_normativa" Role="Stavka_normativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Normativ">
+              <PropertyRef Name="ID_normativ" />
+            </Principal>
+            <Dependent Role="Stavka_normativa">
+              <PropertyRef Name="Namirnica_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1092,7 +859,6 @@
                 <ScalarProperty Name="ID_Artikl" ColumnName="ID_Artikl" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
                 <ScalarProperty Name="Cijena" ColumnName="Cijena" />
-                <ScalarProperty Name="Skladiste_ID" ColumnName="Skladiste_ID" />
                 <ScalarProperty Name="Normativ_ID" ColumnName="Normativ_ID" />
                 <ScalarProperty Name="Kategorija_ID" ColumnName="Kategorija_ID" />
                 <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
@@ -1131,14 +897,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Mjera">
-            <EntityTypeMapping TypeName="Model.Mjera">
-              <MappingFragment StoreEntitySet="Mjera">
-                <ScalarProperty Name="ID_Mjera" ColumnName="ID_Mjera" />
-                <ScalarProperty Name="Mjerna_jedinica" ColumnName="Mjerna_jedinica" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Moderator">
             <EntityTypeMapping TypeName="Model.Moderator">
               <MappingFragment StoreEntitySet="Moderator">
@@ -1165,11 +923,10 @@
           <EntitySetMapping Name="Namirnica">
             <EntityTypeMapping TypeName="Model.Namirnica">
               <MappingFragment StoreEntitySet="Namirnica">
+                <ScalarProperty Name="Mjera" ColumnName="Mjera" />
+                <ScalarProperty Name="Kolicina_na_skladistu" ColumnName="Kolicina_na_skladistu" />
                 <ScalarProperty Name="ID_Namirnica" ColumnName="ID_Namirnica" />
                 <ScalarProperty Name="Naziv_Namirnice" ColumnName="Naziv_Namirnice" />
-                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
-                <ScalarProperty Name="Mjera_ID" ColumnName="Mjera_ID" />
-                <ScalarProperty Name="Sastojak_ID" ColumnName="Sastojak_ID" />
                 <ScalarProperty Name="Skladiste_ID" ColumnName="Skladiste_ID" />
                 <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
               </MappingFragment>
@@ -1180,17 +937,6 @@
               <MappingFragment StoreEntitySet="Normativ">
                 <ScalarProperty Name="ID_normativ" ColumnName="ID_normativ" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pod_Stavka">
-            <EntityTypeMapping TypeName="Model.Pod_Stavka">
-              <MappingFragment StoreEntitySet="Pod_Stavka">
-                <ScalarProperty Name="ID_Podstavka" ColumnName="ID_Podstavka" />
-                <ScalarProperty Name="Mjera_ID" ColumnName="Mjera_ID" />
-                <ScalarProperty Name="Sastojak_ID" ColumnName="Sastojak_ID" />
-                <ScalarProperty Name="Količina" ColumnName="Količina" />
-                <ScalarProperty Name="Stavka_normativa_ID" ColumnName="Stavka_normativa_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1216,14 +962,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sastojak">
-            <EntityTypeMapping TypeName="Model.Sastojak">
-              <MappingFragment StoreEntitySet="Sastojak">
-                <ScalarProperty Name="ID_Sastojak" ColumnName="ID_Sastojak" />
-                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Skladiste">
             <EntityTypeMapping TypeName="Model.Skladiste">
               <MappingFragment StoreEntitySet="Skladiste">
@@ -1235,8 +973,10 @@
           <EntitySetMapping Name="Stavka_normativa">
             <EntityTypeMapping TypeName="Model.Stavka_normativa">
               <MappingFragment StoreEntitySet="Stavka_normativa">
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="Namirnica_ID" ColumnName="Namirnica_ID" />
+                <ScalarProperty Name="Normativ_ID" ColumnName="Normativ_ID" />
                 <ScalarProperty Name="ID_Stav_norm" ColumnName="ID_Stav_norm" />
-                <ScalarProperty Name="Normativ_ID_normativ" ColumnName="Normativ_ID_normativ" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

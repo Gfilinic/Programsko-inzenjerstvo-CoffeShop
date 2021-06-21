@@ -23,14 +23,12 @@ namespace PI_2021_Kafic
         public int ID_Artikl { get; set; }
         public string Naziv { get; set; }
         public double Cijena { get; set; }
-        public Nullable<int> Skladiste_ID { get; set; }
         public Nullable<int> Normativ_ID { get; set; }
         public int Kategorija_ID { get; set; }
         public Nullable<int> Kafic_ID { get; set; }
     
         public virtual Kategorija Kategorija { get; set; }
         public virtual Normativ Normativ { get; set; }
-        public virtual Skladiste Skladiste { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stavka_racuna> Stavka_racuna { get; set; }
     }

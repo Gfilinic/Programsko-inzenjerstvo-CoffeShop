@@ -73,6 +73,54 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="frmDodajNamirnicu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDodajNamirnicu.Designer.cs">
+      <DependentUpon>frmDodajNamirnicu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDodajNormativ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDodajNormativ.Designer.cs">
+      <DependentUpon>frmDodajNormativ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMjera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMjera.Designer.cs">
+      <DependentUpon>frmMjera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNormativMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNormativMain.Designer.cs">
+      <DependentUpon>frmNormativMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNamirniceMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNamirniceMain.Designer.cs">
+      <DependentUpon>frmNamirniceMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPodstavka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPodstavka.Designer.cs">
+      <DependentUpon>frmPodstavka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSastojak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSastojak.Designer.cs">
+      <DependentUpon>frmSastojak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStavkaNormativa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStavkaNormativa.Designer.cs">
+      <DependentUpon>frmStavkaNormativa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kafic.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -88,9 +136,6 @@
     <Compile Include="MainKafic.Designer.cs">
       <DependentUpon>MainKafic.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mjera.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Moderator.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -100,6 +145,7 @@
     <Compile Include="Namirnica.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NamirnicaExt.cs" />
     <Compile Include="Narudzbe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,18 +155,13 @@
     <Compile Include="Normativ.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NormativExt.cs" />
     <Compile Include="Poduzeće.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pod_Stavka.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Racun.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sastojak.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Skladiste.cs">
@@ -151,6 +192,30 @@
     <Compile Include="Upravljanje_Stolovima.Designer.cs">
       <DependentUpon>Upravljanje_Stolovima.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmDodajNamirnicu.resx">
+      <DependentUpon>frmDodajNamirnicu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDodajNormativ.resx">
+      <DependentUpon>frmDodajNormativ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMjera.resx">
+      <DependentUpon>frmMjera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNormativMain.resx">
+      <DependentUpon>frmNormativMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNamirniceMain.resx">
+      <DependentUpon>frmNamirniceMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPodstavka.resx">
+      <DependentUpon>frmPodstavka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSastojak.resx">
+      <DependentUpon>frmSastojak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStavkaNormativa.resx">
+      <DependentUpon>frmStavkaNormativa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainKafic.resx">
       <DependentUpon>MainKafic.cs</DependentUpon>
     </EmbeddedResource>
