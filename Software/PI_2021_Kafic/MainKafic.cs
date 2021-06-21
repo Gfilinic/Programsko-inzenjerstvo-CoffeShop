@@ -130,5 +130,19 @@ namespace PI_2021_Kafic
         {
             RefreshStolovi();
         }
+
+        private void upravljanjeNamirnicamaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNamirniceMain frmNamirnice = new frmNamirniceMain(kafic);
+            frmNamirnice.ShowDialog();
+        }
+
+       
+
+        private void upravljanjeNormativimaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNormativMain frmNormativ = new frmNormativMain(kafic);
+            frmNormativ.ShowDialog();
+        }
     }
 }

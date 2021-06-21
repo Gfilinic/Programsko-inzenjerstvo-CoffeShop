@@ -29,15 +29,12 @@ namespace PI_2021_Kafic
         public virtual DbSet<Kafic> Kafic { get; set; }
         public virtual DbSet<Kategorija> Kategorija { get; set; }
         public virtual DbSet<Konobar> Konobar { get; set; }
-        public virtual DbSet<Mjera> Mjera { get; set; }
         public virtual DbSet<Moderator> Moderator { get; set; }
         public virtual DbSet<Nacin_Placanja> Nacin_Placanja { get; set; }
         public virtual DbSet<Namirnica> Namirnica { get; set; }
         public virtual DbSet<Normativ> Normativ { get; set; }
-        public virtual DbSet<Pod_Stavka> Pod_Stavka { get; set; }
         public virtual DbSet<Poduzeće> Poduzeće { get; set; }
         public virtual DbSet<Racun> Racun { get; set; }
-        public virtual DbSet<Sastojak> Sastojak { get; set; }
         public virtual DbSet<Skladiste> Skladiste { get; set; }
         public virtual DbSet<Stavka_normativa> Stavka_normativa { get; set; }
         public virtual DbSet<Stavka_racuna> Stavka_racuna { get; set; }

@@ -17,15 +17,12 @@ namespace PI_2021_Kafic
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Skladiste()
         {
-            this.Artikl = new HashSet<Artikl>();
             this.Namirnica = new HashSet<Namirnica>();
         }
     
         public int ID_Skladiste { get; set; }
         public int Kafic_ID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Artikl> Artikl { get; set; }
         public virtual Kafic Kafic { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Namirnica> Namirnica { get; set; }
