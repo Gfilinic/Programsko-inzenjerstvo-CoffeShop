@@ -85,12 +85,6 @@
     <Compile Include="frmDodajNormativ.Designer.cs">
       <DependentUpon>frmDodajNormativ.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMjera.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMjera.Designer.cs">
-      <DependentUpon>frmMjera.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmNormativMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,9 +174,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDodajNormativ.resx">
       <DependentUpon>frmDodajNormativ.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMjera.resx">
-      <DependentUpon>frmMjera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNormativMain.resx">
       <DependentUpon>frmNormativMain.cs</DependentUpon>
