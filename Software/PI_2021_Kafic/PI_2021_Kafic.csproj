@@ -97,6 +97,12 @@
     <Compile Include="frmLoginModerator.Designer.cs">
       <DependentUpon>frmLoginModerator.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMainKafic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainKafic.Designer.cs">
+      <DependentUpon>frmMainKafic.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNarudzbe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,12 +127,6 @@
     </Compile>
     <Compile Include="Konobar.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MainKafic.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainKafic.Designer.cs">
-      <DependentUpon>MainKafic.cs</DependentUpon>
     </Compile>
     <Compile Include="Moderator.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -191,15 +191,15 @@
     <EmbeddedResource Include="frmLoginModerator.resx">
       <DependentUpon>frmLoginModerator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMainKafic.resx">
+      <DependentUpon>frmMainKafic.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNarudzbe.resx" />
     <EmbeddedResource Include="frmNormativMain.resx">
       <DependentUpon>frmNormativMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNamirniceMain.resx">
       <DependentUpon>frmNamirniceMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainKafic.resx">
-      <DependentUpon>MainKafic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
