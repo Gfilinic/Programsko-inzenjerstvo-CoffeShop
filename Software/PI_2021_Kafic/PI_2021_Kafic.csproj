@@ -85,6 +85,22 @@
     <Compile Include="frmDodajNormativ.Designer.cs">
       <DependentUpon>frmDodajNormativ.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLoginKonobar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoginKonobar.Designer.cs">
+      <DependentUpon>frmLoginKonobar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoginModerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoginModerator.Designer.cs">
+      <DependentUpon>frmLoginModerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNarudzbe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNarudzbe.Designer.cs" />
     <Compile Include="frmNormativMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,12 +138,6 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="NamirnicaExt.cs" />
-    <Compile Include="Narudzbe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Narudzbe.Designer.cs">
-      <DependentUpon>Narudzbe.cs</DependentUpon>
-    </Compile>
     <Compile Include="Normativ.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -175,6 +185,13 @@
     <EmbeddedResource Include="frmDodajNormativ.resx">
       <DependentUpon>frmDodajNormativ.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLoginKonobar.resx">
+      <DependentUpon>frmLoginKonobar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoginModerator.resx">
+      <DependentUpon>frmLoginModerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNarudzbe.resx" />
     <EmbeddedResource Include="frmNormativMain.resx">
       <DependentUpon>frmNormativMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,9 +200,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainKafic.resx">
       <DependentUpon>MainKafic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Narudzbe.resx">
-      <DependentUpon>Narudzbe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

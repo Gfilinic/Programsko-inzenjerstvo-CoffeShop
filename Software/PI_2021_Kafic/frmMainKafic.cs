@@ -10,17 +10,25 @@ using System.Windows.Forms;
 
 namespace PI_2021_Kafic
 {
-    public partial class MainKafic : Form
+    public partial class frmMainKafic : Form
     {
         List<UCStol> listaStolova;
         Kafic kafic;
-        public MainKafic()
+        private Moderator moderator;
+        private Konobar konobar;
+
+        public frmMainKafic()
         {
             InitializeComponent();
             listaStolova = new List<UCStol>();
             kafic = DohvatiKafic(1);
-            
+            this.Text = kafic.Naziv;
             RefreshStolovi();
+            upravaljnjeStolovimaToolStripMenuItem.Visible = false;
+            odjaviModeratoraToolStripMenuItem.Visible = false;
+            odjaviKonobaraToolStripMenuItem.Visible = false;
+            trenutniKorisnikToolStripMenuItem.Visible = false;
+            
 
         }
 
@@ -51,7 +59,7 @@ namespace PI_2021_Kafic
                 foreach(Stol stol in lista)
                
                 {
-                    UCStol uCStol = new UCStol();
+                    UCStol uCStol = new UCStol(kafic);
                     if (point1 + 193 < this.Size.Width)
                     {
                         uCStol.Location = new Point(point1, point2);
@@ -121,10 +129,7 @@ namespace PI_2021_Kafic
             RefreshStolovi();
         }
 
-        private void MainKafic_Activated(object sender, EventArgs e)
-        {
-            RefreshStolovi();
-        }
+       
 
         private void MainKafic_ResizeEnd(object sender, EventArgs e)
         {
@@ -144,5 +149,82 @@ namespace PI_2021_Kafic
             frmNormativMain frmNormativ = new frmNormativMain(kafic);
             frmNormativ.ShowDialog();
         }
+        private void moderatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLoginModerator frmLogin = new frmLoginModerator(kafic);
+            frmLogin.ShowDialog();
+            moderator = frmLogin.DohvatiModeratora();
+            frmLogin.Close();
+            if (moderator != null)
+            {
+                upravaljnjeStolovimaToolStripMenuItem.Visible = true;
+                odjaviModeratoraToolStripMenuItem.Visible = true;
+                moderatorToolStripMenuItem.Visible = false;
+
+
+            }
+        }
+
+        private void odjaviModeratoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            moderator = null;
+            upravaljnjeStolovimaToolStripMenuItem.Visible = false;
+            odjaviModeratoraToolStripMenuItem.Visible = false;
+            moderatorToolStripMenuItem.Visible = true;
+            MessageBox.Show("Moderator odjavljen!");
+        }
+
+        private void loginKonobarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLoginKonobar frmLogin = new frmLoginKonobar(kafic);
+            frmLogin.ShowDialog();
+            if (frmLogin.DialogResult == DialogResult.OK)
+            {
+                konobar = frmLogin.nadeniKonobar;
+                loginKonobarToolStripMenuItem.Visible = false;
+                odjaviKonobaraToolStripMenuItem.Visible = true;
+                frmLogin.Close();
+                trenutniKorisnikToolStripMenuItem.Visible = true;
+                trenutniKorisnikToolStripMenuItem.Text = "User: " + konobar.Ime + " " + konobar.Prezime;
+                DodijeliStolovimaKonobara(konobar);
+            }
+            else frmLogin.Close();
+        }
+
+        private void DodijeliStolovimaKonobara(Konobar konobar)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control.GetType() == typeof(UCStol))
+                {
+                    UCStol stol = (UCStol)control;
+                    stol.PostaviKonobara(konobar);
+                }
+
+            }
+        }
+
+        private void odjaviKonobaraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            konobar = null;
+            loginKonobarToolStripMenuItem.Visible = true;
+            odjaviKonobaraToolStripMenuItem.Visible = false;
+            trenutniKorisnikToolStripMenuItem.Visible = false;
+            MakniKonobaraSaStolova();
+        }
+
+        private void MakniKonobaraSaStolova()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control.GetType() == typeof(UCStol))
+                {
+                    UCStol stol = (UCStol)control;
+                    stol.MakniKonobara();
+                }
+
+            }
+        }
     }
 }
+
