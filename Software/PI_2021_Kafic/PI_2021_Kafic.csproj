@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\PI_2021\packages\Castle.Core.4.4.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\PI_2021\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -41,6 +44,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -58,6 +62,7 @@
     <Compile Include="Artikl.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArtiklExt.cs" />
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,6 +77,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="frmArtiklMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmArtiklMain.Designer.cs">
+      <DependentUpon>frmArtiklMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmArtiklManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmArtiklManager.Designer.cs">
+      <DependentUpon>frmArtiklManager.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDodajNamirnicu.cs">
       <SubType>Form</SubType>
@@ -106,7 +123,9 @@
     <Compile Include="frmNarudzbe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNarudzbe.Designer.cs" />
+    <Compile Include="frmNarudzbe.Designer.cs">
+      <DependentUpon>frmNarudzbe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNormativMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,18 +138,45 @@
     <Compile Include="frmNamirniceMain.Designer.cs">
       <DependentUpon>frmNamirniceMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOtpis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOtpis.Designer.cs">
+      <DependentUpon>frmOtpis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRacuni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRacuni.Designer.cs">
+      <DependentUpon>frmRacuni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStanjeSkladiste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStanjeSkladiste.Designer.cs">
+      <DependentUpon>frmStanjeSkladiste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpravljanjeKonobarima.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpravljanjeKonobarima.Designer.cs">
+      <DependentUpon>frmUpravljanjeKonobarima.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kafic.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Kategorija.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="KategorijaExt.cs" />
     <Compile Include="Konobar.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="KonobarExt.cs" />
     <Compile Include="Moderator.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NacinPlacanjaExt.cs" />
     <Compile Include="Nacin_Placanja.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -160,6 +206,7 @@
     <Compile Include="Stavka_racuna.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Stavka_racunaExt.cs" />
     <Compile Include="Stol.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -173,12 +220,18 @@
     <Compile Include="UCStol.Designer.cs">
       <DependentUpon>UCStol.cs</DependentUpon>
     </Compile>
-    <Compile Include="Upravljanje_Stolovima.cs">
+    <Compile Include="frmUpravljanje_Stolovima.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Upravljanje_Stolovima.Designer.cs">
-      <DependentUpon>Upravljanje_Stolovima.cs</DependentUpon>
+    <Compile Include="frmUpravljanje_Stolovima.Designer.cs">
+      <DependentUpon>frmUpravljanje_Stolovima.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmArtiklMain.resx">
+      <DependentUpon>frmArtiklMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmArtiklManager.resx">
+      <DependentUpon>frmArtiklManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDodajNamirnicu.resx">
       <DependentUpon>frmDodajNamirnicu.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,12 +247,26 @@
     <EmbeddedResource Include="frmMainKafic.resx">
       <DependentUpon>frmMainKafic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNarudzbe.resx" />
+    <EmbeddedResource Include="frmNarudzbe.resx">
+      <DependentUpon>frmNarudzbe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNormativMain.resx">
       <DependentUpon>frmNormativMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNamirniceMain.resx">
       <DependentUpon>frmNamirniceMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOtpis.resx">
+      <DependentUpon>frmOtpis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRacuni.resx">
+      <DependentUpon>frmRacuni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStanjeSkladiste.resx">
+      <DependentUpon>frmStanjeSkladiste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpravljanjeKonobarima.resx">
+      <DependentUpon>frmUpravljanjeKonobarima.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -214,8 +281,8 @@
     <EmbeddedResource Include="UCStol.resx">
       <DependentUpon>UCStol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Upravljanje_Stolovima.resx">
-      <DependentUpon>Upravljanje_Stolovima.cs</DependentUpon>
+    <EmbeddedResource Include="frmUpravljanje_Stolovima.resx">
+      <DependentUpon>frmUpravljanje_Stolovima.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

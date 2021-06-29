@@ -28,7 +28,10 @@ namespace PI_2021_Kafic
             odjaviModeratoraToolStripMenuItem.Visible = false;
             odjaviKonobaraToolStripMenuItem.Visible = false;
             trenutniKorisnikToolStripMenuItem.Visible = false;
-            
+            skladišteToolStripMenuItem.Visible = false;
+            upravljanjeKonobarima.Visible = false;
+            otpisToolStripMenuItem.Visible = false;
+            racuniToolStripMenuItem.Visible = false;
 
         }
 
@@ -59,7 +62,7 @@ namespace PI_2021_Kafic
                 foreach(Stol stol in lista)
                
                 {
-                    UCStol uCStol = new UCStol(kafic);
+                    UCStol uCStol = new UCStol(kafic,stol);
                     if (point1 + 193 < this.Size.Width)
                     {
                         uCStol.Location = new Point(point1, point2);
@@ -124,7 +127,7 @@ namespace PI_2021_Kafic
 
         private void upravaljnjeStolovimaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Upravljanje_Stolovima upravitelj = new Upravljanje_Stolovima(kafic);
+            frmUpravljanje_Stolovima upravitelj = new frmUpravljanje_Stolovima(kafic);
             upravitelj.ShowDialog();
             RefreshStolovi();
         }
@@ -160,8 +163,9 @@ namespace PI_2021_Kafic
                 upravaljnjeStolovimaToolStripMenuItem.Visible = true;
                 odjaviModeratoraToolStripMenuItem.Visible = true;
                 moderatorToolStripMenuItem.Visible = false;
-
-
+                skladišteToolStripMenuItem.Visible = true;
+                upravljanjeKonobarima.Visible = true;
+                racuniToolStripMenuItem.Visible = true;
             }
         }
 
@@ -171,6 +175,9 @@ namespace PI_2021_Kafic
             upravaljnjeStolovimaToolStripMenuItem.Visible = false;
             odjaviModeratoraToolStripMenuItem.Visible = false;
             moderatorToolStripMenuItem.Visible = true;
+            skladišteToolStripMenuItem.Visible = false;
+            upravljanjeKonobarima.Visible = false;
+            racuniToolStripMenuItem.Visible = false;
             MessageBox.Show("Moderator odjavljen!");
         }
 
@@ -187,6 +194,11 @@ namespace PI_2021_Kafic
                 trenutniKorisnikToolStripMenuItem.Visible = true;
                 trenutniKorisnikToolStripMenuItem.Text = "User: " + konobar.Ime + " " + konobar.Prezime;
                 DodijeliStolovimaKonobara(konobar);
+                if (konobar.Voditelj == 1)
+                {
+                    otpisToolStripMenuItem.Visible = true;
+                    racuniToolStripMenuItem.Visible = true;
+                }
             }
             else frmLogin.Close();
         }
@@ -206,10 +218,16 @@ namespace PI_2021_Kafic
 
         private void odjaviKonobaraToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (konobar.Voditelj == 1)
+            {
+                otpisToolStripMenuItem.Visible = false;
+                racuniToolStripMenuItem.Visible = false;
+            }
             konobar = null;
             loginKonobarToolStripMenuItem.Visible = true;
             odjaviKonobaraToolStripMenuItem.Visible = false;
             trenutniKorisnikToolStripMenuItem.Visible = false;
+            
             MakniKonobaraSaStolova();
         }
 
@@ -224,6 +242,38 @@ namespace PI_2021_Kafic
                 }
 
             }
+        }
+
+        private void artikliToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmArtiklMain artiklMain = new frmArtiklMain(kafic);
+            artiklMain.ShowDialog();
+
+        }
+
+        private void upravljanjeKonobarima_Click(object sender, EventArgs e)
+        {
+            frmUpravljanjeKonobarima frmKonobar = new frmUpravljanjeKonobarima(kafic);
+            frmKonobar.ShowDialog();
+        }
+
+        private void stanjeNaSkladištuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmStanjeSkladiste skladiste = new frmStanjeSkladiste(kafic);
+            skladiste.ShowDialog();
+
+        }
+
+        private void otpisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOtpis frmOtpis = new frmOtpis(kafic);
+            frmOtpis.ShowDialog();
+        }
+
+        private void racuniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRacuni racuni = new frmRacuni(kafic);
+            racuni.ShowDialog();
         }
     }
 }

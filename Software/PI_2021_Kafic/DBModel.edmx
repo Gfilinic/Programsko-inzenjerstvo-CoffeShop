@@ -99,11 +99,13 @@
             <PropertyRef Name="ID_Racun" />
           </Key>
           <Property Name="ID_Racun" Type="int" Nullable="false" />
-          <Property Name="Vrijeme" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="Vrijeme" Type="datetime" />
           <Property Name="Konobar_ID" Type="int" Nullable="false" />
           <Property Name="Stol_ID" Type="int" Nullable="false" />
           <Property Name="Nacin_Placanja_ID" Type="int" Nullable="false" />
           <Property Name="Ukupna_cijena" Type="float" Nullable="false" />
+          <Property Name="Kafic_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Skladiste">
           <Key>
@@ -163,7 +165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Artikl_Kategorija1">
+        <Association Name="fk_Artikl_Kategorija">
           <End Role="Kategorija" Type="Self.Kategorija" Multiplicity="1" />
           <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
           <ReferentialConstraint>
@@ -172,6 +174,18 @@
             </Principal>
             <Dependent Role="Artikl">
               <PropertyRef Name="Kategorija_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Artikl_Normativ">
+          <End Role="Normativ" Type="Self.Normativ" Multiplicity="0..1" />
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Normativ">
+              <PropertyRef Name="ID_normativ" />
+            </Principal>
+            <Dependent Role="Artikl">
+              <PropertyRef Name="Normativ_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -233,6 +247,18 @@
               <PropertyRef Name="ID_Kafic" />
             </Principal>
             <Dependent Role="Normativ">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Racun">
               <PropertyRef Name="Kafic_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -309,7 +335,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Stavka_racuna_Racun1">
+        <Association Name="FK_Stavka_racuna_Stavka_racuna">
           <End Role="Racun" Type="Self.Racun" Multiplicity="1" />
           <End Role="Stavka_racuna" Type="Self.Stavka_racuna" Multiplicity="*" />
           <ReferentialConstraint>
@@ -353,8 +379,12 @@
             <End Role="Kafic" EntitySet="Kafic" />
             <End Role="Skladiste" EntitySet="Skladiste" />
           </AssociationSet>
-          <AssociationSet Name="fk_Artikl_Kategorija1" Association="Self.fk_Artikl_Kategorija1">
+          <AssociationSet Name="fk_Artikl_Kategorija" Association="Self.fk_Artikl_Kategorija">
             <End Role="Kategorija" EntitySet="Kategorija" />
+            <End Role="Artikl" EntitySet="Artikl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Artikl_Normativ" Association="Self.FK_Artikl_Normativ">
+            <End Role="Normativ" EntitySet="Normativ" />
             <End Role="Artikl" EntitySet="Artikl" />
           </AssociationSet>
           <AssociationSet Name="FK_Kafic_Poduzeće" Association="Self.FK_Kafic_Poduzeće">
@@ -376,6 +406,10 @@
           <AssociationSet Name="FK_Normativ_Kafic" Association="Self.FK_Normativ_Kafic">
             <End Role="Kafic" EntitySet="Kafic" />
             <End Role="Normativ" EntitySet="Normativ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Kafic" Association="Self.FK_Racun_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Racun" EntitySet="Racun" />
           </AssociationSet>
           <AssociationSet Name="FK_Racun_Konobar" Association="Self.FK_Racun_Konobar">
             <End Role="Konobar" EntitySet="Konobar" />
@@ -401,7 +435,7 @@
             <End Role="Artikl" EntitySet="Artikl" />
             <End Role="Stavka_racuna" EntitySet="Stavka_racuna" />
           </AssociationSet>
-          <AssociationSet Name="fk_Stavka_racuna_Racun1" Association="Self.fk_Stavka_racuna_Racun1">
+          <AssociationSet Name="FK_Stavka_racuna_Stavka_racuna" Association="Self.FK_Stavka_racuna_Stavka_racuna">
             <End Role="Racun" EntitySet="Racun" />
             <End Role="Stavka_racuna" EntitySet="Stavka_racuna" />
           </AssociationSet>
@@ -425,7 +459,8 @@
           <Property Name="Normativ_ID" Type="Int32" />
           <Property Name="Kategorija_ID" Type="Int32" Nullable="false" />
           <Property Name="Kafic_ID" Type="Int32" />
-          <NavigationProperty Name="Kategorija" Relationship="Self.fk_Artikl_Kategorija1" FromRole="Artikl" ToRole="Kategorija" />
+          <NavigationProperty Name="Kategorija" Relationship="Self.fk_Artikl_Kategorija" FromRole="Artikl" ToRole="Kategorija" />
+          <NavigationProperty Name="Normativ" Relationship="Self.FK_Artikl_Normativ" FromRole="Artikl" ToRole="Normativ" />
           <NavigationProperty Name="Stavka_racuna" Relationship="Self.FK_Stavka_racuna_Artikl" FromRole="Artikl" ToRole="Stavka_racuna" />
         </EntityType>
         <EntityType Name="Kafic">
@@ -440,6 +475,7 @@
           <NavigationProperty Name="Konobar" Relationship="Self.FK_Konobar_Kafic" FromRole="Kafic" ToRole="Konobar" />
           <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_Kafic" FromRole="Kafic" ToRole="Moderator" />
           <NavigationProperty Name="Normativ" Relationship="Self.FK_Normativ_Kafic" FromRole="Kafic" ToRole="Normativ" />
+          <NavigationProperty Name="Racun" Relationship="Self.FK_Racun_Kafic" FromRole="Kafic" ToRole="Racun" />
           <NavigationProperty Name="Stol" Relationship="Self.FK_Stol_Kafic" FromRole="Kafic" ToRole="Stol" />
         </EntityType>
         <EntityType Name="Kategorija">
@@ -448,7 +484,7 @@
           </Key>
           <Property Name="ID_Kategorija" Type="Int32" Nullable="false" />
           <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Artikl" Relationship="Self.fk_Artikl_Kategorija1" FromRole="Kategorija" ToRole="Artikl" />
+          <NavigationProperty Name="Artikl" Relationship="Self.fk_Artikl_Kategorija" FromRole="Kategorija" ToRole="Artikl" />
         </EntityType>
         <EntityType Name="Konobar">
           <Key>
@@ -509,6 +545,7 @@
           <Property Name="ID_normativ" Type="Int32" Nullable="false" />
           <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Kafic_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Artikl" Relationship="Self.FK_Artikl_Normativ" FromRole="Normativ" ToRole="Artikl" />
           <NavigationProperty Name="Kafic" Relationship="Self.FK_Normativ_Kafic" FromRole="Normativ" ToRole="Kafic" />
           <NavigationProperty Name="Stavka_normativa" Relationship="Self.FK_Stavka_normativa_Kafic" FromRole="Normativ" ToRole="Stavka_normativa" />
         </EntityType>
@@ -527,15 +564,18 @@
             <PropertyRef Name="ID_Racun" />
           </Key>
           <Property Name="ID_Racun" Type="Int32" Nullable="false" />
-          <Property Name="Vrijeme" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="Vrijeme" Type="DateTime" Precision="3" />
           <Property Name="Konobar_ID" Type="Int32" Nullable="false" />
           <Property Name="Stol_ID" Type="Int32" Nullable="false" />
           <Property Name="Nacin_Placanja_ID" Type="Int32" Nullable="false" />
           <Property Name="Ukupna_cijena" Type="Double" Nullable="false" />
+          <Property Name="Kafic_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kafic" Relationship="Self.FK_Racun_Kafic" FromRole="Racun" ToRole="Kafic" />
           <NavigationProperty Name="Konobar" Relationship="Self.FK_Racun_Konobar" FromRole="Racun" ToRole="Konobar" />
           <NavigationProperty Name="Nacin_Placanja" Relationship="Self.FK_Racun_Nacin_Placanja" FromRole="Racun" ToRole="Nacin_Placanja" />
           <NavigationProperty Name="Stol" Relationship="Self.FK_Racun_Stol" FromRole="Racun" ToRole="Stol" />
-          <NavigationProperty Name="Stavka_racuna" Relationship="Self.fk_Stavka_racuna_Racun1" FromRole="Racun" ToRole="Stavka_racuna" />
+          <NavigationProperty Name="Stavka_racuna" Relationship="Self.FK_Stavka_racuna_Stavka_racuna" FromRole="Racun" ToRole="Stavka_racuna" />
         </EntityType>
         <EntityType Name="Skladiste">
           <Key>
@@ -568,7 +608,7 @@
           <Property Name="Količina" Type="Int32" Nullable="false" />
           <Property Name="Cijena" Type="Double" Nullable="false" />
           <NavigationProperty Name="Artikl" Relationship="Self.FK_Stavka_racuna_Artikl" FromRole="Stavka_racuna" ToRole="Artikl" />
-          <NavigationProperty Name="Racun" Relationship="Self.fk_Stavka_racuna_Racun1" FromRole="Stavka_racuna" ToRole="Racun" />
+          <NavigationProperty Name="Racun" Relationship="Self.FK_Stavka_racuna_Stavka_racuna" FromRole="Stavka_racuna" ToRole="Racun" />
         </EntityType>
         <EntityType Name="Stol">
           <Key>
@@ -591,7 +631,7 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="fk_Artikl_Kategorija1">
+        <Association Name="fk_Artikl_Kategorija">
           <End Role="Kategorija" Type="Self.Kategorija" Multiplicity="1" />
           <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
           <ReferentialConstraint>
@@ -600,6 +640,18 @@
             </Principal>
             <Dependent Role="Artikl">
               <PropertyRef Name="Kategorija_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Artikl_Normativ">
+          <End Role="Normativ" Type="Self.Normativ" Multiplicity="0..1" />
+          <End Role="Artikl" Type="Self.Artikl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Normativ">
+              <PropertyRef Name="ID_normativ" />
+            </Principal>
+            <Dependent Role="Artikl">
+              <PropertyRef Name="Normativ_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -671,6 +723,18 @@
               <PropertyRef Name="ID_Kafic" />
             </Principal>
             <Dependent Role="Normativ">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Racun_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Racun">
               <PropertyRef Name="Kafic_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -761,7 +825,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Stavka_racuna_Racun1">
+        <Association Name="FK_Stavka_racuna_Stavka_racuna">
           <End Role="Racun" Type="Self.Racun" Multiplicity="1" />
           <End Role="Stavka_racuna" Type="Self.Stavka_racuna" Multiplicity="*" />
           <ReferentialConstraint>
@@ -789,8 +853,12 @@
           <EntitySet Name="Stavka_racuna" EntityType="Self.Stavka_racuna" />
           <EntitySet Name="Stol" EntityType="Self.Stol" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="fk_Artikl_Kategorija1" Association="Self.fk_Artikl_Kategorija1">
+          <AssociationSet Name="fk_Artikl_Kategorija" Association="Self.fk_Artikl_Kategorija">
             <End Role="Kategorija" EntitySet="Kategorija" />
+            <End Role="Artikl" EntitySet="Artikl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Artikl_Normativ" Association="Self.FK_Artikl_Normativ">
+            <End Role="Normativ" EntitySet="Normativ" />
             <End Role="Artikl" EntitySet="Artikl" />
           </AssociationSet>
           <AssociationSet Name="FK_Stavka_racuna_Artikl" Association="Self.FK_Stavka_racuna_Artikl">
@@ -816,6 +884,10 @@
           <AssociationSet Name="FK_Normativ_Kafic" Association="Self.FK_Normativ_Kafic">
             <End Role="Kafic" EntitySet="Kafic" />
             <End Role="Normativ" EntitySet="Normativ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Racun_Kafic" Association="Self.FK_Racun_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Racun" EntitySet="Racun" />
           </AssociationSet>
           <AssociationSet Name="FK_Stol_Kafic" Association="Self.FK_Stol_Kafic">
             <End Role="Kafic" EntitySet="Kafic" />
@@ -845,7 +917,7 @@
             <End Role="Stol" EntitySet="Stol" />
             <End Role="Racun" EntitySet="Racun" />
           </AssociationSet>
-          <AssociationSet Name="fk_Stavka_racuna_Racun1" Association="Self.fk_Stavka_racuna_Racun1">
+          <AssociationSet Name="FK_Stavka_racuna_Stavka_racuna" Association="Self.FK_Stavka_racuna_Stavka_racuna">
             <End Role="Racun" EntitySet="Racun" />
             <End Role="Stavka_racuna" EntitySet="Stavka_racuna" />
           </AssociationSet>
@@ -958,11 +1030,13 @@
             <EntityTypeMapping TypeName="Model.Racun">
               <MappingFragment StoreEntitySet="Racun">
                 <ScalarProperty Name="ID_Racun" ColumnName="ID_Racun" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
                 <ScalarProperty Name="Konobar_ID" ColumnName="Konobar_ID" />
                 <ScalarProperty Name="Stol_ID" ColumnName="Stol_ID" />
                 <ScalarProperty Name="Nacin_Placanja_ID" ColumnName="Nacin_Placanja_ID" />
                 <ScalarProperty Name="Ukupna_cijena" ColumnName="Ukupna_cijena" />
+                <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

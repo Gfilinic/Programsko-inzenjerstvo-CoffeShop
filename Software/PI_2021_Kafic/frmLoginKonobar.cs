@@ -24,10 +24,13 @@ namespace PI_2021_Kafic
         {
             using (var context = new Entities())
             {
+                Konobar konobar = null;
                 var query = from k in context.Konobar
                             where k.Kafic_ID == kafic.ID_Kafic && k.Sifra == txtSifra.Text
                             select k;
-                Konobar konobar = query.Single();
+                if (query.ToList().Count > 0) { 
+                    konobar = query.Single();
+                }
                 if (konobar != null)
                 {
                     nadeniKonobar = konobar;

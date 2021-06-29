@@ -20,7 +20,7 @@ namespace PI_2021_Kafic
             kafic = chosenKafic;
             
         }
-
+        
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -28,17 +28,21 @@ namespace PI_2021_Kafic
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            Moderator odabraniModerator = null;
             using (var context= new Entities())
             {
                 var query = from m in context.Moderator
                             where m.Kafic_ID==kafic.ID_Kafic && m.KorIme == txtUser.Text && m.Lozinka == txtPassword.Text
                             select m;
-                Moderator odabraniModerator = query.Single();
-                if (odabraniModerator != null) {
+                if(query.ToList().Count>0)
+                 odabraniModerator= query.Single();
+                if (odabraniModerator != null)
+                {
                     MessageBox.Show($"Ime: {odabraniModerator.Ime} \nPrezime: {odabraniModerator.Prezime}");
                     moderator = odabraniModerator;
                     Hide();
                 }
+                else Close();
 
                             
             }

@@ -15,11 +15,14 @@ namespace PI_2021_Kafic
         private frmNarudzbe narudzbe;
         private Konobar konobar;
         private Kafic kafic;
-        public UCStol(Kafic odabraniKafic)
+        private Stol stol;
+        
+        public UCStol(Kafic odabraniKafic,Stol prosljedeniStol)
         {
             InitializeComponent();
             narudzbe = null;
             kafic = odabraniKafic;
+            stol = prosljedeniStol;
         }
 
         public string ImeStola
@@ -32,7 +35,7 @@ namespace PI_2021_Kafic
         {
             if (narudzbe == null && konobar != null)
             {
-                narudzbe = new frmNarudzbe(konobar);
+                narudzbe = new frmNarudzbe(konobar,kafic,stol,this);
                 narudzbe.ShowDialog();
             }
             else if (narudzbe != null)
@@ -53,7 +56,7 @@ namespace PI_2021_Kafic
                 if (frmLogin.DialogResult == DialogResult.OK)
                 {
                     konobar = frmLogin.nadeniKonobar;
-                    narudzbe = new frmNarudzbe(konobar);
+                    narudzbe = new frmNarudzbe(konobar,kafic,stol,this);
                     narudzbe.ShowDialog();
                     frmLogin.Close();
                 }
@@ -66,6 +69,15 @@ namespace PI_2021_Kafic
         public void MakniKonobara()
         {
             konobar = null;
+        }
+
+        private void UCStol_Load(object sender, EventArgs e)
+        {
+
+        }
+        public void MakniNarudzbu()
+        {
+            narudzbe = null;
         }
     }
 }
