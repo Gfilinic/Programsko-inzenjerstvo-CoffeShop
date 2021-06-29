@@ -14,17 +14,12 @@ namespace PI_2021_Kafic
     
     public partial class Stavka_normativa
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Stavka_normativa()
-        {
-            this.Pod_Stavka = new HashSet<Pod_Stavka>();
-        }
+        public int ID_Stavka_normativa { get; set; }
+        public int Namirnica_ID { get; set; }
+        public int Normativ_ID { get; set; }
+        public double Kolicina { get; set; }
     
-        public int ID_Stav_norm { get; set; }
-        public int Normativ_ID_normativ { get; set; }
-    
+        public virtual Namirnica Namirnica { get; set; }
         public virtual Normativ Normativ { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pod_Stavka> Pod_Stavka { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace PI_2021_Kafic
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainKafic());
+            Application.Run(new frmMainKafic());
         }
     }
 }

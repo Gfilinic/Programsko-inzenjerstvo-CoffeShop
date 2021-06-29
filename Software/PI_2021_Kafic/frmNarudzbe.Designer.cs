@@ -1,6 +1,6 @@
 ﻿namespace PI_2021_Kafic
 {
-    partial class Narudzbe
+    partial class frmNarudzbe
     {
         /// <summary>
         /// Required designer variable.
