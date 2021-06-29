@@ -48,8 +48,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,16 +70,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Artikl.cs">
+      <DependentUpon>SuperAdminModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kafic.cs">
+      <DependentUpon>SuperAdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KaficManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KaficManager.Designer.cs">
+      <DependentUpon>KaficManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KaficiExt.cs" />
+    <Compile Include="Moderator.cs">
+      <DependentUpon>SuperAdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeratorExt.cs" />
+    <Compile Include="ModeratorManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModeratorManager.Designer.cs">
+      <DependentUpon>ModeratorManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PoduzeceExt.cs" />
+    <Compile Include="PoduzeceManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PoduzeceManager.Designer.cs">
+      <DependentUpon>PoduzeceManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Poduzeće.cs">
+      <DependentUpon>SuperAdminModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuperAdminModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuperAdminModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdminModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuperAdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SuperAdminModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuperAdminModel.edmx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KaficManager.resx">
+      <DependentUpon>KaficManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModeratorManager.resx">
+      <DependentUpon>ModeratorManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PoduzeceManager.resx">
+      <DependentUpon>PoduzeceManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -82,6 +148,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,6 +158,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="SuperAdminModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SuperAdminModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SuperAdminModel.edmx.diagram">
+      <DependentUpon>SuperAdminModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -112,6 +186,27 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PI_2021_Kafic\PI_2021_Kafic.csproj">
+      <Project>{9C97BEC8-1C01-401A-90D3-45BFA445EB61}</Project>
+      <Name>PI_2021_Kafic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SuperAdminModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SuperAdminModel.edmx</DependentUpon>
+      <LastGenOutput>SuperAdminModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SuperAdminModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SuperAdminModel.edmx</DependentUpon>
+      <LastGenOutput>SuperAdminModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

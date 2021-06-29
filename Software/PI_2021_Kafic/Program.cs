@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PI_2021
+namespace PI_2021_Kafic
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace PI_2021
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new btnPoduzeca());
+            Application.Run(new frmMainKafic());
         }
     }
 }
