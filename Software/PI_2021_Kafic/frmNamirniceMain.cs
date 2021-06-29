@@ -23,6 +23,16 @@ namespace PI_2021_Kafic
         private void frmNamirniceMain_Load(object sender, EventArgs e)
         {
             OsvjeziListu();
+            PopuniMjere();
+        }
+
+        private void PopuniMjere()
+        {
+            List<string> lista = new List<string>();
+            lista.Add("g");
+            lista.Add("l");
+            lista.Add("komad");
+            cmbMjera.DataSource = lista;
         }
 
         private void OsvjeziListu()

@@ -63,6 +63,7 @@
             this.Controls.Add(this.pbStol);
             this.Name = "UCStol";
             this.Size = new System.Drawing.Size(187, 218);
+            this.Load += new System.EventHandler(this.UCStol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbStol)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -49,5 +49,14 @@ namespace PI_2021_Kafic
             Close();
 
         }
+
+        private void frmDodajNamirnicu_Load(object sender, EventArgs e)
+        {
+            List<string> lista = new List<string>();
+            lista.Add("g");
+            lista.Add("l");
+            lista.Add("komad");
+            cmbMjera.DataSource = lista;
+        }
     }
 }

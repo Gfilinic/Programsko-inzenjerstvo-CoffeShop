@@ -21,6 +21,7 @@ namespace PI_2021_Kafic
             this.Konobar = new HashSet<Konobar>();
             this.Moderator = new HashSet<Moderator>();
             this.Normativ = new HashSet<Normativ>();
+            this.Racun = new HashSet<Racun>();
             this.Stol = new HashSet<Stol>();
         }
     
@@ -37,6 +38,8 @@ namespace PI_2021_Kafic
         public virtual ICollection<Moderator> Moderator { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Normativ> Normativ { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Racun> Racun { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stol> Stol { get; set; }
     }

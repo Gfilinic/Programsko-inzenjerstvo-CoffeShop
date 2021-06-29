@@ -43,20 +43,17 @@
             // lbNamirnice
             // 
             this.lbNamirnice.FormattingEnabled = true;
-            this.lbNamirnice.ItemHeight = 16;
-            this.lbNamirnice.Location = new System.Drawing.Point(17, 16);
-            this.lbNamirnice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbNamirnice.Location = new System.Drawing.Point(13, 13);
             this.lbNamirnice.Name = "lbNamirnice";
-            this.lbNamirnice.Size = new System.Drawing.Size(255, 452);
+            this.lbNamirnice.Size = new System.Drawing.Size(192, 368);
             this.lbNamirnice.TabIndex = 4;
             this.lbNamirnice.SelectedIndexChanged += new System.EventHandler(this.lbNamirnice_SelectedIndexChanged);
             // 
             // btnUredi
             // 
-            this.btnUredi.Location = new System.Drawing.Point(81, 171);
-            this.btnUredi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUredi.Location = new System.Drawing.Point(61, 139);
             this.btnUredi.Name = "btnUredi";
-            this.btnUredi.Size = new System.Drawing.Size(125, 28);
+            this.btnUredi.Size = new System.Drawing.Size(94, 23);
             this.btnUredi.TabIndex = 5;
             this.btnUredi.Text = "Uredi namirnicu";
             this.btnUredi.UseVisualStyleBackColor = true;
@@ -64,10 +61,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(281, 27);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Location = new System.Drawing.Point(211, 22);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(125, 28);
+            this.btnAdd.Size = new System.Drawing.Size(94, 23);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Dodaj namirnicu";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -75,10 +71,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(281, 81);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(211, 66);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(125, 28);
+            this.btnDelete.Size = new System.Drawing.Size(94, 23);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Obrisi namirnicu";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -91,11 +86,9 @@
             this.groupBox1.Controls.Add(this.lblMjera);
             this.groupBox1.Controls.Add(this.lblNazivNamirnice);
             this.groupBox1.Controls.Add(this.btnUredi);
-            this.groupBox1.Location = new System.Drawing.Point(283, 160);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(212, 130);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(312, 217);
+            this.groupBox1.Size = new System.Drawing.Size(234, 176);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uredi odabranu Namirnicu";
@@ -103,57 +96,46 @@
             // cmbMjera
             // 
             this.cmbMjera.FormattingEnabled = true;
-            this.cmbMjera.Items.AddRange(new object[] {
-            "l",
-            "ml",
-            "dl",
-            "g",
-            "kg"});
-            this.cmbMjera.Location = new System.Drawing.Point(160, 114);
-            this.cmbMjera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMjera.Location = new System.Drawing.Point(120, 93);
             this.cmbMjera.Name = "cmbMjera";
-            this.cmbMjera.Size = new System.Drawing.Size(132, 24);
+            this.cmbMjera.Size = new System.Drawing.Size(100, 21);
             this.cmbMjera.TabIndex = 9;
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(160, 55);
-            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNaziv.Location = new System.Drawing.Point(120, 45);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(132, 22);
+            this.txtNaziv.Size = new System.Drawing.Size(100, 20);
             this.txtNaziv.TabIndex = 8;
             // 
             // lblMjera
             // 
             this.lblMjera.AutoSize = true;
-            this.lblMjera.Location = new System.Drawing.Point(15, 118);
-            this.lblMjera.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMjera.Location = new System.Drawing.Point(11, 96);
             this.lblMjera.Name = "lblMjera";
-            this.lblMjera.Size = new System.Drawing.Size(108, 17);
+            this.lblMjera.Size = new System.Drawing.Size(81, 13);
             this.lblMjera.TabIndex = 6;
             this.lblMjera.Text = "Mjera namirnice";
             // 
             // lblNazivNamirnice
             // 
             this.lblNazivNamirnice.AutoSize = true;
-            this.lblNazivNamirnice.Location = new System.Drawing.Point(15, 55);
-            this.lblNazivNamirnice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNazivNamirnice.Location = new System.Drawing.Point(11, 45);
             this.lblNazivNamirnice.Name = "lblNazivNamirnice";
-            this.lblNazivNamirnice.Size = new System.Drawing.Size(108, 17);
+            this.lblNazivNamirnice.Size = new System.Drawing.Size(82, 13);
             this.lblNazivNamirnice.TabIndex = 7;
             this.lblNazivNamirnice.Text = "Naziv namirnice";
             // 
             // frmNamirniceMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 503);
+            this.ClientSize = new System.Drawing.Size(458, 409);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lbNamirnice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmNamirniceMain";
             this.Text = "Upravljanje Namirnicama";
             this.Load += new System.EventHandler(this.frmNamirniceMain_Load);

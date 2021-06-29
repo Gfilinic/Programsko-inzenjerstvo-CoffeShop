@@ -56,6 +56,7 @@ namespace PI_2021_Kafic
             if (DohvatiNormativ() != null)
             {
                 Normativ normativ = DohvatiNormativ();
+                MakniNormativZaArtikle(normativ);
 
                 using (var context=new Entities())
                 {
@@ -79,6 +80,24 @@ namespace PI_2021_Kafic
                 }
             }
             OsvjeziListu();
+        }
+
+        private void MakniNormativZaArtikle(Normativ normativ)
+        {
+            using (var context = new Entities())
+            {
+                var query = from a in context.Artikl.Include("Normativ")
+                            select a;
+                foreach (Artikl artikl in query.ToList())
+                {
+                    if(artikl.Normativ_ID==normativ.ID_normativ)
+                    {
+                        context.Artikl.Attach(artikl);
+                        artikl.Normativ_ID = null;
+                        context.SaveChanges();
+                    }
+                }
+            }
         }
 
         private Normativ DohvatiNormativ()

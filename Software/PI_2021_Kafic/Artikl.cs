@@ -28,6 +28,7 @@ namespace PI_2021_Kafic
         public Nullable<int> Kafic_ID { get; set; }
     
         public virtual Kategorija Kategorija { get; set; }
+        public virtual Normativ Normativ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stavka_racuna> Stavka_racuna { get; set; }
     }

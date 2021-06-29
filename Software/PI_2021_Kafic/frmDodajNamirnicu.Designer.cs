@@ -55,12 +55,6 @@
             // cmbMjera
             // 
             this.cmbMjera.FormattingEnabled = true;
-            this.cmbMjera.Items.AddRange(new object[] {
-            "l",
-            "ml",
-            "dl",
-            "g",
-            "kg"});
             this.cmbMjera.Location = new System.Drawing.Point(138, 83);
             this.cmbMjera.Name = "cmbMjera";
             this.cmbMjera.Size = new System.Drawing.Size(100, 21);
@@ -109,6 +103,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDodajNamirnicu";
             this.Text = "frmDodajNamirnicu";
+            this.Load += new System.EventHandler(this.frmDodajNamirnicu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
