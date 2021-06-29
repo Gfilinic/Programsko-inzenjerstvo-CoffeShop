@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Artikl">
+          <Key>
+            <PropertyRef Name="ID_Artikl" />
+          </Key>
+          <Property Name="ID_Artikl" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Cijena" Type="float" Nullable="false" />
+          <Property Name="Normativ_ID" Type="int" />
+          <Property Name="Kategorija_ID" Type="int" Nullable="false" />
+          <Property Name="Kafic_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Kafic">
+          <Key>
+            <PropertyRef Name="ID_Kafic" />
+          </Key>
+          <Property Name="ID_Kafic" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Poduzece_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Moderator">
+          <Key>
+            <PropertyRef Name="ID_Moderator" />
+          </Key>
+          <Property Name="ID_Moderator" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Prezime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="OIB" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Datum_Pocetka" Type="date" Nullable="false" />
+          <Property Name="Datum_Kraja" Type="date" />
+          <Property Name="Kafic_ID" Type="int" Nullable="false" />
+          <Property Name="KorIme" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lozinka" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poduzeće">
+          <Key>
+            <PropertyRef Name="ID_Poduzece" />
+          </Key>
+          <Property Name="ID_Poduzece" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="45" />
+          <Property Name="Vlasnik" Type="varchar" MaxLength="45" />
+          <Property Name="OIB" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Kafic_Poduzeće">
+          <End Role="Poduzeće" Type="Self.Poduzeće" Multiplicity="1" />
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeće">
+              <PropertyRef Name="ID_Poduzece" />
+            </Principal>
+            <Dependent Role="Kafic">
+              <PropertyRef Name="Poduzece_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moderator_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Moderator" Type="Self.Moderator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Moderator">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Artikl" EntityType="Self.Artikl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kafic" EntityType="Self.Kafic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moderator" EntityType="Self.Moderator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poduzeće" EntityType="Self.Poduzeće" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Kafic_Poduzeće" Association="Self.FK_Kafic_Poduzeće">
+            <End Role="Poduzeće" EntitySet="Poduzeće" />
+            <End Role="Kafic" EntitySet="Kafic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moderator_Kafic" Association="Self.FK_Moderator_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Moderator" EntitySet="Moderator" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Artikl">
+          <Key>
+            <PropertyRef Name="ID_Artikl" />
+          </Key>
+          <Property Name="ID_Artikl" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cijena" Type="Double" Nullable="false" />
+          <Property Name="Normativ_ID" Type="Int32" />
+          <Property Name="Kategorija_ID" Type="Int32" Nullable="false" />
+          <Property Name="Kafic_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Kafic">
+          <Key>
+            <PropertyRef Name="ID_Kafic" />
+          </Key>
+          <Property Name="ID_Kafic" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Poduzece_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Poduzeće" Relationship="Self.FK_Kafic_Poduzeće" FromRole="Kafic" ToRole="Poduzeće" />
+          <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_Kafic" FromRole="Kafic" ToRole="Moderator" />
+        </EntityType>
+        <EntityType Name="Moderator">
+          <Key>
+            <PropertyRef Name="ID_Moderator" />
+          </Key>
+          <Property Name="ID_Moderator" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OIB" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Datum_Pocetka" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Datum_Kraja" Type="DateTime" Precision="0" />
+          <Property Name="Kafic_ID" Type="Int32" Nullable="false" />
+          <Property Name="KorIme" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Kafic" Relationship="Self.FK_Moderator_Kafic" FromRole="Moderator" ToRole="Kafic" />
+        </EntityType>
+        <EntityType Name="Poduzeće">
+          <Key>
+            <PropertyRef Name="ID_Poduzece" />
+          </Key>
+          <Property Name="ID_Poduzece" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Vlasnik" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="OIB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Kafic" Relationship="Self.FK_Kafic_Poduzeće" FromRole="Poduzeće" ToRole="Kafic" />
+        </EntityType>
+        <Association Name="FK_Kafic_Poduzeće">
+          <End Role="Poduzeće" Type="Self.Poduzeće" Multiplicity="1" />
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeće">
+              <PropertyRef Name="ID_Poduzece" />
+            </Principal>
+            <Dependent Role="Kafic">
+              <PropertyRef Name="Poduzece_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moderator_Kafic">
+          <End Role="Kafic" Type="Self.Kafic" Multiplicity="1" />
+          <End Role="Moderator" Type="Self.Moderator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kafic">
+              <PropertyRef Name="ID_Kafic" />
+            </Principal>
+            <Dependent Role="Moderator">
+              <PropertyRef Name="Kafic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Artikl" EntityType="Self.Artikl" />
+          <EntitySet Name="Kafic" EntityType="Self.Kafic" />
+          <EntitySet Name="Moderator" EntityType="Self.Moderator" />
+          <EntitySet Name="Poduzeće" EntityType="Self.Poduzeće" />
+          <AssociationSet Name="FK_Kafic_Poduzeće" Association="Self.FK_Kafic_Poduzeće">
+            <End Role="Poduzeće" EntitySet="Poduzeće" />
+            <End Role="Kafic" EntitySet="Kafic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moderator_Kafic" Association="Self.FK_Moderator_Kafic">
+            <End Role="Kafic" EntitySet="Kafic" />
+            <End Role="Moderator" EntitySet="Moderator" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Artikl">
+            <EntityTypeMapping TypeName="Model.Artikl">
+              <MappingFragment StoreEntitySet="Artikl">
+                <ScalarProperty Name="ID_Artikl" ColumnName="ID_Artikl" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Normativ_ID" ColumnName="Normativ_ID" />
+                <ScalarProperty Name="Kategorija_ID" ColumnName="Kategorija_ID" />
+                <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kafic">
+            <EntityTypeMapping TypeName="Model.Kafic">
+              <MappingFragment StoreEntitySet="Kafic">
+                <ScalarProperty Name="ID_Kafic" ColumnName="ID_Kafic" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Poduzece_ID" ColumnName="Poduzece_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moderator">
+            <EntityTypeMapping TypeName="Model.Moderator">
+              <MappingFragment StoreEntitySet="Moderator">
+                <ScalarProperty Name="ID_Moderator" ColumnName="ID_Moderator" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="Datum_Pocetka" ColumnName="Datum_Pocetka" />
+                <ScalarProperty Name="Datum_Kraja" ColumnName="Datum_Kraja" />
+                <ScalarProperty Name="Kafic_ID" ColumnName="Kafic_ID" />
+                <ScalarProperty Name="KorIme" ColumnName="KorIme" />
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Poduzeće">
+            <EntityTypeMapping TypeName="Model.Poduzeće">
+              <MappingFragment StoreEntitySet="Poduzeće">
+                <ScalarProperty Name="ID_Poduzece" ColumnName="ID_Poduzece" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Vlasnik" ColumnName="Vlasnik" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
