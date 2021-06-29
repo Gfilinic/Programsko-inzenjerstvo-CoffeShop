@@ -33,6 +33,10 @@ namespace PI_2021_Kafic
                     nadeniKonobar = konobar;
                     this.DialogResult = DialogResult.OK;
                 }
+                else
+                {
+                    this.DialogResult = DialogResult.Cancel;
+                }
             }
         }
           
