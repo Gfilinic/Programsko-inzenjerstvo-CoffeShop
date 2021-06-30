@@ -21,7 +21,7 @@ namespace PI_2021_Kafic
         {
             InitializeComponent();
             listaStolova = new List<UCStol>();
-            kafic = DohvatiKafic(1);
+            kafic = DohvatiKafic();
             this.Text = kafic.Naziv;
             RefreshStolovi();
             upravaljnjeStolovimaToolStripMenuItem.Visible = false;
@@ -35,12 +35,12 @@ namespace PI_2021_Kafic
 
         }
 
-        private Kafic DohvatiKafic(int id)
+        private Kafic DohvatiKafic()
         {
             using (var context = new Entities())
             {
                 var query = from k in context.Kafic
-                            where k.ID_Kafic == id
+                            where k.Odabran == 1
                             select k;
                 return query.Single();
             }

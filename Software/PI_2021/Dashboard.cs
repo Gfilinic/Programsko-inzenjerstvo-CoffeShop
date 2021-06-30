@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PI_2021_Kafic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -93,6 +94,32 @@ namespace PI_2021
             {
                 PoduzeceManager manager = new PoduzeceManager();
                 manager.ShowDialog();
+            }
+        }
+
+        private void btnSetKafic_Click(object sender, EventArgs e)
+        {
+            if (odabraniKafic != null)
+            {
+                PostaviKafic(odabraniKafic);
+            }
+        }
+
+        private void PostaviKafic(Kafic odabraniKafic)
+        {
+            using (var context = new Entities())
+            {
+                var listaKafica = from k in context.Kafic
+                                  select k;
+                List<Kafic> lista = listaKafica.ToList();
+                foreach (Kafic kafic in lista)
+                {
+                    context.Kafic.Attach(kafic);
+                    if (kafic.ID_Kafic == odabraniKafic.ID_Kafic)
+                        kafic.Odabran = 1;
+                    else kafic.Odabran = 0;
+                    context.SaveChanges();
+                }
             }
         }
     }

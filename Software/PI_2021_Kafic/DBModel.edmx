@@ -23,6 +23,7 @@
           <Property Name="ID_Kafic" Type="int" Nullable="false" />
           <Property Name="Naziv" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Poduzece_ID" Type="int" Nullable="false" />
+          <Property Name="Odabran" Type="tinyint" />
         </EntityType>
         <EntityType Name="Kategorija">
           <Key>
@@ -470,6 +471,7 @@
           <Property Name="ID_Kafic" Type="Int32" Nullable="false" />
           <Property Name="Naziv" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Poduzece_ID" Type="Int32" Nullable="false" />
+          <Property Name="Odabran" Type="Byte" />
           <NavigationProperty Name="Skladiste" Relationship="Self.FK__Skladiste__Kafic__4F7CD00D" FromRole="Kafic" ToRole="Skladiste" />
           <NavigationProperty Name="Poduzeće" Relationship="Self.FK_Kafic_Poduzeće" FromRole="Kafic" ToRole="Poduzeće" />
           <NavigationProperty Name="Konobar" Relationship="Self.FK_Konobar_Kafic" FromRole="Kafic" ToRole="Konobar" />
@@ -946,6 +948,7 @@
                 <ScalarProperty Name="ID_Kafic" ColumnName="ID_Kafic" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
                 <ScalarProperty Name="Poduzece_ID" ColumnName="Poduzece_ID" />
+                <ScalarProperty Name="Odabran" ColumnName="Odabran" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
