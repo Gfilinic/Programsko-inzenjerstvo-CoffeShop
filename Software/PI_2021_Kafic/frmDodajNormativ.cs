@@ -72,6 +72,7 @@ namespace PI_2021_Kafic
                 btnCancel.Text = "Odbaci izmjene";
                 txtNaziv.Text = noviNormativ.Naziv;
             }
+            nudKolicina.DecimalPlaces = 2;
             
         }
 

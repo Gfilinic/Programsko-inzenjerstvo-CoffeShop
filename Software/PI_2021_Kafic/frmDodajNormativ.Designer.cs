@@ -134,11 +134,22 @@ namespace PI_2021_Kafic
             // 
             // nudKolicina
             // 
-            this.nudKolicina.Location = new System.Drawing.Point(194, 67);
+            this.nudKolicina.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudKolicina.Location = new System.Drawing.Point(147, 67);
             this.nudKolicina.Margin = new System.Windows.Forms.Padding(2);
+            this.nudKolicina.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nudKolicina.Name = "nudKolicina";
-            this.nudKolicina.Size = new System.Drawing.Size(40, 20);
+            this.nudKolicina.Size = new System.Drawing.Size(87, 20);
             this.nudKolicina.TabIndex = 1;
+            this.nudKolicina.ThousandsSeparator = true;
             // 
             // cmbNamirnice
             // 
