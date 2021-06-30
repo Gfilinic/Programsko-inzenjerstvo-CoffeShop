@@ -28,6 +28,7 @@ namespace PI_2021_Kafic
 
         private void OsvjeziListu()
         {
+            lbNormativ.DataSource = null;
             lbNormativ.DataSource = DohvatiNormativLista();
         }
 
