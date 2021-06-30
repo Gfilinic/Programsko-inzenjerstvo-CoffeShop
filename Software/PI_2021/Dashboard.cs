@@ -102,6 +102,7 @@ namespace PI_2021
             if (odabraniKafic != null)
             {
                 PostaviKafic(odabraniKafic);
+                MessageBox.Show("Postavili ste: " + odabraniKafic.Naziv);
             }
         }
 
