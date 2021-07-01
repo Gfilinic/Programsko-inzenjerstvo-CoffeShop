@@ -100,6 +100,7 @@ namespace PI_2021_Kafic
                 context.SaveChanges();
                 upravljacStola.MakniNarudzbu();
                 upravljacStola.MakniKonobara();
+                upravljacStola.PromijeniBoju();
                 Close();
             }
 
@@ -145,7 +146,7 @@ namespace PI_2021_Kafic
             using (var context = new Entities())
             {
                 var query = from a in context.Artikl.Include("Kategorija")
-                            where a.Kategorija_ID == 1
+                            where a.Kategorija_ID == 1 && a.Kafic_ID==kafic.ID_Kafic
                             select a;
                 return query.ToList();
             }
@@ -164,7 +165,7 @@ namespace PI_2021_Kafic
             using (var context = new Entities())
             {
                 var query = from a in context.Artikl.Include("Kategorija")
-                            where a.Kategorija_ID == 2
+                            where a.Kategorija_ID == 2 && a.Kafic_ID==kafic.ID_Kafic
                             select a;
                 return query.ToList();
             }
@@ -290,6 +291,7 @@ namespace PI_2021_Kafic
             UpdateSkladiste();
             upravljacStola.MakniNarudzbu();
             upravljacStola.MakniKonobara();
+            upravljacStola.PromijeniBoju();
             Close();
         }
 

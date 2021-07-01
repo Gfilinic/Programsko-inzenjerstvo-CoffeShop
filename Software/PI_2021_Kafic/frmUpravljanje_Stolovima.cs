@@ -96,17 +96,34 @@ namespace PI_2021_Kafic
                                 where s.Kafic_ID == kafic.ID_Kafic
                                 select s;
                     List<Stol> lista = query.ToList();
+                    if (lista.Count > 0) {
                     Stol zadnjiStol = lista.Last<Stol>();
-
-                    Stol stol = new Stol
+                        Stol stol = new Stol
+                        {
+                            ID_Stol = zadnjiStol.ID_Stol + 1,
+                            Oznaka_Stola = txtOznaka.Text,
+                            Broj_Mjesta = brojMjesta,
+                            Kafic_ID = kafic.ID_Kafic
+                        };
+                        context.Stol.Add(stol);
+                        context.SaveChanges();
+                    }
+                    else
                     {
-                        ID_Stol = zadnjiStol.ID_Stol + 1,
-                        Oznaka_Stola = txtOznaka.Text,
-                        Broj_Mjesta = brojMjesta,
-                        Kafic_ID = kafic.ID_Kafic
-                    };
-                    context.Stol.Add(stol);
-                    context.SaveChanges();
+
+                        Stol stol = new Stol
+                        {
+                            ID_Stol = 0,
+                            Oznaka_Stola = txtOznaka.Text,
+                            Broj_Mjesta = brojMjesta,
+                            Kafic_ID = kafic.ID_Kafic
+                        };
+                        context.Stol.Add(stol);
+                        context.SaveChanges();
+                    }
+
+                   
+                    
                 }
             }
             OsvjeziListu();
