@@ -58,5 +58,10 @@ namespace PI_2021_Kafic
             lista.Add("komad");
             cmbMjera.DataSource = lista;
         }
+
+        private void frmDodajNamirnicu_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpDodajNamirnicu();
+        }
     }
 }
