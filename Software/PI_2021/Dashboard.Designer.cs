@@ -33,6 +33,8 @@
             this.btnOverivew = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.Button();
             this.lbKafici = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -40,8 +42,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnMod = new System.Windows.Forms.Button();
             this.btnPoduzece = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSetKafic = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -102,6 +103,27 @@
             this.label1.Size = new System.Drawing.Size(97, 21);
             this.label1.TabIndex = 3;
             this.label1.Text = "Superadmin";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::PI_2021.Properties.Resources.profile1;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 72);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(76, 82);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Image = global::PI_2021.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(186, 73);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // close
             // 
@@ -200,26 +222,19 @@
             this.btnPoduzece.UseVisualStyleBackColor = false;
             this.btnPoduzece.Click += new System.EventHandler(this.btnPoduzece_Click);
             // 
-            // pictureBox2
+            // btnSetKafic
             // 
-            this.pictureBox2.Image = global::PI_2021.Properties.Resources.profile1;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 72);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(76, 82);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::PI_2021.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 73);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.btnSetKafic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.btnSetKafic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetKafic.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSetKafic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnSetKafic.Location = new System.Drawing.Point(792, 334);
+            this.btnSetKafic.Name = "btnSetKafic";
+            this.btnSetKafic.Size = new System.Drawing.Size(150, 61);
+            this.btnSetKafic.TabIndex = 3;
+            this.btnSetKafic.Text = "Postavi Kafic";
+            this.btnSetKafic.UseVisualStyleBackColor = false;
+            this.btnSetKafic.Click += new System.EventHandler(this.btnSetKafic_Click);
             // 
             // btnPoduzeca
             // 
@@ -228,6 +243,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(29)))), ((int)(((byte)(53)))));
             this.ClientSize = new System.Drawing.Size(960, 715);
             this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnSetKafic);
             this.Controls.Add(this.btnPoduzece);
             this.Controls.Add(this.btnMod);
             this.Controls.Add(this.btnDelete);
@@ -265,6 +281,7 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnMod;
         private System.Windows.Forms.Button btnPoduzece;
+        private System.Windows.Forms.Button btnSetKafic;
     }
 }
 

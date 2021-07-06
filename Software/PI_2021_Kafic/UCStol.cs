@@ -61,6 +61,7 @@ namespace PI_2021_Kafic
                     frmLogin.Close();
                 }
             }
+            PromijeniBoju();
         }
         public void PostaviKonobara(Konobar odabraniKonobar)
         {
@@ -73,11 +74,17 @@ namespace PI_2021_Kafic
 
         private void UCStol_Load(object sender, EventArgs e)
         {
-
+            PromijeniBoju();
         }
         public void MakniNarudzbu()
         {
             narudzbe = null;
+        }
+        public void PromijeniBoju() {
+            if (narudzbe == null) lblImeStola.ForeColor = System.Drawing.Color.Green;
+            else
+                lblImeStola.ForeColor = System.Drawing.Color.Red;
+
         }
     }
 }

@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fd8e21e253824fe19dddbf6a1f03e792" Name="Diagram1">
+      <Diagram DiagramId="3640849140c94a05bc380336240d51f1" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Artikl" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Kafic" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Kafic" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Kategorija" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Konobar" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Moderator" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />

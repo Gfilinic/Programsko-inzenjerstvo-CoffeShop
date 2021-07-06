@@ -25,7 +25,6 @@ namespace PI_2021
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Artikl> Artikl { get; set; }
         public virtual DbSet<Kafic> Kafic { get; set; }
         public virtual DbSet<Moderator> Moderator { get; set; }
         public virtual DbSet<Poduzeće> Poduzeće { get; set; }

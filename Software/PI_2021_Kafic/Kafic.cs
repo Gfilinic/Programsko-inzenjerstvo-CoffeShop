@@ -28,6 +28,7 @@ namespace PI_2021_Kafic
         public int ID_Kafic { get; set; }
         public string Naziv { get; set; }
         public int Poduzece_ID { get; set; }
+        public Nullable<byte> Odabran { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Skladiste> Skladiste { get; set; }
