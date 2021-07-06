@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PomocneFunkcije;
 
 namespace PI_2021_Kafic
 {
@@ -16,6 +17,7 @@ namespace PI_2021_Kafic
         private Kafic kafic;
         private Racun odabraniRacun=null;
         private Namirnica odabranaNamirnica = null;
+        private Artikl odabraniArtikl = null;
         private bool firstLoad = true;
         public frmRacuni(Kafic prosljedeniKafic)
         {
@@ -29,6 +31,20 @@ namespace PI_2021_Kafic
             dtpDo.Value = DateTime.Today;
             OsvjeziRacune();
             PopuniNamirnice();
+            PopuniArtikle();
+            
+        }
+
+        private void PopuniArtikle()
+        {
+            using (var context = new Entities())
+            {
+                var query = from a in context.Artikl
+                            where a.Kafic_ID == kafic.ID_Kafic
+                            select a;
+                cmbArtikli.DataSource = query.ToList();
+                cmbArtikli.SelectedIndex = -1;
+            }
         }
 
         private void PopuniNamirnice()
@@ -122,13 +138,70 @@ namespace PI_2021_Kafic
 
         private void cmbArtikli_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbNamirnice.SelectedItem != null)
+            if (cmbArtikli.SelectedItem != null)
             {
-                odabranaNamirnica = cmbNamirnice.SelectedItem as Namirnica;
-                if (odabranaNamirnica!=null) {
-                    if (cmbNamirnice.SelectedIndex > -1 && firstLoad == false)
-                    PopuniPredvidanje();
+                odabraniArtikl = cmbArtikli.SelectedItem as Artikl;
+                if (odabraniArtikl != null)
+                {
+                    if (cmbArtikli.SelectedIndex > -1 && firstLoad == false) {
+                        PopuniPredvidanjeArtikla();
+                    }
                 }
+            }
+        }
+
+        private void PopuniPredvidanjeArtikla()
+        {
+            int brojac = 0;
+            int brDana = 0;
+            using (var context = new Entities())
+            {
+                var racuni = from r in context.Racun.Include("Stavka_racuna").Include("Konobar").Include("Nacin_Placanja").Include("Stol")
+                             where r.Kafic_ID == kafic.ID_Kafic &&
+                             r.Vrijeme.Value.Day >= dtpOd.Value.Day && r.Vrijeme.Value.Month >= dtpOd.Value.Month
+                             && r.Vrijeme.Value.Day <= dtpDo.Value.Day && r.Vrijeme.Value.Month <= dtpDo.Value.Month
+                             orderby r.Vrijeme
+                             select r;
+                foreach (Racun racun in racuni.ToList())
+                {
+                    foreach (Stavka_racuna stavka in racun.Stavka_racuna)
+                    {
+                        var pronadiStavku = from s in context.Stavka_racuna.Include("Artikl")
+                                            where s.Artikl_ID == stavka.Artikl_ID && s.Racun_ID == stavka.Racun_ID
+                                            select s;
+                        Stavka_racuna odabranaStavka = pronadiStavku.Single();
+                        var pronadiArtikl = from a in context.Artikl.Include("Normativ")
+                                            where a.ID_Artikl == odabranaStavka.Artikl_ID
+                                            select a;
+                        if (pronadiArtikl.ToList().Count > 0) {
+                        Artikl pronadeniArtikl = pronadiArtikl.Single();
+                        if(pronadeniArtikl.ID_Artikl == odabraniArtikl.ID_Artikl)
+                            {
+                                brojac += stavka.Količina;
+                            } 
+                            
+                        }
+                        
+                        
+
+                    }
+                }
+                TimeSpan proteklovrijeme = dtpDo.Value - dtpOd.Value;
+                brDana = proteklovrijeme.Days;
+                if (brDana == 0) brDana = 1;
+                if (brojac != 0)
+                {
+
+                    double rezultat = PomocneFunkcije.PomocneFunkcije.IzracunajProsjek(brojac, brDana);
+                    txtProsjek.Text = rezultat.ToString();
+                    txtPredvidanje.Text = (rezultat * 7).ToString();
+                }
+                else
+                {
+                    txtProsjek.Text = "0";
+                    txtPredvidanje.Text = "0";
+                }
+                
             }
         }
 
@@ -184,6 +257,25 @@ namespace PI_2021_Kafic
                 }
                 else return 0;
             }
+        }
+
+        private void cmbNamirnice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbNamirnice.SelectedItem != null)
+            {
+                odabranaNamirnica = cmbNamirnice.SelectedItem as Namirnica;
+                if (odabranaNamirnica != null)
+                {
+                    if (cmbNamirnice.SelectedIndex > -1 && firstLoad == false)
+                        PopuniPredvidanje();
+                }
+            }
+        }
+
+        private void btnPregledaj_Click(object sender, EventArgs e)
+        {
+            frmPotrosnja potrosnja = new frmPotrosnja(kafic, dtpOd.Value, dtpDo.Value);
+            potrosnja.ShowDialog();
         }
     }
 }
