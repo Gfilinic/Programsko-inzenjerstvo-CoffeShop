@@ -38,6 +38,7 @@ namespace PI_2021_Kafic
                  odabraniModerator= query.Single();
                 if (odabraniModerator != null)
                 {
+                    MessageBox.Show($"Ime: {odabraniModerator.Ime} \nPrezime: {odabraniModerator.Prezime}");
                     moderator = odabraniModerator;
                     Hide();
                 }
@@ -50,11 +51,6 @@ namespace PI_2021_Kafic
         public Moderator DohvatiModeratora()
         {
             return moderator;
-        }
-
-        private void frmLoginModerator_HelpRequested(object sender, HelpEventArgs hlpevent)
-        {
-            PomocneFunkcije.PomocneFunkcije.HelpLoginModerator();
         }
     }
 }

@@ -86,7 +86,6 @@
             // 
             // btnClose
             // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(136, 196);
             this.btnClose.Name = "btnClose";
@@ -113,7 +112,6 @@
             this.Name = "frmLoginModerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LoginModerator";
-            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmLoginModerator_HelpRequested);
             this.ResumeLayout(false);
             this.PerformLayout();
 

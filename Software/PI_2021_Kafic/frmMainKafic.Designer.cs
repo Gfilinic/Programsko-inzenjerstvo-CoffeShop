@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.racuniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.upravaljnjeStolovimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +60,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timerClose = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -286,10 +284,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             this.exitToolStripMenuItem.Text = "E&xit";
             // 
-            // timerClose
-            // 
-            this.timerClose.Tick += new System.EventHandler(this.timerClose_Tick);
-            // 
             // frmMainKafic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,7 +295,6 @@
             this.Text = "MainKafic";
             this.Load += new System.EventHandler(this.MainKafic_Load);
             this.ResizeEnd += new System.EventHandler(this.MainKafic_ResizeEnd);
-            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmMainKafic_HelpRequested);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -343,6 +336,5 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Timer timerClose;
     }
 }

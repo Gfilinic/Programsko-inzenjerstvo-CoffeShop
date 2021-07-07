@@ -16,17 +16,13 @@ namespace PI_2021_Kafic
         private Konobar konobar;
         private Kafic kafic;
         private Stol stol;
-        private Timer timerClose;
-
+        
         public UCStol(Kafic odabraniKafic,Stol prosljedeniStol)
         {
             InitializeComponent();
             narudzbe = null;
             kafic = odabraniKafic;
             stol = prosljedeniStol;
-            timerClose = new Timer();
-            this.timerClose.Tick += new System.EventHandler(this.timerClose_Tick);
-
         }
 
         public string ImeStola
@@ -52,12 +48,6 @@ namespace PI_2021_Kafic
 
                     narudzbe.ShowDialog();
                 }
-                else
-                {
-                    timerClose.Interval = 1000;
-                    timerClose.Enabled = true;
-                    MessageBox.Show("Neuspješna prijava");
-                }
             }
             else
             {
@@ -69,12 +59,6 @@ namespace PI_2021_Kafic
                     narudzbe = new frmNarudzbe(konobar,kafic,stol,this);
                     narudzbe.ShowDialog();
                     frmLogin.Close();
-                }
-                else
-                {
-                    timerClose.Interval = 1000;
-                    timerClose.Enabled = true;
-                    MessageBox.Show("Neuspješna prijava");
                 }
             }
             PromijeniBoju();
@@ -101,11 +85,6 @@ namespace PI_2021_Kafic
             else
                 lblImeStola.ForeColor = System.Drawing.Color.Red;
 
-        }
-        private void timerClose_Tick(object sender, EventArgs e)
-        {
-            timerClose.Enabled = false;
-            SendKeys.Send("{ESC}");
         }
     }
 }

@@ -278,24 +278,21 @@ namespace PI_2021_Kafic
 
         private void btnSpremiRacun_Click(object sender, EventArgs e)
         {
-            if (racun.Stavka_racuna.Count > 0)
+            using (var context = new Entities())
             {
-                using (var context = new Entities())
-                {
-                    context.Racun.Attach(racun);
-                    racun.ID = DohvatiDnevniID();
-                    racun.Ukupna_cijena = IzracunajUkupnuCijenu(racun);
-                    racun.Vrijeme = DateTime.Now;
-                    racun.Konobar_ID = ulogiraniKonobar.ID_Konobar;
-                    context.SaveChanges();
-
-                }
-                UpdateSkladiste();
-                upravljacStola.MakniNarudzbu();
-                upravljacStola.MakniKonobara();
-                upravljacStola.PromijeniBoju();
-                Close();
+                context.Racun.Attach(racun);
+                racun.ID = DohvatiDnevniID();
+                racun.Ukupna_cijena = IzracunajUkupnuCijenu(racun);
+                racun.Vrijeme = DateTime.Now;
+                racun.Konobar_ID = ulogiraniKonobar.ID_Konobar;
+                context.SaveChanges();
+                
             }
+            UpdateSkladiste();
+            upravljacStola.MakniNarudzbu();
+            upravljacStola.MakniKonobara();
+            upravljacStola.PromijeniBoju();
+            Close();
         }
 
         private void UpdateSkladiste()
