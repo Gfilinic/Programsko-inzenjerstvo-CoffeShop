@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PI_2021_Dashboard", "PI_202
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PI_2021_Kafic", "..\PI_2021_Kafic\PI_2021_Kafic.csproj", "{9C97BEC8-1C01-401A-90D3-45BFA445EB61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomocneFunkcije", "..\PomocneFunkcije\PomocneFunkcije.csproj", "{4CA80D61-0648-460A-A762-67EFEBF9BEFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9C97BEC8-1C01-401A-90D3-45BFA445EB61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C97BEC8-1C01-401A-90D3-45BFA445EB61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C97BEC8-1C01-401A-90D3-45BFA445EB61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA80D61-0648-460A-A762-67EFEBF9BEFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA80D61-0648-460A-A762-67EFEBF9BEFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA80D61-0648-460A-A762-67EFEBF9BEFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA80D61-0648-460A-A762-67EFEBF9BEFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

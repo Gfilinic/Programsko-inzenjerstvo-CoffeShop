@@ -104,6 +104,7 @@
             this.Name = "frmDodajNamirnicu";
             this.Text = "frmDodajNamirnicu";
             this.Load += new System.EventHandler(this.frmDodajNamirnicu_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmDodajNamirnicu_HelpRequested);
             this.ResumeLayout(false);
             this.PerformLayout();
 

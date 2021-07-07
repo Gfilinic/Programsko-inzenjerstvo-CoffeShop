@@ -139,6 +139,7 @@
             this.Name = "frmNamirniceMain";
             this.Text = "Upravljanje Namirnicama";
             this.Load += new System.EventHandler(this.frmNamirniceMain_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmNamirniceMain_HelpRequested);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

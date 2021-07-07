@@ -113,5 +113,10 @@ namespace PI_2021_Kafic
             }
             OsvjeziListu();
         }
+
+        private void frmNamirniceMain_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpFormNamirnice();
+        }
     }
 }
