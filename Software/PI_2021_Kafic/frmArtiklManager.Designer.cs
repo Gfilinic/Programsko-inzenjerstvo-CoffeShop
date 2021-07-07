@@ -149,6 +149,7 @@
             this.Name = "frmArtiklManager";
             this.Text = "Dodaj artikl";
             this.Load += new System.EventHandler(this.frmArtiklManager_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmArtiklManager_HelpRequested);
             this.ResumeLayout(false);
             this.PerformLayout();
 

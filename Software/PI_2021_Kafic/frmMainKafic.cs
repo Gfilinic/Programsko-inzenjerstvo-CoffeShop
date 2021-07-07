@@ -177,6 +177,9 @@ namespace PI_2021_Kafic
 
         private void odjaviModeratoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            timerClose.Interval = 1000;
+            timerClose.Enabled = true;
+            MessageBox.Show($"Odjavljen moderator {moderator.KorIme}");
             moderator = null;
             upravaljnjeStolovimaToolStripMenuItem.Visible = false;
             odjaviModeratoraToolStripMenuItem.Visible = false;
@@ -184,6 +187,7 @@ namespace PI_2021_Kafic
             skladišteToolStripMenuItem.Visible = false;
             upravljanjeKonobarima.Visible = false;
             racuniToolStripMenuItem.Visible = false;
+            
         }
 
         private void loginKonobarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,6 +244,9 @@ namespace PI_2021_Kafic
             trenutniKorisnikToolStripMenuItem.Visible = false;
             
             MakniKonobaraSaStolova();
+            timerClose.Interval = 1000;
+            timerClose.Enabled = true;
+            MessageBox.Show("Konobar odjavljen");
         }
 
         private void MakniKonobaraSaStolova()

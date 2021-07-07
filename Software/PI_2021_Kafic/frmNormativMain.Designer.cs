@@ -86,6 +86,7 @@
             this.Name = "frmNormativMain";
             this.Text = "Upravljanje Normativima";
             this.Load += new System.EventHandler(this.frmNamirniceMain_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmNormativMain_HelpRequested);
             this.ResumeLayout(false);
 
         }

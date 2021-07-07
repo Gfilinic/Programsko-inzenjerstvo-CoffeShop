@@ -111,6 +111,7 @@
             this.Name = "frmPotrosnja";
             this.Text = "Predvidanje potrosnje";
             this.Load += new System.EventHandler(this.frmPotrosnja_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmPotrosnja_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.NamirnicaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

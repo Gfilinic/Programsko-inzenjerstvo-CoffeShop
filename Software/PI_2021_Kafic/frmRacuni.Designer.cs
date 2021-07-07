@@ -155,9 +155,9 @@
             // 
             this.btnPregledaj.Location = new System.Drawing.Point(9, 193);
             this.btnPregledaj.Name = "btnPregledaj";
-            this.btnPregledaj.Size = new System.Drawing.Size(124, 23);
+            this.btnPregledaj.Size = new System.Drawing.Size(173, 23);
             this.btnPregledaj.TabIndex = 4;
-            this.btnPregledaj.Text = "Pregled Namirnica";
+            this.btnPregledaj.Text = "Pregled Namirnica za nadopunit";
             this.btnPregledaj.UseVisualStyleBackColor = true;
             this.btnPregledaj.Click += new System.EventHandler(this.btnPregledaj_Click);
             // 
@@ -316,6 +316,7 @@
             this.Name = "frmRacuni";
             this.Text = "Pregled Racuna";
             this.Load += new System.EventHandler(this.frmRacuni_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmRacuni_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRacuni)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalji)).EndInit();
             this.groupBox1.ResumeLayout(false);

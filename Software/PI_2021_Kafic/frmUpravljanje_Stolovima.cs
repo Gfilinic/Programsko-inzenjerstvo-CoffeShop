@@ -128,6 +128,11 @@ namespace PI_2021_Kafic
             }
             OsvjeziListu();
         }
+
+        private void frmUpravljanje_Stolovima_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpUpravaljanjeStolovima();
+        }
     }
     public class KriviUnosException : Exception
     {

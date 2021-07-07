@@ -173,6 +173,7 @@
             this.Text = "Narudzbe";
             this.Load += new System.EventHandler(this.Narudzbe_Load);
             this.Shown += new System.EventHandler(this.Narudzbe_Shown);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmNarudzbe_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.pbHladniNapitci)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTopliNapitci)).EndInit();
             this.ResumeLayout(false);
