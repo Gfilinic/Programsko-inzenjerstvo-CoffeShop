@@ -167,10 +167,19 @@ namespace PI_2021_Kafic
                 upravljanjeKonobarima.Visible = true;
                 racuniToolStripMenuItem.Visible = true;
             }
+            else
+            {
+                timerClose.Interval = 1000;
+                timerClose.Enabled = true;
+                MessageBox.Show("Neuspješna prijava");
+            }
         }
 
         private void odjaviModeratoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            timerClose.Interval = 1000;
+            timerClose.Enabled = true;
+            MessageBox.Show($"Odjavljen moderator {moderator.KorIme}");
             moderator = null;
             upravaljnjeStolovimaToolStripMenuItem.Visible = false;
             odjaviModeratoraToolStripMenuItem.Visible = false;
@@ -178,7 +187,7 @@ namespace PI_2021_Kafic
             skladišteToolStripMenuItem.Visible = false;
             upravljanjeKonobarima.Visible = false;
             racuniToolStripMenuItem.Visible = false;
-            MessageBox.Show("Moderator odjavljen!");
+            
         }
 
         private void loginKonobarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -200,7 +209,13 @@ namespace PI_2021_Kafic
                     racuniToolStripMenuItem.Visible = true;
                 }
             }
-            else frmLogin.Close();
+            else { 
+                
+                frmLogin.Close();
+                timerClose.Interval = 1000;
+                timerClose.Enabled = true;
+                MessageBox.Show("Neuspješna prijava");
+            }
         }
 
         private void DodijeliStolovimaKonobara(Konobar konobar)
@@ -229,6 +244,9 @@ namespace PI_2021_Kafic
             trenutniKorisnikToolStripMenuItem.Visible = false;
             
             MakniKonobaraSaStolova();
+            timerClose.Interval = 1000;
+            timerClose.Enabled = true;
+            MessageBox.Show("Konobar odjavljen");
         }
 
         private void MakniKonobaraSaStolova()
@@ -274,6 +292,17 @@ namespace PI_2021_Kafic
         {
             frmRacuni racuni = new frmRacuni(kafic);
             racuni.ShowDialog();
+        }
+
+        private void timerClose_Tick(object sender, EventArgs e)
+        {
+            timerClose.Enabled = false;
+            SendKeys.Send("{ESC}");
+        }
+
+        private void frmMainKafic_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpMain();
         }
     }
 }

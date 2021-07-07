@@ -118,5 +118,10 @@ namespace PI_2021_Kafic
                 throw;
             }
         }
+
+        private void frmStanjeSkladiste_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpStanjeSkladista();
+        }
     }
 }

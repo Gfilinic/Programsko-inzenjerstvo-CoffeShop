@@ -44,7 +44,7 @@ namespace PI_2021_Kafic
                 var query = from a in context.Artikl.Include("Normativ")
                             where kafic.ID_Kafic == a.Kafic_ID
                             select a;
-                lbNamirnice.DataSource = query.ToList();
+                lbArtikli.DataSource = query.ToList();
             }
         }
 
@@ -69,7 +69,7 @@ namespace PI_2021_Kafic
                             where kafic.ID_Kafic == a.Kafic_ID &&
                             a.Kategorija_ID == odabranaKategorija.ID_Kategorija
                             select a;
-                lbNamirnice.DataSource = query.ToList();
+                lbArtikli.DataSource = query.ToList();
             }
         }
 
@@ -118,11 +118,19 @@ namespace PI_2021_Kafic
 
         private void lbNamirnice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbNamirnice.SelectedItem != null)
+            if (lbArtikli.SelectedItem != null)
             {
-                artikl = lbNamirnice.SelectedItem as Artikl;
+                artikl = lbArtikli.SelectedItem as Artikl;
                 label2.Text = artikl.Naziv;
             }
+        }
+
+       
+
+        private void frmOtpis_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpOtpis();
+
         }
     }
 }

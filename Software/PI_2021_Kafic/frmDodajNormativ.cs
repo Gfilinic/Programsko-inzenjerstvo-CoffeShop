@@ -223,5 +223,10 @@ namespace PI_2021_Kafic
 
             Close();
         }
+
+        private void frmDodajNormativ_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpDodajNormativ();
+        }
     }
 }

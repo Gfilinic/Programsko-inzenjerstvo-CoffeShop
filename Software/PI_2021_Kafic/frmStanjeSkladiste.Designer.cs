@@ -33,14 +33,14 @@
             this.lblArtikl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gb = new System.Windows.Forms.GroupBox();
-            this.btnSpremi = new System.Windows.Forms.Button();
             this.nUDStanje = new System.Windows.Forms.NumericUpDown();
+            this.btnSpremi = new System.Windows.Forms.Button();
             this.gbDodaj = new System.Windows.Forms.GroupBox();
-            this.cmbNamirnica = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.nUDDodaj = new System.Windows.Forms.NumericUpDown();
             this.btnDodajKolicinu = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbNamirnica = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSkladiste)).BeginInit();
             this.gb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDStanje)).BeginInit();
@@ -100,6 +100,13 @@
             this.gb.TabStop = false;
             this.gb.Text = "Osvjezi stanje odabrane namirnice";
             // 
+            // nUDStanje
+            // 
+            this.nUDStanje.Location = new System.Drawing.Point(105, 68);
+            this.nUDStanje.Name = "nUDStanje";
+            this.nUDStanje.Size = new System.Drawing.Size(71, 20);
+            this.nUDStanje.TabIndex = 6;
+            // 
             // btnSpremi
             // 
             this.btnSpremi.Location = new System.Drawing.Point(18, 114);
@@ -109,13 +116,6 @@
             this.btnSpremi.Text = "Spremi novo stanje";
             this.btnSpremi.UseVisualStyleBackColor = true;
             this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
-            // 
-            // nUDStanje
-            // 
-            this.nUDStanje.Location = new System.Drawing.Point(105, 68);
-            this.nUDStanje.Name = "nUDStanje";
-            this.nUDStanje.Size = new System.Drawing.Size(71, 20);
-            this.nUDStanje.TabIndex = 6;
             // 
             // gbDodaj
             // 
@@ -130,32 +130,6 @@
             this.gbDodaj.TabIndex = 6;
             this.gbDodaj.TabStop = false;
             this.gbDodaj.Text = "Dodaj količinu artikla";
-            // 
-            // cmbNamirnica
-            // 
-            this.cmbNamirnica.FormattingEnabled = true;
-            this.cmbNamirnica.Location = new System.Drawing.Point(104, 48);
-            this.cmbNamirnica.Name = "cmbNamirnica";
-            this.cmbNamirnica.Size = new System.Drawing.Size(96, 21);
-            this.cmbNamirnica.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Odaberi artikl:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 86);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Dodaj kolicinu";
             // 
             // nUDDodaj
             // 
@@ -174,6 +148,32 @@
             this.btnDodajKolicinu.UseVisualStyleBackColor = true;
             this.btnDodajKolicinu.Click += new System.EventHandler(this.btnDodajKolicinu_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Odaberi artikl:";
+            // 
+            // cmbNamirnica
+            // 
+            this.cmbNamirnica.FormattingEnabled = true;
+            this.cmbNamirnica.Location = new System.Drawing.Point(104, 48);
+            this.cmbNamirnica.Name = "cmbNamirnica";
+            this.cmbNamirnica.Size = new System.Drawing.Size(96, 21);
+            this.cmbNamirnica.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Dodaj kolicinu";
+            // 
             // frmStanjeSkladiste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,6 +186,7 @@
             this.Name = "frmStanjeSkladiste";
             this.Text = "Stanje na skladištu";
             this.Load += new System.EventHandler(this.frmStanjeSkladiste_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmStanjeSkladiste_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSkladiste)).EndInit();
             this.gb.ResumeLayout(false);
             this.gb.PerformLayout();

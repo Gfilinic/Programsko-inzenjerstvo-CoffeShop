@@ -92,6 +92,7 @@
             this.Name = "frmLoginKonobar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmLoginKonobar";
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmLoginKonobar_HelpRequested);
             this.ResumeLayout(false);
             this.PerformLayout();
 

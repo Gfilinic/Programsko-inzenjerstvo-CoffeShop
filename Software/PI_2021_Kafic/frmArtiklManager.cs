@@ -202,5 +202,10 @@ namespace PI_2021_Kafic
             if (cmbKategorija.SelectedItem != null)
                 odabranaKategorija = cmbKategorija.SelectedItem as Kategorija;
         }
+
+        private void frmArtiklManager_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpArtiklManager();
+        }
     }
 }

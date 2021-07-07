@@ -77,7 +77,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(172, 99);
+            this.btnAdd.Location = new System.Drawing.Point(175, 54);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(126, 23);
             this.btnAdd.TabIndex = 4;
@@ -97,7 +97,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(256, 140);
+            this.btnDelete.Location = new System.Drawing.Point(175, 99);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(126, 23);
             this.btnDelete.TabIndex = 4;
@@ -121,6 +121,7 @@
             this.Name = "frmArtiklMain";
             this.Text = "Upravljanje artiklima";
             this.Load += new System.EventHandler(this.frmArtiklMain_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmArtiklMain_HelpRequested);
             this.ResumeLayout(false);
             this.PerformLayout();
 

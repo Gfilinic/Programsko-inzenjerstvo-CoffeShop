@@ -170,5 +170,10 @@ namespace PI_2021_Kafic
             }
             return true;
         }
+
+        private void frmUpravljanjeKonobarima_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpUpravljanjeKonobarima();
+        }
     }
 }

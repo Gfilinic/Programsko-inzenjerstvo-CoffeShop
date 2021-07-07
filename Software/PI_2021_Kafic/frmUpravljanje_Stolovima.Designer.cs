@@ -123,7 +123,7 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // Upravljanje_Stolovima
+            // frmUpravljanje_Stolovima
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,8 +131,9 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listboxStol);
-            this.Name = "Upravljanje_Stolovima";
+            this.Name = "frmUpravljanje_Stolovima";
             this.Text = "Upravljanje_Stolovima";
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmUpravljanje_Stolovima_HelpRequested);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

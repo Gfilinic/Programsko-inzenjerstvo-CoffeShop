@@ -123,6 +123,7 @@ namespace PI_2021
             }
             catch (KriviUnosException ex)
             {
+                MessageBox.Show(ex.DodatnaPoruka);
                 return false;
                 throw;
             }

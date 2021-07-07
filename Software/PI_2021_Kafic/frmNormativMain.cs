@@ -135,5 +135,10 @@ namespace PI_2021_Kafic
             
             OsvjeziListu();
         }
+
+        private void frmNormativMain_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpNormativMain();
+        }
     }
 }

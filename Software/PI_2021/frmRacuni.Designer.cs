@@ -316,7 +316,6 @@
             this.Name = "frmRacuni";
             this.Text = "Pregled Racuna";
             this.Load += new System.EventHandler(this.frmRacuni_Load);
-            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmRacuni_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRacuni)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalji)).EndInit();
             this.groupBox1.ResumeLayout(false);

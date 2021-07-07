@@ -277,10 +277,5 @@ namespace PI_2021_Kafic
             frmPotrosnja potrosnja = new frmPotrosnja(kafic, dtpOd.Value, dtpDo.Value);
             potrosnja.ShowDialog();
         }
-
-        private void frmRacuni_HelpRequested(object sender, HelpEventArgs hlpevent)
-        {
-            PomocneFunkcije.PomocneFunkcije.HelpRacuni();
-        }
     }
 }

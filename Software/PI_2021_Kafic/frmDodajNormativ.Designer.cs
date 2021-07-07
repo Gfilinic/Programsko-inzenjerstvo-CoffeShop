@@ -197,6 +197,7 @@ namespace PI_2021_Kafic
             this.Name = "frmDodajNormativ";
             this.Text = "Dodaj normativ";
             this.Load += new System.EventHandler(this.frmDodajNormativ_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmDodajNormativ_HelpRequested);
             this.gbDodajstavku.ResumeLayout(false);
             this.gbDodajstavku.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudKolicina)).EndInit();

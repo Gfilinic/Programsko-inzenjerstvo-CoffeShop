@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbNamirnice = new System.Windows.Forms.ListBox();
+            this.lbArtikli = new System.Windows.Forms.ListBox();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.cmbKategorija = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,15 +43,15 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbNamirnice
+            // lbArtikli
             // 
-            this.lbNamirnice.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbNamirnice.FormattingEnabled = true;
-            this.lbNamirnice.Location = new System.Drawing.Point(0, 0);
-            this.lbNamirnice.Name = "lbNamirnice";
-            this.lbNamirnice.Size = new System.Drawing.Size(168, 450);
-            this.lbNamirnice.TabIndex = 0;
-            this.lbNamirnice.SelectedIndexChanged += new System.EventHandler(this.lbNamirnice_SelectedIndexChanged);
+            this.lbArtikli.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbArtikli.FormattingEnabled = true;
+            this.lbArtikli.Location = new System.Drawing.Point(0, 0);
+            this.lbArtikli.Name = "lbArtikli";
+            this.lbArtikli.Size = new System.Drawing.Size(168, 450);
+            this.lbArtikli.TabIndex = 0;
+            this.lbArtikli.SelectedIndexChanged += new System.EventHandler(this.lbNamirnice_SelectedIndexChanged);
             // 
             // btnShowAll
             // 
@@ -59,7 +59,7 @@
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(121, 23);
             this.btnShowAll.TabIndex = 1;
-            this.btnShowAll.Text = "Prikazi sve namirnice";
+            this.btnShowAll.Text = "Prikazi sve artikle";
             this.btnShowAll.UseVisualStyleBackColor = true;
             this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
@@ -149,11 +149,12 @@
             this.ClientSize = new System.Drawing.Size(503, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lbNamirnice);
+            this.Controls.Add(this.lbArtikli);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmOtpis";
             this.Text = "Otpis";
             this.Load += new System.EventHandler(this.frmOtpis_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.frmOtpis_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.nUDKolicina)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -165,7 +166,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lbNamirnice;
+        private System.Windows.Forms.ListBox lbArtikli;
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.ComboBox cmbKategorija;
         private System.Windows.Forms.Label label1;
