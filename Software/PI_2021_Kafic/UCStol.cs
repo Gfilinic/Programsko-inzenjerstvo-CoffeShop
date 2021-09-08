@@ -26,7 +26,17 @@ namespace PI_2021_Kafic
             stol = prosljedeniStol;
             timerClose = new Timer();
             this.timerClose.Tick += new System.EventHandler(this.timerClose_Tick);
+            switch (stol.Velicina_Stola)
+            {
+                case 2:pbStol.Image = Properties.Resources.bartable;
+                    break;
+                case 4:pbStol.Image = Properties.Resources.meeting;
+                    break;
+                case 6:
+                    pbStol.Image = Properties.Resources.bigtable;
+                    break;
 
+            }
         }
 
         public string ImeStola

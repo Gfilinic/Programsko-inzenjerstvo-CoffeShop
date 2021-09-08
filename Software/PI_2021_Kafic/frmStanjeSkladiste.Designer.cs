@@ -41,6 +41,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbNamirnica = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.cmbFilter = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSkladiste)).BeginInit();
             this.gb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDStanje)).BeginInit();
@@ -50,12 +54,15 @@
             // 
             // dgvSkladiste
             // 
+            this.dgvSkladiste.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvSkladiste.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSkladiste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSkladiste.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dgvSkladiste.Location = new System.Drawing.Point(0, 0);
+            this.dgvSkladiste.Location = new System.Drawing.Point(0, 59);
+            this.dgvSkladiste.MultiSelect = false;
             this.dgvSkladiste.Name = "dgvSkladiste";
+            this.dgvSkladiste.ReadOnly = true;
             this.dgvSkladiste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSkladiste.Size = new System.Drawing.Size(442, 450);
+            this.dgvSkladiste.Size = new System.Drawing.Size(443, 391);
             this.dgvSkladiste.TabIndex = 0;
             this.dgvSkladiste.SelectionChanged += new System.EventHandler(this.dgvSkladiste_SelectionChanged);
             // 
@@ -174,11 +181,52 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Dodaj kolicinu";
             // 
+            // cmbFilter
+            // 
+            this.cmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFilter.FormattingEnabled = true;
+            this.cmbFilter.Location = new System.Drawing.Point(321, 12);
+            this.cmbFilter.Name = "cmbFilter";
+            this.cmbFilter.Size = new System.Drawing.Size(121, 21);
+            this.cmbFilter.TabIndex = 7;
+            this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.cmbFilter_SelectedIndexChanged);
+            this.cmbFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbFilter_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(273, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Sortiraj:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Pretraži: ";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(55, 12);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(129, 20);
+            this.txtSearch.TabIndex = 9;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
             // frmStanjeSkladiste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 450);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cmbFilter);
             this.Controls.Add(this.gbDodaj);
             this.Controls.Add(this.gb);
             this.Controls.Add(this.dgvSkladiste);
@@ -195,6 +243,7 @@
             this.gbDodaj.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDDodaj)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -213,5 +262,9 @@
         private System.Windows.Forms.ComboBox cmbNamirnica;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDodajKolicinu;
+        private System.Windows.Forms.ComboBox cmbFilter;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

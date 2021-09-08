@@ -24,7 +24,7 @@ namespace PI_2021_Kafic
         public Nullable<int> ID { get; set; }
         public Nullable<System.DateTime> Vrijeme { get; set; }
         public int Konobar_ID { get; set; }
-        public int Stol_ID { get; set; }
+        public string Stol { get; set; }
         public int Nacin_Placanja_ID { get; set; }
         public double Ukupna_cijena { get; set; }
         public int Kafic_ID { get; set; }
@@ -32,7 +32,6 @@ namespace PI_2021_Kafic
         public virtual Kafic Kafic { get; set; }
         public virtual Konobar Konobar { get; set; }
         public virtual Nacin_Placanja Nacin_Placanja { get; set; }
-        public virtual Stol Stol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stavka_racuna> Stavka_racuna { get; set; }
     }

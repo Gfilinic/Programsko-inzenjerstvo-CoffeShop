@@ -14,19 +14,12 @@ namespace PI_2021_Kafic
     
     public partial class Stol
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Stol()
-        {
-            this.Racun = new HashSet<Racun>();
-        }
-    
         public int ID_Stol { get; set; }
         public int Broj_Mjesta { get; set; }
         public string Oznaka_Stola { get; set; }
         public int Kafic_ID { get; set; }
+        public Nullable<byte> Velicina_Stola { get; set; }
     
         public virtual Kafic Kafic { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Racun> Racun { get; set; }
     }
 }

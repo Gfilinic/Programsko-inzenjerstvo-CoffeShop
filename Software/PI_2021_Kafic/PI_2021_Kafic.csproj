@@ -120,6 +120,12 @@
     <Compile Include="frmDodajNormativ.Designer.cs">
       <DependentUpon>frmDodajNormativ.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDodajNoviStol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDodajNoviStol.Designer.cs">
+      <DependentUpon>frmDodajNoviStol.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLoginKonobar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     <EmbeddedResource Include="frmDodajNormativ.resx">
       <DependentUpon>frmDodajNormativ.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDodajNoviStol.resx">
+      <DependentUpon>frmDodajNoviStol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLoginKonobar.resx">
       <DependentUpon>frmLoginKonobar.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,6 +367,8 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\bartable.png" />
+    <None Include="Resources\bigtable.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

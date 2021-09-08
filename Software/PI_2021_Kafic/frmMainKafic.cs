@@ -46,7 +46,7 @@ namespace PI_2021_Kafic
             }
         }
 
-        private void RefreshStolovi()
+        public void RefreshStolovi()
         {
             IzbrisiStolove();
             int point1 = 0;
@@ -57,6 +57,7 @@ namespace PI_2021_Kafic
                 
                 var query = from s in context.Stol
                             where s.Kafic_ID == kafic.ID_Kafic
+                            orderby s.Broj_Mjesta
                             select s;
                 lista = query.ToList();
                 foreach(Stol stol in lista)
@@ -95,6 +96,7 @@ namespace PI_2021_Kafic
                 }
 
             }
+            Refresh();
         }
 
         private void MainKafic_Load(object sender, EventArgs e)
@@ -127,9 +129,8 @@ namespace PI_2021_Kafic
 
         private void upravaljnjeStolovimaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUpravljanje_Stolovima upravitelj = new frmUpravljanje_Stolovima(kafic);
+            frmUpravljanje_Stolovima upravitelj = new frmUpravljanje_Stolovima(kafic,this);
             upravitelj.ShowDialog();
-            RefreshStolovi();
         }
 
        

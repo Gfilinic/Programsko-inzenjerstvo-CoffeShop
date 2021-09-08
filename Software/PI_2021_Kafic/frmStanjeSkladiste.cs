@@ -14,10 +14,17 @@ namespace PI_2021_Kafic
     {
         private Kafic kafic;
         private Namirnica odabranaNamirnica;
+        List<string> cmbList = new List<string>()
+        {
+            "Po namirnici",
+            "Po kolicini",
+            "Po mjeri"
+        };
         public frmStanjeSkladiste(Kafic prosljedeniKafic)
         {
             InitializeComponent();
             kafic = prosljedeniKafic;
+            cmbFilter.DataSource = cmbList;
         }
 
         private void frmStanjeSkladiste_Load(object sender, EventArgs e)
@@ -51,10 +58,33 @@ namespace PI_2021_Kafic
         {
             using (var context = new Entities())
             {
-                var query = from n in context.Namirnica
-                            where n.Kafic_ID == kafic.ID_Kafic
-                            select n;
-                dgvSkladiste.DataSource = query.ToList();
+                
+                switch (cmbFilter.SelectedIndex)
+                {
+                    case 0:
+                         var queryN = from n in context.Namirnica
+                                    where n.Kafic_ID == kafic.ID_Kafic
+                                    && n.Naziv_Namirnice.Contains(txtSearch.Text)
+                                    orderby n.Naziv_Namirnice
+                                    select n;
+                        dgvSkladiste.DataSource = queryN.ToList();
+                        break;
+                    case 1:
+                        var queryK = from n in context.Namirnica
+                                where n.Kafic_ID == kafic.ID_Kafic
+                                orderby n.Kolicina_na_skladistu
+                                select n;
+                        dgvSkladiste.DataSource = queryK.ToList();
+                        break;
+                    case 2:
+                        var queryM = from n in context.Namirnica
+                                     where n.Kafic_ID == kafic.ID_Kafic
+                                     orderby n.Mjera
+                                     select n;
+                        dgvSkladiste.DataSource = queryM.ToList();
+                        break;
+                }
+                
                 dgvSkladiste.Columns["ID_Namirnica"].Visible = false;
                 dgvSkladiste.Columns["Skladiste_ID"].Visible = false;
                 dgvSkladiste.Columns["Kafic_ID"].Visible = false;
@@ -122,6 +152,21 @@ namespace PI_2021_Kafic
         private void frmStanjeSkladiste_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             PomocneFunkcije.PomocneFunkcije.HelpStanjeSkladista();
+        }
+
+        private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshSkladiste();
+        }
+
+        private void cmbFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = (char)Keys.None;
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            RefreshSkladiste();
         }
     }
 }
