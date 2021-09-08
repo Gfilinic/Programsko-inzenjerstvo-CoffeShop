@@ -43,7 +43,7 @@ namespace PI_2021_Kafic
                 {
                     ID_Racun = DohvatiZadnjiID(),
                     Konobar_ID = ulogiraniKonobar.ID_Konobar,
-                    Stol_ID = stol.ID_Stol,
+                    Stol=stol.Oznaka_Stola,
                     Nacin_Placanja_ID = 1,
                     Ukupna_cijena = 0,
                     Kafic_ID = kafic.ID_Kafic

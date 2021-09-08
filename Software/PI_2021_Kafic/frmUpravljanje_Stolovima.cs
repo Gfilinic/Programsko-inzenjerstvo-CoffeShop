@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PI_2021;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,17 +11,25 @@ using System.Windows.Forms;
 
 namespace PI_2021_Kafic
 {
-  
+
     public partial class frmUpravljanje_Stolovima : Form
     {
 
         private Kafic kafic;
-        public frmUpravljanje_Stolovima(Kafic prosljedenjiKafic)
+        bool first;
+        frmMainKafic frm;
+        bool update = false;
+        bool refresh = false;
+        public frmUpravljanje_Stolovima(Kafic prosljedenjiKafic,frmMainKafic mainKafic)
         {
             InitializeComponent();
             kafic = prosljedenjiKafic;
 
             OsvjeziListu();
+            txtOznaka.Text = "";
+            txtBrMjesta.Text = "";
+            first = true;
+            frm = mainKafic;
         }
 
         private void OsvjeziListu()
@@ -36,6 +45,7 @@ namespace PI_2021_Kafic
 
                 var query = from s in context.Stol
                             where s.Kafic_ID == kafic.ID_Kafic
+                            orderby s.Broj_Mjesta
                             select s;
                 lista = query.ToList();
 
@@ -57,10 +67,33 @@ namespace PI_2021_Kafic
                 {
                     context.Stol.Attach(stol);
                     context.Stol.Remove(stol);
+
                     context.SaveChanges();
+                    OsvjeziMjesta();
+
                 }
             }
             OsvjeziListu();
+        }
+
+        private void OsvjeziMjesta()
+        {
+            using (var context = new Entities())
+            {
+                int brojac = 1;
+                var query = from s in context.Stol
+                            where s.Kafic_ID == kafic.ID_Kafic
+                            orderby s.Broj_Mjesta
+                            select s;
+                List<Stol> listaStolova = query.ToList();
+                foreach (Stol st in listaStolova)
+                {
+                    st.Broj_Mjesta = brojac;
+                    brojac++;
+                }
+                context.SaveChanges();
+            }
+
         }
 
         private Stol DohvatiOdabraniStol()
@@ -70,10 +103,61 @@ namespace PI_2021_Kafic
             else return null;
         }
 
-     
+
 
         private void btnDodajNoviStol_Click(object sender, EventArgs e)
         {
+            frmDodajNoviStol noviStol = new frmDodajNoviStol(kafic);
+            noviStol.ShowDialog();
+            OsvjeziListu();
+        }
+
+        private void frmUpravljanje_Stolovima_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            PomocneFunkcije.PomocneFunkcije.HelpUpravaljanjeStolovima();
+        }
+
+        private void listboxStol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!first)
+            {
+                Stol stol = DohvatiOdabraniStol();
+                PopuniPodatke(stol);
+            }
+            else first = false;
+            update = false;
+
+
+
+
+        }
+
+        private void PopuniPodatke(Stol stol)
+        {
+            txtOznaka.Text = stol.Oznaka_Stola;
+            txtBrMjesta.Text = stol.Broj_Mjesta.ToString();
+            int velicinaStola = (int)stol.Velicina_Stola;
+            switch (velicinaStola)
+            {
+                case 2:
+                    radioButton2.Checked = true;
+                    break;
+                case 4:
+                    radioButton4.Checked = true;
+                    break;
+                case 6:
+                    radioButton6.Checked = true;
+                    break;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+            int velicina = 0;
+            if (radioButton2.Checked) velicina = 2;
+            if (radioButton4.Checked) velicina = 4;
+            if (radioButton6.Checked) velicina = 6;
             int brojMjesta;
             try
             {
@@ -92,46 +176,52 @@ namespace PI_2021_Kafic
             {
                 using (var context = new Entities())
                 {
+                    Stol odabraniStol = DohvatiOdabraniStol();
                     var query = from s in context.Stol
                                 where s.Kafic_ID == kafic.ID_Kafic
+                                orderby s.Broj_Mjesta
                                 select s;
                     List<Stol> lista = query.ToList();
-                    if (lista.Count > 0) {
-                    Stol zadnjiStol = lista.Last<Stol>();
-                        Stol stol = new Stol
-                        {
-                            ID_Stol = zadnjiStol.ID_Stol + 1,
-                            Oznaka_Stola = txtOznaka.Text,
-                            Broj_Mjesta = brojMjesta,
-                            Kafic_ID = kafic.ID_Kafic
-                        };
-                        context.Stol.Add(stol);
-                        context.SaveChanges();
+                    
+                    context.SaveChanges();
+                    Stol stolZaIzmjeniti = lista.Find(x => x.ID_Stol == odabraniStol.ID_Stol);
+                    if (brojMjesta > odabraniStol.Broj_Mjesta) { 
+                    lista.Find(x => x.Broj_Mjesta == brojMjesta).Broj_Mjesta--;
+                        stolZaIzmjeniti.Broj_Mjesta = brojMjesta;
+
                     }
                     else
                     {
-
-                        Stol stol = new Stol
+                        stolZaIzmjeniti.Broj_Mjesta = 0;
+                        bool update=false;
+                        foreach (Stol stol in lista)
                         {
-                            ID_Stol = 0,
-                            Oznaka_Stola = txtOznaka.Text,
-                            Broj_Mjesta = brojMjesta,
-                            Kafic_ID = kafic.ID_Kafic
-                        };
-                        context.Stol.Add(stol);
-                        context.SaveChanges();
+                            if (stol.Broj_Mjesta == brojMjesta) update = true;
+                            if (update) stol.Broj_Mjesta++;
+                        }
+                        stolZaIzmjeniti.Broj_Mjesta=brojMjesta;
                     }
+                    stolZaIzmjeniti.Velicina_Stola = (byte?)velicina;
+                    stolZaIzmjeniti.Oznaka_Stola = txtOznaka.Text;
+                    context.SaveChanges();
 
-                   
-                    
                 }
+
+                OsvjeziMjesta();
+                OsvjeziListu();
+                refresh = true;
             }
-            OsvjeziListu();
         }
 
-        private void frmUpravljanje_Stolovima_HelpRequested(object sender, HelpEventArgs hlpevent)
+        private void txtBrMjesta_TextChanged(object sender, EventArgs e)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpUpravaljanjeStolovima();
+            update = true;
+        }
+
+        private void frmUpravljanje_Stolovima_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(refresh)
+            frm.RefreshStolovi();
         }
     }
     public class KriviUnosException : Exception

@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3640849140c94a05bc380336240d51f1" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Artikl" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Kafic" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Kategorija" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Konobar" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Moderator" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Nacin_Placanja" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Namirnica" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Normativ" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Poduzeće" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Racun" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Skladiste" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Stavka_normativa" Width="1.5" PointX="9.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Stavka_racuna" Width="1.5" PointX="12.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Stol" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+      <Diagram DiagramId="6ec330895b4148d1bb7006f2fac129e3" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Artikl" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Kafic" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Kategorija" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Konobar" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Moderator" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Nacin_Placanja" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Namirnica" Width="1.5" PointX="7.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Normativ" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Poduzeće" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Racun" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Skladiste" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Stavka_normativa" Width="1.5" PointX="9.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Stavka_racuna" Width="1.5" PointX="12.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Stol" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="Model.fk_Artikl_Kategorija" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Artikl_Normativ" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Stavka_racuna_Artikl" ManuallyRouted="false" />
@@ -35,7 +35,6 @@
         <AssociationConnector Association="Model.FK_Namirnica_Skladiste" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Stavka_normativa_Namirnica" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Stavka_normativa_Kafic" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Racun_Stol" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Stavka_racuna_Stavka_racuna" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
