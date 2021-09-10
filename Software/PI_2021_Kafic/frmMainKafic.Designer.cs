@@ -62,6 +62,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerClose = new System.Windows.Forms.Timer(this.components);
+            this.toolstripStatistika = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +74,7 @@
             this.upravaljnjeStolovimaToolStripMenuItem,
             this.skladišteToolStripMenuItem,
             this.loginKonobarToolStripMenuItem,
+            this.toolstripStatistika,
             this.otpisToolStripMenuItem,
             this.odjaviKonobaraToolStripMenuItem,
             this.moderatorToolStripMenuItem,
@@ -290,6 +292,13 @@
             // 
             this.timerClose.Tick += new System.EventHandler(this.timerClose_Tick);
             // 
+            // toolstripStatistika
+            // 
+            this.toolstripStatistika.Name = "toolstripStatistika";
+            this.toolstripStatistika.Size = new System.Drawing.Size(66, 23);
+            this.toolstripStatistika.Text = "Statistika";
+            this.toolstripStatistika.Click += new System.EventHandler(this.toolstripStatistika_Click);
+            // 
             // frmMainKafic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,5 +353,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Timer timerClose;
+        private System.Windows.Forms.ToolStripMenuItem toolstripStatistika;
     }
 }

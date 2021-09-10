@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PI_2021_Kafic.Statistika;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -304,6 +305,12 @@ namespace PI_2021_Kafic
         private void frmMainKafic_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             PomocneFunkcije.PomocneFunkcije.HelpMain();
+        }
+
+        private void toolstripStatistika_Click(object sender, EventArgs e)
+        {
+            frmStatistika frm = new frmStatistika(kafic);
+            frm.ShowDialog();
         }
     }
 }

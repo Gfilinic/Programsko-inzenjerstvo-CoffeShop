@@ -81,6 +81,7 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ArtiklExt.cs" />
+    <Compile Include="DateExt.cs" />
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -230,6 +231,38 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Statistika\DataSetStatistika.cs">
+      <DependentUpon>DataSetStatistika.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Statistika\DataSetStatistika.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetStatistika.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Statistika\frmIzvjestajPeriod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistika\frmIzvjestajPeriod.Designer.cs">
+      <DependentUpon>frmIzvjestajPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistika\frmIzvjestajX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistika\frmIzvjestajX.Designer.cs">
+      <DependentUpon>frmIzvjestajX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistika\frmIzvjestajZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistika\frmIzvjestajZ.Designer.cs">
+      <DependentUpon>frmIzvjestajZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistika\frmStatistika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistika\frmStatistika.Designer.cs">
+      <DependentUpon>frmStatistika.cs</DependentUpon>
+    </Compile>
     <Compile Include="StavkaNormExt.cs" />
     <Compile Include="Stavka_normativa.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -316,6 +349,22 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReportNamirnice.rdlc" />
+    <EmbeddedResource Include="Reports\ReportKonobar.rdlc" />
+    <EmbeddedResource Include="Reports\ReportNamirnice.rdlc" />
+    <EmbeddedResource Include="Reports\ReportPeriod.rdlc" />
+    <EmbeddedResource Include="Reports\ZReport.rdlc" />
+    <EmbeddedResource Include="Statistika\frmIzvjestajPeriod.resx">
+      <DependentUpon>frmIzvjestajPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistika\frmIzvjestajX.resx">
+      <DependentUpon>frmIzvjestajX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistika\frmIzvjestajZ.resx">
+      <DependentUpon>frmIzvjestajZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistika\frmStatistika.resx">
+      <DependentUpon>frmStatistika.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCStol.resx">
       <DependentUpon>UCStol.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,6 +389,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Statistika\DataSetStatistika.xsc">
+      <DependentUpon>DataSetStatistika.xsd</DependentUpon>
+    </None>
+    <None Include="Statistika\DataSetStatistika.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetStatistika.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Statistika\DataSetStatistika.xss">
+      <DependentUpon>DataSetStatistika.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -389,5 +449,6 @@
       <Name>PomocneFunkcije</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

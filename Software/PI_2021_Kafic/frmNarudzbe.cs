@@ -278,7 +278,7 @@ namespace PI_2021_Kafic
 
         private void btnSpremiRacun_Click(object sender, EventArgs e)
         {
-            if (racun.Stavka_racuna.Count > 0)
+            if(stavkeArtikla.Count>0)
             {
                 using (var context = new Entities())
                 {
