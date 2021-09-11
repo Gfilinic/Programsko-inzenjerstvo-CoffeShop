@@ -71,14 +71,16 @@ namespace PI_2021_Kafic
                         break;
                     case 1:
                         var queryK = from n in context.Namirnica
-                                where n.Kafic_ID == kafic.ID_Kafic
-                                orderby n.Kolicina_na_skladistu
-                                select n;
+                                     where n.Kafic_ID == kafic.ID_Kafic
+                                     && n.Kolicina_na_skladistu.ToString().Contains(txtSearch.Text)
+                                     orderby n.Kolicina_na_skladistu
+                                    select n;
                         dgvSkladiste.DataSource = queryK.ToList();
                         break;
                     case 2:
                         var queryM = from n in context.Namirnica
                                      where n.Kafic_ID == kafic.ID_Kafic
+                                     && n.Mjera.Contains(txtSearch.Text)
                                      orderby n.Mjera
                                      select n;
                         dgvSkladiste.DataSource = queryM.ToList();

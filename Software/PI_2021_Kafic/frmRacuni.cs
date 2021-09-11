@@ -65,7 +65,7 @@ namespace PI_2021_Kafic
             
             using (var context=new Entities())
             {
-                var query = from r in context.Racun.Include("Stavka_racuna").Include("Konobar").Include("Nacin_Placanja").Include("Stol")
+                var query = from r in context.Racun.Include("Stavka_racuna").Include("Konobar").Include("Nacin_Placanja")
                             where r.Kafic_ID == kafic.ID_Kafic &&
                             r.Vrijeme.Value.Day >= dtpOd.Value.Day && r.Vrijeme.Value.Month >= dtpOd.Value.Month
                             && r.Vrijeme.Value.Day <= dtpDo.Value.Day && r.Vrijeme.Value.Month <= dtpDo.Value.Month
@@ -77,7 +77,6 @@ namespace PI_2021_Kafic
                 dgvRacuni.Columns["Stavka_racuna"].Visible = false;
                 dgvRacuni.Columns["Nacin_Placanja_ID"].Visible = false;
                 dgvRacuni.Columns["Konobar_ID"].Visible = false;
-                dgvRacuni.Columns["Stol_ID"].Visible = false;
                 dgvRacuni.Columns["Kafic_ID"].Visible = false;
                 dgvRacuni.Columns["ID_Racun"].Visible = false;
                 dgvRacuni.Columns["Nacin_Placanja"].HeaderText = "Nacin plaćanja";
@@ -156,7 +155,7 @@ namespace PI_2021_Kafic
             int brDana = 0;
             using (var context = new Entities())
             {
-                var racuni = from r in context.Racun.Include("Stavka_racuna").Include("Konobar").Include("Nacin_Placanja").Include("Stol")
+                var racuni = from r in context.Racun.Include("Stavka_racuna").Include("Konobar").Include("Nacin_Placanja")
                              where r.Kafic_ID == kafic.ID_Kafic &&
                              r.Vrijeme.Value.Day >= dtpOd.Value.Day && r.Vrijeme.Value.Month >= dtpOd.Value.Month
                              && r.Vrijeme.Value.Day <= dtpDo.Value.Day && r.Vrijeme.Value.Month <= dtpDo.Value.Month
