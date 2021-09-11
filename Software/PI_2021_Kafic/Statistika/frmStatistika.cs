@@ -51,7 +51,7 @@ namespace PI_2021_Kafic.Statistika
 
         private void btnZ_Click(object sender, EventArgs e)
         {
-            frmIzvjestajZ frm = new frmIzvjestajZ();
+            frmIzvjestajZ frm = new frmIzvjestajZ(kafic);
             frm.ShowDialog();
         }
 
@@ -63,7 +63,13 @@ namespace PI_2021_Kafic.Statistika
 
         private void btnArtikl_Click(object sender, EventArgs e)
         {
-            frmIzvjestajArtikl frm = new frmIzvjestajArtikl(dateTimePicker1.Value, dateTimePicker2.Value);
+            frmIzvjestajArtikl frm = new frmIzvjestajArtikl(dateTimePicker1.Value, dateTimePicker2.Value,kafic);
+            frm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmIzvjestaKonobarPeriod frm = new frmIzvjestaKonobarPeriod(dateTimePicker1.Value, dateTimePicker2.Value,kafic);
             frm.ShowDialog();
         }
     }

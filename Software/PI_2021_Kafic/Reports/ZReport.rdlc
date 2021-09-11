@@ -523,19 +523,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>4.10073cm</Width>
+              <Width>4.43146cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.10073cm</Width>
+              <Width>4.43146cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.28792cm</Height>
+              <Height>1.79063cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox5">
+                    <Textbox Name="Textbox9">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -552,7 +552,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -572,14 +572,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox7">
+                    <Textbox Name="Textbox12">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Suma</Value>
+                              <Value>Količina</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -589,12 +589,15 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <rd:DefaultName>Textbox12</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <BackgroundColor>#2a61aa</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -607,7 +610,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.28792cm</Height>
+              <Height>1.79063cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -641,21 +644,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Suma">
+                    <Textbox Name="Količina">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Suma.Value</Value>
+                              <Value>=Fields!Količina.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Suma</rd:DefaultName>
+                      <rd:DefaultName>Količina</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -690,10 +693,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSetArtikl</DataSetName>
-        <Top>6.92891cm</Top>
-        <Left>6.14146cm</Left>
-        <Height>2.57583cm</Height>
-        <Width>8.20146cm</Width>
+        <Top>7.56391cm</Top>
+        <Left>5.10958cm</Left>
+        <Height>3.58126cm</Height>
+        <Width>8.86292cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -891,14 +894,14 @@
           <DataField>Naziv</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Suma">
-          <DataField>Suma</DataField>
+        <Field Name="Količina">
+          <DataField>Količina</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSetStatistika</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Goc\Documents\GitHub\pi21-gfilinic-lmasnec-sloncari1\Software\PI_2021_Kafic\DataSetStatistika.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\Goc\Documents\GitHub\pi21-gfilinic-lmasnec-sloncari1\Software\PI_2021_Kafic\Statistika\DataSetStatistika.xsd</rd:SchemaPath>
         <rd:TableName>Artikl</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

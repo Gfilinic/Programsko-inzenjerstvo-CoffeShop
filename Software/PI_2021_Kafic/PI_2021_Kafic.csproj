@@ -262,8 +262,14 @@
     <Compile Include="Statistika\frmIzvjestajZ.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Statistika\frmIzvjestajZ.Designer.cs">
+    <Compile Include="Statistika\frmIzvjestajZ.designer.cs">
       <DependentUpon>frmIzvjestajZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistika\frmIzvjestaKonobarPeriod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistika\frmIzvjestaKonobarPeriod.Designer.cs">
+      <DependentUpon>frmIzvjestaKonobarPeriod.cs</DependentUpon>
     </Compile>
     <Compile Include="Statistika\frmStatistika.cs">
       <SubType>Form</SubType>
@@ -357,13 +363,20 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reports\ReportArtikl.rdlc" />
+    <EmbeddedResource Include="Reports\ReportKonobarPeriod.rdlc" />
+    <EmbeddedResource Include="Reports\ZReport.rdlc" />
+    <EmbeddedResource Include="Statistika\frmIzvjestajZ.resx">
+      <DependentUpon>frmIzvjestajZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistika\frmIzvjestaKonobarPeriod.resx">
+      <DependentUpon>frmIzvjestaKonobarPeriod.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Statistika\ReportNamirnice.rdlc" />
     <EmbeddedResource Include="Reports\ReportPrometKonobar.rdlc" />
     <EmbeddedResource Include="Reports\ReportTime.rdlc" />
     <EmbeddedResource Include="Reports\ReportKonobar.rdlc" />
     <EmbeddedResource Include="Reports\ReportNamirnice.rdlc" />
     <EmbeddedResource Include="Reports\ReportPeriod.rdlc" />
-    <EmbeddedResource Include="Reports\ZReport.rdlc" />
     <EmbeddedResource Include="Statistika\frmIzvjestajArtikl.resx">
       <DependentUpon>frmIzvjestajArtikl.cs</DependentUpon>
     </EmbeddedResource>
@@ -372,9 +385,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Statistika\frmIzvjestajX.resx">
       <DependentUpon>frmIzvjestajX.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Statistika\frmIzvjestajZ.resx">
-      <DependentUpon>frmIzvjestajZ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Statistika\frmStatistika.resx">
       <DependentUpon>frmStatistika.cs</DependentUpon>

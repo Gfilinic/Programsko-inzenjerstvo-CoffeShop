@@ -32,19 +32,35 @@ namespace PI_2021_Kafic.Statistika
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DataSetStatistika = new PI_2021_Kafic.Statistika.DataSetStatistika();
             this.DataTableZBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataTableZTableAdapter = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.DataTableZTableAdapter();
+            this.DataSetStatistika = new PI_2021_Kafic.Statistika.DataSetStatistika();
             this.ArtiklBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.DataTableZTableAdapter = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.DataTableZTableAdapter();
             this.ArtiklTableAdapter = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.ArtiklTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTableZBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArtiklBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
+            // DataTableZBindingSource
+            // 
+            this.DataTableZBindingSource.DataMember = "DataTableZ";
+            this.DataTableZBindingSource.DataSource = this.DataSetStatistika;
+            // 
+            // DataSetStatistika
+            // 
+            this.DataSetStatistika.DataSetName = "DataSetStatistika";
+            this.DataSetStatistika.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ArtiklBindingSource
+            // 
+            this.ArtiklBindingSource.DataMember = "Artikl";
+            this.ArtiklBindingSource.DataSource = this.DataSetStatistika;
+            // 
             // reportViewer1
             // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSetZ";
             reportDataSource1.Value = this.DataTableZBindingSource;
             reportDataSource2.Name = "DataSetArtikl";
@@ -52,30 +68,15 @@ namespace PI_2021_Kafic.Statistika
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PI_2021_Kafic.Reports.ZReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(2, 1);
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(786, 437);
+            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // DataSetStatistika
-            // 
-            this.DataSetStatistika.DataSetName = "DataSetStatistika";
-            this.DataSetStatistika.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // DataTableZBindingSource
-            // 
-            this.DataTableZBindingSource.DataMember = "DataTableZ";
-            this.DataTableZBindingSource.DataSource = this.DataSetStatistika;
             // 
             // DataTableZTableAdapter
             // 
             this.DataTableZTableAdapter.ClearBeforeFill = true;
-            // 
-            // ArtiklBindingSource
-            // 
-            this.ArtiklBindingSource.DataMember = "Artikl";
-            this.ArtiklBindingSource.DataSource = this.DataSetStatistika;
             // 
             // ArtiklTableAdapter
             // 
@@ -90,8 +91,8 @@ namespace PI_2021_Kafic.Statistika
             this.Name = "frmIzvjestajZ";
             this.Text = "Dnevni izvještaj";
             this.Load += new System.EventHandler(this.frmIzvjestajZ_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTableZBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArtiklBindingSource)).EndInit();
             this.ResumeLayout(false);
 
