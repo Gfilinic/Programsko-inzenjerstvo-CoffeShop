@@ -241,6 +241,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetStatistika.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Statistika\frmIzvjestajArtikl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistika\frmIzvjestajArtikl.Designer.cs">
+      <DependentUpon>frmIzvjestajArtikl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Statistika\frmIzvjestajPeriod.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,14 +356,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReportNamirnice.rdlc" />
     <EmbeddedResource Include="Reports\ReportArtikl.rdlc" />
+    <EmbeddedResource Include="Statistika\ReportNamirnice.rdlc" />
     <EmbeddedResource Include="Reports\ReportPrometKonobar.rdlc" />
     <EmbeddedResource Include="Reports\ReportTime.rdlc" />
     <EmbeddedResource Include="Reports\ReportKonobar.rdlc" />
     <EmbeddedResource Include="Reports\ReportNamirnice.rdlc" />
     <EmbeddedResource Include="Reports\ReportPeriod.rdlc" />
     <EmbeddedResource Include="Reports\ZReport.rdlc" />
+    <EmbeddedResource Include="Statistika\frmIzvjestajArtikl.resx">
+      <DependentUpon>frmIzvjestajArtikl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Statistika\frmIzvjestajPeriod.resx">
       <DependentUpon>frmIzvjestajPeriod.cs</DependentUpon>
     </EmbeddedResource>

@@ -30,16 +30,17 @@ namespace PI_2021_Kafic.Statistika
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbKonobar = new System.Windows.Forms.ComboBox();
-            this.btnX = new System.Windows.Forms.Button();
             this.btnZ = new System.Windows.Forms.Button();
+            this.btnX = new System.Windows.Forms.Button();
+            this.cmbKonobar = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnPeriod = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btnArtikl = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -57,23 +58,15 @@ namespace PI_2021_Kafic.Statistika
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dnevni Izvještaj";
             // 
-            // label1
+            // btnZ
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Po konobaru:";
-            // 
-            // cmbKonobar
-            // 
-            this.cmbKonobar.FormattingEnabled = true;
-            this.cmbKonobar.Location = new System.Drawing.Point(10, 47);
-            this.cmbKonobar.Name = "cmbKonobar";
-            this.cmbKonobar.Size = new System.Drawing.Size(121, 21);
-            this.cmbKonobar.TabIndex = 1;
-            this.cmbKonobar.SelectedIndexChanged += new System.EventHandler(this.cmbKonobar_SelectedIndexChanged);
+            this.btnZ.Location = new System.Drawing.Point(10, 105);
+            this.btnZ.Name = "btnZ";
+            this.btnZ.Size = new System.Drawing.Size(172, 23);
+            this.btnZ.TabIndex = 3;
+            this.btnZ.Text = "Generiraj dnevni izvještaj (Z)";
+            this.btnZ.UseVisualStyleBackColor = true;
+            this.btnZ.Click += new System.EventHandler(this.btnZ_Click);
             // 
             // btnX
             // 
@@ -85,18 +78,27 @@ namespace PI_2021_Kafic.Statistika
             this.btnX.UseVisualStyleBackColor = true;
             this.btnX.Click += new System.EventHandler(this.btnX_Click);
             // 
-            // btnZ
+            // cmbKonobar
             // 
-            this.btnZ.Location = new System.Drawing.Point(10, 105);
-            this.btnZ.Name = "btnZ";
-            this.btnZ.Size = new System.Drawing.Size(172, 23);
-            this.btnZ.TabIndex = 3;
-            this.btnZ.Text = "Generiraj dnevni izvještaj (Z)";
-            this.btnZ.UseVisualStyleBackColor = true;
-            this.btnZ.Click += new System.EventHandler(this.btnZ_Click);
+            this.cmbKonobar.FormattingEnabled = true;
+            this.cmbKonobar.Location = new System.Drawing.Point(10, 47);
+            this.cmbKonobar.Name = "cmbKonobar";
+            this.cmbKonobar.Size = new System.Drawing.Size(121, 21);
+            this.cmbKonobar.TabIndex = 1;
+            this.cmbKonobar.SelectedIndexChanged += new System.EventHandler(this.cmbKonobar_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Po konobaru:";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnArtikl);
             this.groupBox2.Controls.Add(this.btnPeriod);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
@@ -104,42 +106,10 @@ namespace PI_2021_Kafic.Statistika
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Location = new System.Drawing.Point(258, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(341, 151);
+            this.groupBox2.Size = new System.Drawing.Size(341, 206);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pregled Prometa u danom periodu";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(141, 30);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 0;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(135, 75);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Odaberi pocetni datum:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 81);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Odaberi krajnji datum:";
             // 
             // btnPeriod
             // 
@@ -150,6 +120,48 @@ namespace PI_2021_Kafic.Statistika
             this.btnPeriod.Text = "Generiraj Izvještaj za dani period";
             this.btnPeriod.UseVisualStyleBackColor = true;
             this.btnPeriod.Click += new System.EventHandler(this.btnPeriod_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Odaberi krajnji datum:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Odaberi pocetni datum:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(135, 75);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 0;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(141, 30);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 0;
+            // 
+            // btnArtikl
+            // 
+            this.btnArtikl.Location = new System.Drawing.Point(9, 133);
+            this.btnArtikl.Name = "btnArtikl";
+            this.btnArtikl.Size = new System.Drawing.Size(332, 23);
+            this.btnArtikl.TabIndex = 2;
+            this.btnArtikl.Text = "Generiraj Izvještaj po artiklima za dani period";
+            this.btnArtikl.UseVisualStyleBackColor = true;
+            this.btnArtikl.Click += new System.EventHandler(this.btnArtikl_Click);
             // 
             // frmStatistika
             // 
@@ -182,5 +194,6 @@ namespace PI_2021_Kafic.Statistika
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btnArtikl;
     }
 }
