@@ -57,7 +57,8 @@ namespace PI_2021_Kafic.Statistika
 
         private void btnPeriod_Click(object sender, EventArgs e)
         {
-
+            frmIzvjestajPeriod frm = new frmIzvjestajPeriod(dateTimePicker1.Value, dateTimePicker2.Value);
+            frm.ShowDialog();
         }
     }
 }

@@ -30,58 +30,40 @@ namespace PI_2021_Kafic.Statistika
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.DataTableZBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataSetStatistika = new PI_2021_Kafic.Statistika.DataSetStatistika();
-            this.ArtiklBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DataTableZTableAdapter = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.DataTableZTableAdapter();
-            this.ArtiklTableAdapter = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.ArtiklTableAdapter();
-            this.artiklTableAdapter1 = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.ArtiklTableAdapter();
-            this.dataTablePeriodTableAdapter1 = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.DataTablePeriodTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.DataTableZBindingSource)).BeginInit();
+            this.DataSetStatistika = new PI_2021_Kafic.Statistika.DataSetStatistika();
+            this.DataTablePeriodBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DataTablePeriodTableAdapter = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.DataTablePeriodTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ArtiklBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataTablePeriodBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // DataTableZBindingSource
-            // 
-            this.DataTableZBindingSource.DataMember = "DataTableZ";
-            this.DataTableZBindingSource.DataSource = this.DataSetStatistika;
-            // 
-            // DataSetStatistika
-            // 
-            this.DataSetStatistika.DataSetName = "DataSetStatistika";
-            this.DataSetStatistika.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ArtiklBindingSource
-            // 
-            this.ArtiklBindingSource.DataMember = "Artikl";
-            this.ArtiklBindingSource.DataSource = this.DataSetStatistika;
             // 
             // reportViewer1
             // 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "PI_2021_Kafic.Reports.ReportPeriod.rdlc";
+            reportDataSource1.Name = "DataSetPeriod";
+            reportDataSource1.Value = this.DataTablePeriodBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "PI_2021_Kafic.Reports.ReportTime.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(27, 33);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(729, 376);
             this.reportViewer1.TabIndex = 0;
             // 
-            // DataTableZTableAdapter
+            // DataSetStatistika
             // 
-            this.DataTableZTableAdapter.ClearBeforeFill = true;
+            this.DataSetStatistika.DataSetName = "DataSetStatistika";
+            this.DataSetStatistika.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // ArtiklTableAdapter
+            // DataTablePeriodBindingSource
             // 
-            this.ArtiklTableAdapter.ClearBeforeFill = true;
+            this.DataTablePeriodBindingSource.DataMember = "DataTablePeriod";
+            this.DataTablePeriodBindingSource.DataSource = this.DataSetStatistika;
             // 
-            // artiklTableAdapter1
+            // DataTablePeriodTableAdapter
             // 
-            this.artiklTableAdapter1.ClearBeforeFill = true;
-            // 
-            // dataTablePeriodTableAdapter1
-            // 
-            this.dataTablePeriodTableAdapter1.ClearBeforeFill = true;
+            this.DataTablePeriodTableAdapter.ClearBeforeFill = true;
             // 
             // frmIzvjestajPeriod
             // 
@@ -92,9 +74,8 @@ namespace PI_2021_Kafic.Statistika
             this.Name = "frmIzvjestajPeriod";
             this.Text = "Izvjestaj perioda: ";
             this.Load += new System.EventHandler(this.frmIzvjestajPeriod_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataTableZBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ArtiklBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataTablePeriodBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -102,12 +83,8 @@ namespace PI_2021_Kafic.Statistika
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource DataTableZBindingSource;
+        private System.Windows.Forms.BindingSource DataTablePeriodBindingSource;
         private DataSetStatistika DataSetStatistika;
-        private System.Windows.Forms.BindingSource ArtiklBindingSource;
-        private DataSetStatistikaTableAdapters.DataTableZTableAdapter DataTableZTableAdapter;
-        private DataSetStatistikaTableAdapters.ArtiklTableAdapter ArtiklTableAdapter;
-        private DataSetStatistikaTableAdapters.ArtiklTableAdapter artiklTableAdapter1;
-        private DataSetStatistikaTableAdapters.DataTablePeriodTableAdapter dataTablePeriodTableAdapter1;
+        private DataSetStatistikaTableAdapters.DataTablePeriodTableAdapter DataTablePeriodTableAdapter;
     }
 }

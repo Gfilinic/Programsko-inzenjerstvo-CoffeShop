@@ -23,15 +23,12 @@ namespace PI_2021_Kafic.Statistika
 
         private void frmIzvjestajPeriod_Load(object sender, EventArgs e)
         {
-// TODO: This line of code loads data into the 'DataSetStatistika.DataTableZ' table. You can move, or remove it, as needed.
-//this.DataTableZTableAdapter.Fill(this.DataSetStatistika.DataTableZ);
-// TODO: This line of code loads data into the 'DataSetStatistika.Artikl' table. You can move, or remove it, as needed.
-//this.ArtiklTableAdapter.Fill(this.DataSetStatistika.Artikl);
+            
             this.DataSetStatistika.EnforceConstraints = false;
-            DateTime P = DateExt.DanasPocetak(DateTime.Now);
-            DateTime K = DateExt.DanasKraj(DateTime.Now);
-            this.dataTablePeriodTableAdapter1.Fill(this.DataSetStatistika.DataTablePeriod, start, end);
+
+            this.DataTablePeriodTableAdapter.Fill(this.DataSetStatistika.DataTablePeriod,start,end);
             this.reportViewer1.RefreshReport();
+
         }
     }
 }

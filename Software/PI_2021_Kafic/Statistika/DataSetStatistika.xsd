@@ -127,7 +127,7 @@ ORDER BY Godina, Mjesec</CommandText>
   <xs:element name="DataSetStatistika" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetStatistika" msprop:Generator_UserDSName="DataSetStatistika">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DataTableRacuni" msprop:Generator_TableClassName="DataTableRacuniDataTable" msprop:Generator_TableVarName="tableDataTableRacuni" msprop:Generator_RowChangedName="DataTableRacuniRowChanged" msprop:Generator_TablePropName="DataTableRacuni" msprop:Generator_RowDeletingName="DataTableRacuniRowDeleting" msprop:Generator_RowChangingName="DataTableRacuniRowChanging" msprop:Generator_RowEvHandlerName="DataTableRacuniRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableRacuniRowDeleted" msprop:Generator_RowClassName="DataTableRacuniRow" msprop:Generator_UserTableName="DataTableRacuni" msprop:Generator_RowEvArgName="DataTableRacuniRowChangeEvent">
+        <xs:element name="DataTableRacuni" msprop:Generator_TableClassName="DataTableRacuniDataTable" msprop:Generator_TableVarName="tableDataTableRacuni" msprop:Generator_TablePropName="DataTableRacuni" msprop:Generator_RowDeletingName="DataTableRacuniRowDeleting" msprop:Generator_RowChangingName="DataTableRacuniRowChanging" msprop:Generator_RowEvHandlerName="DataTableRacuniRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableRacuniRowDeleted" msprop:Generator_UserTableName="DataTableRacuni" msprop:Generator_RowChangedName="DataTableRacuniRowChanged" msprop:Generator_RowEvArgName="DataTableRacuniRowChangeEvent" msprop:Generator_RowClassName="DataTableRacuniRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Ime" msprop:Generator_ColumnVarNameInTable="columnIme" msprop:Generator_ColumnPropNameInRow="Ime" msprop:Generator_ColumnPropNameInTable="ImeColumn" msprop:Generator_UserColumnName="Ime">
@@ -151,7 +151,7 @@ ORDER BY Godina, Mjesec</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTableZ" msprop:Generator_TableClassName="DataTableZDataTable" msprop:Generator_TableVarName="tableDataTableZ" msprop:Generator_RowChangedName="DataTableZRowChanged" msprop:Generator_TablePropName="DataTableZ" msprop:Generator_RowDeletingName="DataTableZRowDeleting" msprop:Generator_RowChangingName="DataTableZRowChanging" msprop:Generator_RowEvHandlerName="DataTableZRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableZRowDeleted" msprop:Generator_RowClassName="DataTableZRow" msprop:Generator_UserTableName="DataTableZ" msprop:Generator_RowEvArgName="DataTableZRowChangeEvent">
+        <xs:element name="DataTableZ" msprop:Generator_TableClassName="DataTableZDataTable" msprop:Generator_TableVarName="tableDataTableZ" msprop:Generator_TablePropName="DataTableZ" msprop:Generator_RowDeletingName="DataTableZRowDeleting" msprop:Generator_RowChangingName="DataTableZRowChanging" msprop:Generator_RowEvHandlerName="DataTableZRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableZRowDeleted" msprop:Generator_UserTableName="DataTableZ" msprop:Generator_RowChangedName="DataTableZRowChanged" msprop:Generator_RowEvArgName="DataTableZRowChangeEvent" msprop:Generator_RowClassName="DataTableZRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_Konobar" msprop:Generator_ColumnVarNameInTable="columnID_Konobar" msprop:Generator_ColumnPropNameInRow="ID_Konobar" msprop:Generator_ColumnPropNameInTable="ID_KonobarColumn" msprop:Generator_UserColumnName="ID_Konobar" type="xs:int" />
@@ -181,7 +181,7 @@ ORDER BY Godina, Mjesec</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Artikl" msprop:Generator_TableClassName="ArtiklDataTable" msprop:Generator_TableVarName="tableArtikl" msprop:Generator_RowChangedName="ArtiklRowChanged" msprop:Generator_TablePropName="Artikl" msprop:Generator_RowDeletingName="ArtiklRowDeleting" msprop:Generator_RowChangingName="ArtiklRowChanging" msprop:Generator_RowEvHandlerName="ArtiklRowChangeEventHandler" msprop:Generator_RowDeletedName="ArtiklRowDeleted" msprop:Generator_RowClassName="ArtiklRow" msprop:Generator_UserTableName="Artikl" msprop:Generator_RowEvArgName="ArtiklRowChangeEvent">
+        <xs:element name="Artikl" msprop:Generator_TableClassName="ArtiklDataTable" msprop:Generator_TableVarName="tableArtikl" msprop:Generator_TablePropName="Artikl" msprop:Generator_RowDeletingName="ArtiklRowDeleting" msprop:Generator_RowChangingName="ArtiklRowChanging" msprop:Generator_RowEvHandlerName="ArtiklRowChangeEventHandler" msprop:Generator_RowDeletedName="ArtiklRowDeleted" msprop:Generator_UserTableName="Artikl" msprop:Generator_RowChangedName="ArtiklRowChanged" msprop:Generator_RowEvArgName="ArtiklRowChangeEvent" msprop:Generator_RowClassName="ArtiklRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Naziv" msprop:Generator_ColumnVarNameInTable="columnNaziv" msprop:Generator_ColumnPropNameInRow="Naziv" msprop:Generator_ColumnPropNameInTable="NazivColumn" msprop:Generator_UserColumnName="Naziv">
@@ -195,7 +195,7 @@ ORDER BY Godina, Mjesec</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTablePeriod" msprop:Generator_TableClassName="DataTablePeriodDataTable" msprop:Generator_TableVarName="tableDataTablePeriod" msprop:Generator_TablePropName="DataTablePeriod" msprop:Generator_RowDeletingName="DataTablePeriodRowDeleting" msprop:Generator_RowChangingName="DataTablePeriodRowChanging" msprop:Generator_RowEvHandlerName="DataTablePeriodRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTablePeriodRowDeleted" msprop:Generator_UserTableName="DataTablePeriod" msprop:Generator_RowChangedName="DataTablePeriodRowChanged" msprop:Generator_RowEvArgName="DataTablePeriodRowChangeEvent" msprop:Generator_RowClassName="DataTablePeriodRow">
+        <xs:element name="DataTablePeriod" msprop:Generator_TableClassName="DataTablePeriodDataTable" msprop:Generator_TableVarName="tableDataTablePeriod" msprop:Generator_RowChangedName="DataTablePeriodRowChanged" msprop:Generator_TablePropName="DataTablePeriod" msprop:Generator_RowDeletingName="DataTablePeriodRowDeleting" msprop:Generator_RowChangingName="DataTablePeriodRowChanging" msprop:Generator_RowEvHandlerName="DataTablePeriodRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTablePeriodRowDeleted" msprop:Generator_RowClassName="DataTablePeriodRow" msprop:Generator_UserTableName="DataTablePeriod" msprop:Generator_RowEvArgName="DataTablePeriodRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Mjesec" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMjesec" msprop:Generator_ColumnPropNameInRow="Mjesec" msprop:Generator_ColumnPropNameInTable="MjesecColumn" msprop:Generator_UserColumnName="Mjesec" type="xs:int" minOccurs="0" />

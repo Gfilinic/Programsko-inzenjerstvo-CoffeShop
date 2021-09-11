@@ -15,7 +15,7 @@ namespace PI_2021_Kafic.Statistika
         public frmIzvjestajZ()
         {
             InitializeComponent();
-            this.Text = "Dnevni izvještaj za datum " + DateTime.Today;
+            this.Text = "Dnevni izvještaj za datum " + DateTime.Now.Date ;
         }
 
         private void frmIzvjestajZ_Load(object sender, EventArgs e)

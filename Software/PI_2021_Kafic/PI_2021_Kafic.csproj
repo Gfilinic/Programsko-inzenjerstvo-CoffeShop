@@ -349,10 +349,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReportNamirnice.rdlc" />
+    <EmbeddedResource Include="Reports\ReportTime.rdlc" />
     <EmbeddedResource Include="Reports\ReportKonobar.rdlc" />
     <EmbeddedResource Include="Reports\ReportNamirnice.rdlc" />
     <EmbeddedResource Include="Reports\ReportPeriod.rdlc" />
-    <EmbeddedResource Include="Reports\ZReport.rdlc" />
     <EmbeddedResource Include="Statistika\frmIzvjestajPeriod.resx">
       <DependentUpon>frmIzvjestajPeriod.cs</DependentUpon>
     </EmbeddedResource>
