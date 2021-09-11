@@ -48,18 +48,18 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>4.35208cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>4.35208cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>4.35208cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>1.18208cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -71,7 +71,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Mjesec</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -83,12 +86,14 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -101,7 +106,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Suma</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -113,6 +121,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -131,7 +140,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Godina</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -143,6 +155,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -154,7 +167,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>1.18208cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -268,10 +281,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSetPeriod</DataSetName>
-            <Top>2.00766cm</Top>
-            <Left>3.30412cm</Left>
-            <Height>1.2cm</Height>
-            <Width>7.5cm</Width>
+            <Top>0.92287cm</Top>
+            <Left>1.74308cm</Left>
+            <Height>2.36417cm</Height>
+            <Width>13.05625cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -640,9 +653,8 @@
             </ChartNoDataMessage>
             <DataSetName>DataSetPeriod</DataSetName>
             <Top>4.62703cm</Top>
-            <Left>2.77495cm</Left>
-            <Height>5cm</Height>
-            <Width>10.64854cm</Width>
+            <Height>6.82944cm</Height>
+            <Width>16.51cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -653,6 +665,18 @@
               <BackgroundGradientType>None</BackgroundGradientType>
             </Style>
           </Chart>
+          <Line Name="Line1">
+            <Top>3.78037cm</Top>
+            <Left>0.02328cm</Left>
+            <Height>0cm</Height>
+            <Width>16.48672cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
         </ReportItems>
         <Height>4.51042in</Height>
         <Style />
