@@ -69,16 +69,16 @@
             // lblOd
             // 
             this.lblOd.AutoSize = true;
-            this.lblOd.Location = new System.Drawing.Point(15, 30);
+            this.lblOd.Location = new System.Drawing.Point(6, 33);
             this.lblOd.Name = "lblOd";
-            this.lblOd.Size = new System.Drawing.Size(78, 13);
+            this.lblOd.Size = new System.Drawing.Size(105, 13);
             this.lblOd.TabIndex = 1;
-            this.lblOd.Text = "Odabrani artikl:";
+            this.lblOd.Text = "Odabrana namirnica:";
             // 
             // lblArtikl
             // 
             this.lblArtikl.AutoSize = true;
-            this.lblArtikl.Location = new System.Drawing.Point(110, 33);
+            this.lblArtikl.Location = new System.Drawing.Point(117, 33);
             this.lblArtikl.Name = "lblArtikl";
             this.lblArtikl.Size = new System.Drawing.Size(45, 13);
             this.lblArtikl.TabIndex = 2;
@@ -136,7 +136,7 @@
             this.gbDodaj.Size = new System.Drawing.Size(229, 180);
             this.gbDodaj.TabIndex = 6;
             this.gbDodaj.TabStop = false;
-            this.gbDodaj.Text = "Dodaj količinu artikla";
+            this.gbDodaj.Text = "Dodaj količinu namirnice";
             // 
             // nUDDodaj
             // 
@@ -160,9 +160,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.Size = new System.Drawing.Size(95, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Odaberi artikl:";
+            this.label2.Text = "Odaberi namirnicu:";
             // 
             // cmbNamirnica
             // 
