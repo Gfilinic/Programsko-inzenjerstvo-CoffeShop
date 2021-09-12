@@ -33,6 +33,7 @@ namespace PI_2021_Kafic
             upravljanjeKonobarima.Visible = false;
             otpisToolStripMenuItem.Visible = false;
             racuniToolStripMenuItem.Visible = false;
+            toolstripStatistika.Visible = false;
 
         }
 
@@ -168,6 +169,7 @@ namespace PI_2021_Kafic
                 skladišteToolStripMenuItem.Visible = true;
                 upravljanjeKonobarima.Visible = true;
                 racuniToolStripMenuItem.Visible = true;
+                toolstripStatistika.Visible = true;
             }
             else
             {
@@ -189,6 +191,7 @@ namespace PI_2021_Kafic
             skladišteToolStripMenuItem.Visible = false;
             upravljanjeKonobarima.Visible = false;
             racuniToolStripMenuItem.Visible = false;
+            toolstripStatistika.Visible = false;
             
         }
 
@@ -209,6 +212,7 @@ namespace PI_2021_Kafic
                 {
                     otpisToolStripMenuItem.Visible = true;
                     racuniToolStripMenuItem.Visible = true;
+                    toolstripStatistika.Visible = true;
                 }
             }
             else { 

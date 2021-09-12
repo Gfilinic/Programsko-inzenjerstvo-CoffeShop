@@ -48,7 +48,7 @@ namespace PI_2021_Kafic
                 {
                     int brojac = 0;
                     int brDana = 0;
-                    var racuni = from r in context.Racun.Include("Stavka_racuna").Include("Konobar").Include("Nacin_Placanja").Include("Stol")
+                    var racuni = from r in context.Racun.Include("Stavka_racuna").Include("Konobar").Include("Nacin_Placanja")
                                  where r.Kafic_ID == kafic.ID_Kafic &&
                                  r.Vrijeme.Value.Day >= pocetak.Day && r.Vrijeme.Value.Month >= pocetak.Month
                                  && r.Vrijeme.Value.Day <= kraj.Day && r.Vrijeme.Value.Month <= kraj.Month
