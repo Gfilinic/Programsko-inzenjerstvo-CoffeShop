@@ -205,7 +205,8 @@ namespace PI_2021_Kafic
 
         private void frmArtiklManager_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpArtiklManager();
+            Helper.GetHelp(this);
+
         }
     }
 }

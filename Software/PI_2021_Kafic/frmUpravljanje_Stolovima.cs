@@ -114,7 +114,8 @@ namespace PI_2021_Kafic
 
         private void frmUpravljanje_Stolovima_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpUpravaljanjeStolovima();
+            Helper.GetHelp(this);
+
         }
 
         private void listboxStol_SelectedIndexChanged(object sender, EventArgs e)

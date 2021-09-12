@@ -153,7 +153,8 @@ namespace PI_2021_Kafic
 
         private void frmStanjeSkladiste_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpStanjeSkladista();
+            Helper.GetHelp(this);
+
         }
 
         private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)

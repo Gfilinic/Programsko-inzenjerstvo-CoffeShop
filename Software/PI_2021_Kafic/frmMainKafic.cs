@@ -321,8 +321,16 @@ namespace PI_2021_Kafic
 
         private void toolStripHelp_Click(object sender, EventArgs e)
         {
+            Helper.GetHelp(this);
+        }
+        
+    }
+    public static class Helper
+    {
+        public static void GetHelp(Control control)
+        {
             string putanja = Path.GetFullPath("Help/Kafic User Manual.chm");
-            Help.ShowHelp(this, putanja);
+            Help.ShowHelp(control, putanja);
         }
     }
 }

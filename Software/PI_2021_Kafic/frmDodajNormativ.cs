@@ -226,7 +226,7 @@ namespace PI_2021_Kafic
 
         private void frmDodajNormativ_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpDodajNormativ();
+            Helper.GetHelp(this);
         }
     }
 }
