@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -308,13 +309,20 @@ namespace PI_2021_Kafic
 
         private void frmMainKafic_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpMain();
+            string putanja = Path.GetFullPath("Help/Kafic User Manual.chm");
+            Help.ShowHelp(this,putanja);
         }
 
         private void toolstripStatistika_Click(object sender, EventArgs e)
         {
             frmStatistika frm = new frmStatistika(kafic);
             frm.ShowDialog();
+        }
+
+        private void toolStripHelp_Click(object sender, EventArgs e)
+        {
+            string putanja = Path.GetFullPath("Help/Kafic User Manual.chm");
+            Help.ShowHelp(this, putanja);
         }
     }
 }
