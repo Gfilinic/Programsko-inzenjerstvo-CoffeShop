@@ -24,7 +24,6 @@ namespace PI_2021_Kafic
             using (var context = new Entities())
             {
                 var query = from n in context.Namirnica
-                            where n.Kafic_ID == kafic.ID_Kafic
                             select n;
                 List<Namirnica> lista = query.ToList();
                 Namirnica zadnjaNamirnica = lista.Last<Namirnica>();

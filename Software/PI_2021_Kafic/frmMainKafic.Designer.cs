@@ -38,6 +38,7 @@
             this.upravljanjeNamirnicamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artikliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loginKonobarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolstripStatistika = new System.Windows.Forms.ToolStripMenuItem();
             this.otpisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.odjaviKonobaraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moderatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +63,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerClose = new System.Windows.Forms.Timer(this.components);
-            this.toolstripStatistika = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,8 +80,9 @@
             this.odjaviKonobaraToolStripMenuItem,
             this.moderatorToolStripMenuItem,
             this.upravljanjeKonobarima,
-            this.odjaviModeratoraToolStripMenuItem,
-            this.trenutniKorisnikToolStripMenuItem});
+            this.trenutniKorisnikToolStripMenuItem,
+            this.toolStripHelp,
+            this.odjaviModeratoraToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -147,6 +149,13 @@
             this.loginKonobarToolStripMenuItem.Size = new System.Drawing.Size(97, 23);
             this.loginKonobarToolStripMenuItem.Text = "Login Konobar";
             this.loginKonobarToolStripMenuItem.Click += new System.EventHandler(this.loginKonobarToolStripMenuItem_Click);
+            // 
+            // toolstripStatistika
+            // 
+            this.toolstripStatistika.Name = "toolstripStatistika";
+            this.toolstripStatistika.Size = new System.Drawing.Size(66, 23);
+            this.toolstripStatistika.Text = "Statistika";
+            this.toolstripStatistika.Click += new System.EventHandler(this.toolstripStatistika_Click);
             // 
             // otpisToolStripMenuItem
             // 
@@ -292,12 +301,12 @@
             // 
             this.timerClose.Tick += new System.EventHandler(this.timerClose_Tick);
             // 
-            // toolstripStatistika
+            // toolStripHelp
             // 
-            this.toolstripStatistika.Name = "toolstripStatistika";
-            this.toolstripStatistika.Size = new System.Drawing.Size(66, 23);
-            this.toolstripStatistika.Text = "Statistika";
-            this.toolstripStatistika.Click += new System.EventHandler(this.toolstripStatistika_Click);
+            this.toolStripHelp.Name = "toolStripHelp";
+            this.toolStripHelp.Size = new System.Drawing.Size(44, 23);
+            this.toolStripHelp.Text = "Help";
+            this.toolStripHelp.Click += new System.EventHandler(this.toolStripHelp_Click);
             // 
             // frmMainKafic
             // 
@@ -354,5 +363,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Timer timerClose;
         private System.Windows.Forms.ToolStripMenuItem toolstripStatistika;
+        private System.Windows.Forms.ToolStripMenuItem toolStripHelp;
     }
 }
