@@ -244,6 +244,7 @@ namespace PI_2021_Kafic
             {
                 otpisToolStripMenuItem.Visible = false;
                 racuniToolStripMenuItem.Visible = false;
+                toolstripStatistika.Visible = false;
             }
             konobar = null;
             loginKonobarToolStripMenuItem.Visible = true;
