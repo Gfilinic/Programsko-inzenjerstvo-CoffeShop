@@ -144,7 +144,7 @@ namespace PI_2021_Kafic
 
         private void frmPotrosnja_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpPotrosnja();
+            Helper.GetHelp(this);
 
         }
     }

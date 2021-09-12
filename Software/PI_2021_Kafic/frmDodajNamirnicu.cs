@@ -60,7 +60,8 @@ namespace PI_2021_Kafic
 
         private void frmDodajNamirnicu_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpDodajNamirnicu();
+            Helper.GetHelp(this);
+
         }
     }
 }

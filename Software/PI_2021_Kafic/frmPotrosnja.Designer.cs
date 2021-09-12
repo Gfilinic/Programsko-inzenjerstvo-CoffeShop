@@ -30,14 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.NamirnicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbNamirnice = new System.Windows.Forms.ListBox();
             this.cmbPeriod = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.reportNamirnice = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.NamirnicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.NamirnicaBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // NamirnicaBindingSource
+            // 
+            this.NamirnicaBindingSource.DataSource = typeof(PI_2021_Kafic.Namirnica);
             // 
             // lbNamirnice
             // 
@@ -85,17 +89,13 @@
             reportDataSource1.Name = "Namirnice";
             reportDataSource1.Value = this.NamirnicaBindingSource;
             this.reportNamirnice.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportNamirnice.LocalReport.ReportEmbeddedResource = "PI_2021_Kafic.ReportNamirnice.rdlc";
+            this.reportNamirnice.LocalReport.ReportEmbeddedResource = "PI_2021_Kafic.Reports.ReportNamirnice.rdlc";
             this.reportNamirnice.Location = new System.Drawing.Point(12, 364);
             this.reportNamirnice.Name = "reportNamirnice";
             this.reportNamirnice.ServerReport.BearerToken = null;
             this.reportNamirnice.Size = new System.Drawing.Size(800, 311);
             this.reportNamirnice.TabIndex = 3;
             this.reportNamirnice.Load += new System.EventHandler(this.reportNamirnice_Load);
-            // 
-            // NamirnicaBindingSource
-            // 
-            this.NamirnicaBindingSource.DataSource = typeof(PI_2021_Kafic.Namirnica);
             // 
             // frmPotrosnja
             // 

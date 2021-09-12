@@ -173,7 +173,8 @@ namespace PI_2021_Kafic
 
         private void frmUpravljanjeKonobarima_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpUpravljanjeKonobarima();
+            Helper.GetHelp(this);
+
         }
     }
 }

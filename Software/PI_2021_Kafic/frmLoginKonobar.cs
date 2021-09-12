@@ -52,7 +52,7 @@ namespace PI_2021_Kafic
 
         private void frmLoginKonobar_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpLoginKonobar();
+            Helper.GetHelp(this);
         }
     }
 }

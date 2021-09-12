@@ -139,7 +139,8 @@ namespace PI_2021_Kafic
 
         private void frmArtiklMain_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            PomocneFunkcije.PomocneFunkcije.HelpArtiklMain();
+            Helper.GetHelp(this);
+
         }
     }
 }
