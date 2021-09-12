@@ -147,7 +147,7 @@ namespace PI_2021_Kafic
             catch (KriviUnosException ex)
             {
                 MessageBox.Show(ex.DodatnaPoruka);
-                throw;
+                
             }
         }
 
