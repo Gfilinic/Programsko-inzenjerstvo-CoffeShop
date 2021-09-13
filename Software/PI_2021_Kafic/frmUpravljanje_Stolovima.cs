@@ -224,6 +224,11 @@ namespace PI_2021_Kafic
             if(refresh)
             frm.RefreshStolovi();
         }
+
+        private void frmUpravljanje_Stolovima_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     public class KriviUnosException : Exception
     {

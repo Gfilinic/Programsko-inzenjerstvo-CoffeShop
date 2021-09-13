@@ -30,6 +30,8 @@
         {
             this.listboxStol = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbNotice = new System.Windows.Forms.Label();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -41,8 +43,6 @@
             this.lblBroj = new System.Windows.Forms.Label();
             this.lblOznaka = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.lbNotice = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +79,27 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dodaj novi stol";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 251);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(354, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Mijenjanjem stolova brišu se sve aktivne narudžbe sa stolova";
+            // 
+            // lbNotice
+            // 
+            this.lbNotice.AutoSize = true;
+            this.lbNotice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNotice.ForeColor = System.Drawing.Color.Red;
+            this.lbNotice.Location = new System.Drawing.Point(18, 231);
+            this.lbNotice.Name = "lbNotice";
+            this.lbNotice.Size = new System.Drawing.Size(121, 20);
+            this.lbNotice.TabIndex = 5;
+            this.lbNotice.Text = "Upozorenje! : ";
             // 
             // radioButton6
             // 
@@ -190,27 +211,6 @@
             this.btnDelete.Text = "Obiris odabrani stol";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // lbNotice
-            // 
-            this.lbNotice.AutoSize = true;
-            this.lbNotice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNotice.ForeColor = System.Drawing.Color.Red;
-            this.lbNotice.Location = new System.Drawing.Point(18, 231);
-            this.lbNotice.Name = "lbNotice";
-            this.lbNotice.Size = new System.Drawing.Size(121, 20);
-            this.lbNotice.TabIndex = 5;
-            this.lbNotice.Text = "Upozorenje! : ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 251);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(354, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Mijenjanjem stolova brišu se sve aktivne narudžbe sa stolova";
             // 
             // frmUpravljanje_Stolovima
             // 

@@ -25,10 +25,7 @@ namespace PI_2021_Kafic.Statistika
             kafic = odabraniKafic;
         }
 
-        private void reportViewer1_Load(object sender, EventArgs e)
-        {
-
-        }
+    
 
         private void frmIzvjestajArtikl_Load(object sender, EventArgs e)
         {
