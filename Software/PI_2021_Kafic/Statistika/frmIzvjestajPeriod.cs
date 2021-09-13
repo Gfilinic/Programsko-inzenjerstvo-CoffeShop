@@ -13,12 +13,14 @@ namespace PI_2021_Kafic.Statistika
     public partial class frmIzvjestajPeriod : Form
     {
         DateTime start, end;
-        public frmIzvjestajPeriod(DateTime pocetak, DateTime kraj)
+        Kafic kafic;
+        public frmIzvjestajPeriod(DateTime pocetak, DateTime kraj, Kafic odabraniKafic)
         {
             InitializeComponent();
             start = pocetak;
             end = kraj;
             this.Text = "Izvještaj perioda" + start.ToString() + " " + end.ToString();
+            kafic = odabraniKafic;
         }
 
         private void frmIzvjestajPeriod_Load(object sender, EventArgs e)
@@ -26,7 +28,7 @@ namespace PI_2021_Kafic.Statistika
             
             this.DataSetStatistika.EnforceConstraints = false;
 
-            this.DataTablePeriodTableAdapter.Fill(this.DataSetStatistika.DataTablePeriod,start,end);
+            this.DataTablePeriodTableAdapter.Fill(this.DataSetStatistika.DataTablePeriod,start,end,kafic.ID_Kafic);
             this.reportViewer1.RefreshReport();
 
         }

@@ -32,34 +32,35 @@ namespace PI_2021_Kafic.Statistika
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DataSetStatistika = new PI_2021_Kafic.Statistika.DataSetStatistika();
             this.DataTablePeriodBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DataSetStatistika = new PI_2021_Kafic.Statistika.DataSetStatistika();
             this.DataTablePeriodTableAdapter = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.DataTablePeriodTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTablePeriodBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSetPeriod";
             reportDataSource1.Value = this.DataTablePeriodBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PI_2021_Kafic.Reports.ReportTime.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(27, 33);
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(729, 376);
+            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // DataSetStatistika
-            // 
-            this.DataSetStatistika.DataSetName = "DataSetStatistika";
-            this.DataSetStatistika.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // DataTablePeriodBindingSource
             // 
             this.DataTablePeriodBindingSource.DataMember = "DataTablePeriod";
             this.DataTablePeriodBindingSource.DataSource = this.DataSetStatistika;
+            // 
+            // DataSetStatistika
+            // 
+            this.DataSetStatistika.DataSetName = "DataSetStatistika";
+            this.DataSetStatistika.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // DataTablePeriodTableAdapter
             // 
@@ -74,8 +75,8 @@ namespace PI_2021_Kafic.Statistika
             this.Name = "frmIzvjestajPeriod";
             this.Text = "Izvjestaj perioda: ";
             this.Load += new System.EventHandler(this.frmIzvjestajPeriod_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTablePeriodBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).EndInit();
             this.ResumeLayout(false);
 
         }

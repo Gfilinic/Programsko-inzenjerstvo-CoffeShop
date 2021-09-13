@@ -78,7 +78,7 @@
             // lblArtikl
             // 
             this.lblArtikl.AutoSize = true;
-            this.lblArtikl.Location = new System.Drawing.Point(117, 33);
+            this.lblArtikl.Location = new System.Drawing.Point(110, 33);
             this.lblArtikl.Name = "lblArtikl";
             this.lblArtikl.Size = new System.Drawing.Size(45, 13);
             this.lblArtikl.TabIndex = 2;

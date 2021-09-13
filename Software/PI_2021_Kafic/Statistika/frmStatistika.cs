@@ -33,11 +33,6 @@ namespace PI_2021_Kafic.Statistika
             }
         }
 
-        private void frmStatistika_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnX_Click(object sender, EventArgs e)
         {
             frmIzvjestajX frm = new frmIzvjestajX(odabraniKonobar);
@@ -57,7 +52,7 @@ namespace PI_2021_Kafic.Statistika
 
         private void btnPeriod_Click(object sender, EventArgs e)
         {
-            frmIzvjestajPeriod frm = new frmIzvjestajPeriod(dateTimePicker1.Value, dateTimePicker2.Value);
+            frmIzvjestajPeriod frm = new frmIzvjestajPeriod(dateTimePicker1.Value, dateTimePicker2.Value,kafic);
             frm.ShowDialog();
         }
 
@@ -67,9 +62,15 @@ namespace PI_2021_Kafic.Statistika
             frm.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnKonobar_Click(object sender, EventArgs e)
         {
-            frmIzvjestaKonobarPeriod frm = new frmIzvjestaKonobarPeriod(dateTimePicker1.Value, dateTimePicker2.Value,kafic);
+            frmIzvjestaKonobarPeriod frm = new frmIzvjestaKonobarPeriod(dateTimePicker1.Value, dateTimePicker2.Value, kafic);
+            frm.ShowDialog();
+        }
+
+        private void btnZalihe_Click(object sender, EventArgs e)
+        {
+            frmIzvjestajZalihe frm = new frmIzvjestajZalihe(kafic);
             frm.ShowDialog();
         }
     }

@@ -3695,21 +3695,25 @@ GROUP BY Artikl.Naziv";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        MONTH(Racun.Vrijeme) AS Mjesec, SUM(Racun.Ukupna_cijena) AS Suma, YEAR(Racun.Vrijeme) AS Godina
+
 FROM            Racun INNER JOIN
                          Kafic ON Racun.Kafic_ID = Kafic.ID_Kafic
-WHERE        (Racun.Vrijeme BETWEEN @Param1 AND @Param2)
+
+WHERE        (Racun.Vrijeme BETWEEN @Param1 AND @Param2) AND (Racun.Kafic_ID = @Param3)
 GROUP BY YEAR(Racun.Vrijeme), MONTH(Racun.Vrijeme)
+
 ORDER BY Godina, Mjesec";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Vrijeme", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param2", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Vrijeme", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param3", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Kafic_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetStatistika.DataTablePeriodDataTable dataTable, global::System.Nullable<global::System.DateTime> Param1, global::System.Nullable<global::System.DateTime> Param2) {
+        public virtual int Fill(DataSetStatistika.DataTablePeriodDataTable dataTable, global::System.Nullable<global::System.DateTime> Param1, global::System.Nullable<global::System.DateTime> Param2, int Param3) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Param1.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(Param1.Value));
@@ -3723,6 +3727,7 @@ ORDER BY Godina, Mjesec";
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
+            this.Adapter.SelectCommand.Parameters[2].Value = ((int)(Param3));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3734,7 +3739,7 @@ ORDER BY Godina, Mjesec";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetStatistika.DataTablePeriodDataTable GetData(global::System.Nullable<global::System.DateTime> Param1, global::System.Nullable<global::System.DateTime> Param2) {
+        public virtual DataSetStatistika.DataTablePeriodDataTable GetData(global::System.Nullable<global::System.DateTime> Param1, global::System.Nullable<global::System.DateTime> Param2, int Param3) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Param1.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(Param1.Value));
@@ -3748,6 +3753,7 @@ ORDER BY Godina, Mjesec";
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
+            this.Adapter.SelectCommand.Parameters[2].Value = ((int)(Param3));
             DataSetStatistika.DataTablePeriodDataTable dataTable = new DataSetStatistika.DataTablePeriodDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

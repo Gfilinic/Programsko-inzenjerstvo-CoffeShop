@@ -66,8 +66,8 @@ namespace PI_2021_Kafic
             using (var context=new Entities())
             {
                 var query = from r in context.Racun.Include("Stavka_racuna").Include("Konobar").Include("Nacin_Placanja")
-                            where r.Kafic_ID == kafic.ID_Kafic &&
-                            r.Vrijeme.Value.Day >= dtpOd.Value.Day && r.Vrijeme.Value.Month >= dtpOd.Value.Month
+                            where r.Kafic_ID == kafic.ID_Kafic
+                            && r.Vrijeme.Value.Day >= dtpOd.Value.Day && r.Vrijeme.Value.Month >= dtpOd.Value.Month
                             && r.Vrijeme.Value.Day <= dtpDo.Value.Day && r.Vrijeme.Value.Month <= dtpDo.Value.Month
                             orderby r.Vrijeme
                             select r;
@@ -80,7 +80,7 @@ namespace PI_2021_Kafic
                 dgvRacuni.Columns["Kafic_ID"].Visible = false;
                 dgvRacuni.Columns["ID_Racun"].Visible = false;
                 dgvRacuni.Columns["Nacin_Placanja"].HeaderText = "Nacin plaćanja";
-                dgvRacuni.Columns["Ukupna_cijena"].HeaderText = "Cijena računa";
+                dgvRacuni.Columns["Ukupna_cijena"].HeaderText = "Iznos računa";
 
             }
         }

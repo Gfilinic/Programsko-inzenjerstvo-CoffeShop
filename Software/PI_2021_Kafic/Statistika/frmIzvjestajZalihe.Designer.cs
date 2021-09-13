@@ -1,7 +1,7 @@
 ﻿
 namespace PI_2021_Kafic.Statistika
 {
-    partial class frmIzvjestajArtikl
+    partial class frmIzvjestajZalihe
     {
         /// <summary>
         /// Required designer variable.
@@ -32,51 +32,37 @@ namespace PI_2021_Kafic.Statistika
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DataTableArtiklBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataSetStatistika = new PI_2021_Kafic.Statistika.DataSetStatistika();
-            this.DataTableArtiklTableAdapter = new PI_2021_Kafic.Statistika.DataSetStatistikaTableAdapters.DataTableArtiklTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.DataTableArtiklBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).BeginInit();
+            this.namirnicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.namirnicaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSetArtikl";
-            reportDataSource1.Value = this.DataTableArtiklBindingSource;
+            reportDataSource1.Name = "DataSetZalihe";
+            reportDataSource1.Value = this.namirnicaBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "PI_2021_Kafic.Reports.ReportArtikl.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "PI_2021_Kafic.Reports.ReportZalihe.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // DataTableArtiklBindingSource
+            // namirnicaBindingSource
             // 
-            this.DataTableArtiklBindingSource.DataMember = "DataTableArtikl";
-            this.DataTableArtiklBindingSource.DataSource = this.DataSetStatistika;
+            this.namirnicaBindingSource.DataSource = typeof(PI_2021_Kafic.Namirnica);
             // 
-            // DataSetStatistika
-            // 
-            this.DataSetStatistika.DataSetName = "DataSetStatistika";
-            this.DataSetStatistika.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // DataTableArtiklTableAdapter
-            // 
-            this.DataTableArtiklTableAdapter.ClearBeforeFill = true;
-            // 
-            // frmIzvjestajArtikl
+            // frmIzvjestajZalihe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "frmIzvjestajArtikl";
-            this.Text = "Izvjestaj artikla u periodu";
-            this.Load += new System.EventHandler(this.frmIzvjestajArtikl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataTableArtiklBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSetStatistika)).EndInit();
+            this.Name = "frmIzvjestajZalihe";
+            this.Text = "Izvještaj Zaliha";
+            this.Load += new System.EventHandler(this.frmIzvjestajZalihe_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.namirnicaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -84,8 +70,6 @@ namespace PI_2021_Kafic.Statistika
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource DataTableArtiklBindingSource;
-        private DataSetStatistika DataSetStatistika;
-        private DataSetStatistikaTableAdapters.DataTableArtiklTableAdapter DataTableArtiklTableAdapter;
+        private System.Windows.Forms.BindingSource namirnicaBindingSource;
     }
 }
